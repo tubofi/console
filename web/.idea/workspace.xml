@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="" />
+    <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/class/feedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/feedback.vue" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +22,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1vtivaOqTKVsOHRWEMFaREpy4YE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -91,6 +95,8 @@
       <workItem from="1629209521036" duration="6803000" />
       <workItem from="1629247815235" duration="17584000" />
       <workItem from="1629297680590" duration="4411000" />
+      <workItem from="1629340694117" duration="1816000" />
+      <workItem from="1629354745118" duration="665000" />
     </task>
     <servers />
   </component>
@@ -106,6 +112,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="526" y="198" key="SettingsEditor/0.0.2048.1112@0.0.2048.1112" timestamp="1627526809320" />
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2" timestamp="1629354813473">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="617" y="289" key="Vcs.Push.Dialog.v2/0.0.2048.1112@0.0.2048.1112" timestamp="1629354813473" />
     <state x="831" y="303" width="782" height="600" key="find.popup" timestamp="1629278448088">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

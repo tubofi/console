@@ -66,10 +66,24 @@
                 <el-form-item label="授课教师:" prop="teacherName">
                     <el-input :disabled="true" v-model="formData.teacherName" clearable placeholder="请输入"/>
                 </el-form-item>
-                <el-form-item label="守时:" prop="punctuality">
+                <el-form-item>
+                    <el-col span="11">
+                        <el-form-item prop="punctuality">
+                            <span>默认不区分颜色</span>
+                            <el-rate v-model.number="formData.punctuality" :colors="colors" :allow-half="true" :show-text="true"/>
+                        </el-form-item>
+                    </el-col>
+                    <el-col span="2"></el-col>
+                    <el-col span="11" >
+                        <el-form-item prop="discipline">
+                            <el-rate v-model.number="formData.discipline" :colors="colors" :allow-half="true" :show-number="true"/>
+                        </el-form-item>
+                    </el-col>
+                </el-form-item>
+                <!---<el-form-item label="守时:" prop="punctuality">
                     <el-rate v-model.number="formData.punctuality" :colors="colors" :allow-half="true" :show-text="true"/>
                 </el-form-item>
-                <!---<el-form-item label="纪律:" prop="discipline">
+                <el-form-item label="纪律:" prop="discipline">
                     <el-rate v-model.number="formData.discipline" :colors="colors" :allow-half="true" :show-text="true"/>
                 </el-form-item>
                 <el-form-item label="专注:" prop="concentration">
