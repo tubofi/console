@@ -32,6 +32,26 @@
             <el-table-column label="课程阶段" prop="courseContent" align="center"/>
             <el-table-column label="课程名称" prop="courseName" align="center"/>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
+            <el-table-column label="反馈详情" align="center" width="100">
+                <template slot-scope="scope">
+                    <div>
+                        <el-popover v-if="scope.row" placement="top-start" trigger="hover">
+                            <div class="popover-box">
+                                <pre>总分：{{scope.row.total}}</pre>
+                                <pre>守时：{{scope.row.punctuality}}</pre>
+                                <pre>纪律：{{scope.row.discipline}}</pre>
+                                <pre>专注：{{scope.row.concentration}}</pre>
+                                <pre>创新：{{scope.row.innovation}}</pre>
+                                <pre>逻辑：{{scope.row.logic}}</pre>
+                                <pre>数学：{{scope.row.mathematics}}</pre>
+                                <pre>独立：{{scope.row.complete}}</pre>
+                            </div>
+                            <i slot="reference" class="el-icon-view" />
+                        </el-popover>
+                        <span v-else>无</span>
+                    </div>
+                </template>
+            </el-table-column>
             <el-table-column label="按钮组" align="center" width="200">
                 <template slot-scope="scope">
                     <div v-if="scope.row.needFeedback === 1">
