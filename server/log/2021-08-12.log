@@ -1,0 +1,19 @@
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:09.407	[31merror[0m	register table failed	{"err": "Error 1050: Table 'exa_customers' already exists"}
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.410	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.413	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.414	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.414	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.453	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/12 - 08:46:57.455	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:03.968	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:03.975	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:03.975	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:03.976	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:04.023	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/12 - 21:19:04.026	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.430	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.436	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.437	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.438	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.511	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/12 - 22:42:41.513	[34minfo[0m	server run success on 	{"address": ":8888"}

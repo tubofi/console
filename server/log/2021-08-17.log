@@ -1,0 +1,98 @@
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.061	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.065	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.065	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.066	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.103	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 08:50:59.105	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.408	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.410	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.410	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.411	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.419	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 10:37:53.420	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.706	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.708	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.708	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.708	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.716	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 11:25:44.717	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:26:24.321	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:28:26.645	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.765	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.766	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.767	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.767	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.775	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 11:32:28.777	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:35:45.512	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.369	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.373	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.373	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.373	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.381	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 11:37:54.382	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.433	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.435	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.435	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.435	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.443	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 14:18:29.445	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:21:03.345	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 4"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:21:12.579	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 4"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:24:13.084	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 3"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.937	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.939	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.939	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.939	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.946	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:21.948	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:36.017	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:25:42.993	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:27:36.255	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:42:57.880	[31merror[0m	创建失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'attend_time' at row 1"}
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.623	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.625	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.625	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.625	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.633	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 14:43:57.634	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.621	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.626	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.626	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.627	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.698	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 16:00:17.699	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.903	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.905	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.905	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.906	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.914	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 16:28:09.915	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.080	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.103	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.104	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.108	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.185	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 22:13:54.187	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.610	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.616	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.616	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.617	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.695	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 22:58:05.698	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:06:48.875	[31merror[0m	查询失败!	{"err": "record not found"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:06:57.413	[31merror[0m	查询失败!	{"err": "record not found"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.252	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.258	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.258	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.259	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.345	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 23:09:52.347	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:50:16.790	[31merror[0m	register table failed	{"err": "Error 1061: Duplicate key name 'idx_jwt_blacklists_deleted_at'"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:09.411	[31merror[0m	register table failed	{"err": "Error 1050: Table 'classes' already exists"}
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.626	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.630	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.630	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.631	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.664	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/17 - 23:51:51.665	[34minfo[0m	server run success on 	{"address": ":8888"}

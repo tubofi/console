@@ -1,0 +1,41 @@
+[GIN-VUE-ADMIN]2021/08/11 - 00:01:01.084	[31merror[0m	read body from request error:	{"err": "read tcp 127.0.0.1:8888->127.0.0.1:6179: i/o timeout"}
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.774	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.779	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.779	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.780	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.809	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 16:41:17.810	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.791	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.794	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.794	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.795	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.831	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 16:45:23.833	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.627	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.633	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.634	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.635	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.669	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 20:04:17.671	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/11 - 20:16:10.619	[31merror[0m	获取失败!	{"err": "dial tcp 121.36.19.118:3306: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."}
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.364	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.370	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.371	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.372	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.414	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 20:29:57.416	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/11 - 20:35:21.280	[31merror[0m	创建失败!	{"err": "意向学员姓名已存在"}
+[GIN-VUE-ADMIN]2021/08/11 - 23:14:36.870	[31merror[0m	register table failed	{"err": "invalid field found for struct gin-vue-admin/model.Course's field Students, need to define a foreign key for relations or it need to implement the Valuer/Scanner interface"}
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:06.967	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:06.984	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:06.985	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:06.985	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:07.002	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 23:23:07.003	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/11 - 23:40:24.607	[31merror[0m	删除失败!	{"err": "此菜单存在子菜单不可删除"}
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.517	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.521	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.522	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.522	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.564	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/11 - 23:58:47.565	[34minfo[0m	server run success on 	{"address": ":8888"}

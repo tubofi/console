@@ -1,0 +1,108 @@
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.664	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.668	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.669	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.670	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.709	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 00:12:49.711	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.594	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.598	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.598	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.599	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.616	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 00:14:19.618	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.593	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.595	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.596	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.596	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.640	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 08:51:08.642	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.456	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.462	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.462	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.463	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.489	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 08:55:45.491	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.624	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.627	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.627	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.628	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.660	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 09:00:37.662	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.607	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.610	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.611	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.614	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.624	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 09:42:37.625	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 10:47:46.258	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 10:50:00.393	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 11:35:18.165	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:46:35.089	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:48:20.800	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:49:17.894	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:52:34.680	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:54:58.770	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:55:06.377	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:55:16.093	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:55:36.139	[31merror[0m	获取失败!	{"err": "Error 1146: Table 'db.course_records' doesn't exist"}
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.956	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.958	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.958	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.958	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.974	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 13:56:21.976	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.171	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.173	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.173	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.174	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.187	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:05:44.194	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.722	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.725	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.725	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.725	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.742	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:16:25.744	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.157	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.159	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.159	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.160	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.171	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:22:42.172	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.701	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.706	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.706	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.707	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.716	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:28:04.717	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.871	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.877	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.877	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.877	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.885	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:45:41.886	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.145	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.147	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.147	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.147	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.156	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 14:53:22.157	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.709	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.714	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.714	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.715	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.726	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 15:15:31.727	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.349	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.351	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.352	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.352	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.368	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 22:43:56.369	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.416	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.421	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.421	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.422	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.459	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/18 - 23:30:31.460	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/18 - 23:32:42.639	[31merror[0m	查询失败!	{"err": "dial tcp 121.36.19.118:3306: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond."}
