@@ -28,3 +28,25 @@
 [GIN-VUE-ADMIN]2021/08/19 - 21:15:54.369	[34minfo[0m	register swagger handler
 [GIN-VUE-ADMIN]2021/08/19 - 21:15:54.454	[34minfo[0m	router register success
 [GIN-VUE-ADMIN]2021/08/19 - 21:15:54.457	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.483	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.487	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.488	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.488	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.505	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 21:22:13.507	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:42:14.467	[31merror[0m	忽略补课失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:42:21.852	[31merror[0m	忽略补课失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.937	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.949	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.949	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.950	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.968	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:09.971	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:51:39.303	[31merror[0m	忽略补课失败!	{"err": "Error 1292: Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[GIN-VUE-ADMIN]2021/08/19 - 21:55:04.906	[31merror[0m	register table failed	{"err": "Error 1061: Duplicate key name 'idx_sys_base_menus_deleted_at'"}
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.281	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.284	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.285	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.285	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.324	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 22:00:06.325	[34minfo[0m	server run success on 	{"address": ":8888"}

@@ -93,6 +93,7 @@ func CramCourseRecord(CourseRecord model.CourseRecord) (err error) {
 }
 
 func IgnoreCramCourseRecord(CourseRecord model.CourseRecord) (err error) {
+	global.GVA_DB.First(&CourseRecord)
 	CourseRecord.NeedCram = 0
 	CourseRecord.NeedFeedback = 0
 	err = global.GVA_DB.Save(&CourseRecord).Error

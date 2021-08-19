@@ -196,8 +196,8 @@
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
-                }).then(() => {
-                    const res = ignoreCramCourseRecord({ID: row.ID})
+                }).then(async () => {
+                    const res = await ignoreCramCourseRecord({ID: row.ID})
                     if (res.code === 0) {
                         this.$message({
                             type: 'success',
