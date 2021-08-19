@@ -55,8 +55,8 @@
                 :total="total"
                 @current-change="handleCurrentChange"
                 @size-change="handleSizeChange"/>
-        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="反馈表单" width="30%">
-            <el-form ref="formData" :model="formData" :rules="rules" label-position="right" label-width="100px">
+        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="反馈表单" width="40%">
+            <el-form ref="formData" :model="formData" label-position="right" label-width="100px">
                 <el-form-item label="学生姓名:" prop="studentName" >
                     <el-input :disabled="true" v-model="formData.studentName" placeholder="请输入"/>
                 </el-form-item>
@@ -66,48 +66,107 @@
                 <el-form-item label="授课教师:" prop="teacherName">
                     <el-input :disabled="true" v-model="formData.teacherName" clearable placeholder="请输入"/>
                 </el-form-item>
-                <el-form-item>
-                    <el-col span="11">
-                        <el-form-item prop="punctuality">
-                            <span>默认不区分颜色</span>
-                            <el-rate v-model.number="formData.punctuality" :colors="colors" :allow-half="true" :show-text="true"/>
-                        </el-form-item>
+            </el-form>
+            <el-form ref="rateForm" :model="formData" :rules="rules" label-width="0px">
+                <el-row class="row-card" type="flex" justify="space-between">
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">守时(5%)：</span>
+                            </div>
+                            <el-form-item prop="punctuality" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.punctuality" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">根据迟早、早退、请假具体情况扣分。因病或其它充分理由不扣分。</span>
+                            </el-form-item>
+                        </el-card>
                     </el-col>
-                    <el-col span="2"></el-col>
-                    <el-col span="11" >
-                        <el-form-item prop="discipline">
-                            <el-rate v-model.number="formData.discipline" :colors="colors" :allow-half="true" :show-number="true"/>
-                        </el-form-item>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">纪律(10%)：</span>
+                            </div>
+                            <el-form-item prop="discipline" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.discipline" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">课堂上嬉戏打闹、大声喧哗、吃零食等扰乱课堂秩序的行为均为扣分项。</span>
+                            </el-form-item>
+                        </el-card>
                     </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">专注(15%)：</span>
+                            </div>
+                            <el-form-item prop="concentration" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.concentration" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">反应课堂参与度和积极性。是否紧跟老师节奏？是否积极思考？是否踊跃回答问题？</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">创新(15%)：</span>
+                            </div>
+                            <el-form-item prop="innovation" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.innovation" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">对关键知识点提出质疑；对目标任务有不一样的实现方法；对作品内容提出创新性的改进。</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-row class="row-card" type="flex" justify="space-between">
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">逻辑(20%)：</span>
+                            </div>
+                            <el-form-item prop="logic" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.logic" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">是否明确课堂目标？对围绕目标开展的各项子任务以及子任务之间的关系是否清晰？执行是否有条理？对程序的理解程度如何？</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">数学(20%)：</span>
+                            </div>
+                            <el-form-item prop="mathematics" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.mathematics" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">对作品涉及数学知识的掌握程度，对程序算法的理解程度</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">独立(15%)：</span>
+                            </div>
+                            <el-form-item prop="complete" style="margin-bottom: 0" required>
+                                <el-rate v-model.number="formData.complete" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">反应独立完成作品能力，自己探索的部分有多少？是不是跟着老师做下来的？</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                    <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '10px'}">
+                            <div slot="header">
+                                <span style="font-size: 16px">备用：</span>
+                            </div>
+                            <el-form-item prop="total" style="margin-bottom: 0">
+                                <el-rate v-model.number="formData.total" :colors="colors" :allow-half="true" :show-text="true"/>
+                                <span class="card-description">...</span>
+                            </el-form-item>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-form-item prop="review">
+                    <el-input style="margin-top: 10px" type="textarea" :rows="5" v-model="formData.review" clearable :placeholder=remark />
                 </el-form-item>
-                <!---<el-form-item label="守时:" prop="punctuality">
-                    <el-rate v-model.number="formData.punctuality" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="纪律:" prop="discipline">
-                    <el-rate v-model.number="formData.discipline" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="专注:" prop="concentration">
-                    <el-rate v-model.number="formData.concentration" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="创新:" prop="innovation">
-                    <el-rate v-model.number="formData.innovation" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="逻辑:" prop="logic">
-                    <el-rate v-model.number="formData.logic" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="数学:" prop="mathematics">
-                    <el-rate v-model.number="formData.mathematics" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="完成:" prop="complete">
-                    <el-rate v-model.number="formData.complete" :colors="colors" :allow-half="true" :show-text="true"/>
-                </el-form-item>
-                <el-form-item label="教师点评:" prop="review">
-                    <el-input type="textarea" :rows="5" v-model="formData.review" clearable placeholder="课堂点评"/>
-                </el-form-item>--->
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button type="primary" @click="beforeEnterDialog('rateForm')">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -144,6 +203,7 @@
                 multipleSelection: [],
                 absentOptions: absentOptions,
                 colors: ['#99A9BF', '#F7BA2A', '#FF9900'],  // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
+                remark: "结合以上要素对学生的课堂表现给出客观文字点评：\n",
 
                 formData: {
                     CreatedAt: new Date(),
@@ -170,12 +230,13 @@
                 },
                 rules: {
                     punctuality: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
-                    discipline: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
-                    concentration: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
-                    innovation: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
-                    logic: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
-                    mathematics: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
-                    complete: [{ required: true, message: '请为该项评分', trigger: 'blur' }],
+                    discipline: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    concentration: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    innovation: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    logic: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    mathematics: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    complete: [{type: "number", min: 0.1, max: 5, message: '请为该项评分', trigger: 'blur' }],
+                    review: [{ required: true, message: '请为学生课堂表现做出点评', trigger: 'blur' }],
                 },
             }
         },
@@ -338,5 +399,17 @@
 </script>
 
 <style>
+    .card-description {
+        display: block;
+        height: 50px;
+        font-size: 10px;
+        color: #5e6d82;
+        margin-top: 10px;
+        line-height: 15px;
+    }
+    .row-card {
+        width: 100%;
+        padding: 0 0
+    }
 </style>
 
