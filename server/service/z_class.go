@@ -100,6 +100,7 @@ func GetClassInfoList(info request.ClassSearch) (err error, list interface{}, to
 	err = db.Limit(limit).Offset(offset).Preload("Students").Order("time_string").Find(&classs).Error
 	return err, classs, total
 }
+
 func GetIdleStudents() (err error, students []model.Student) {
 	db := global.GVA_DB.Model(&model.Student{})
 	err = db.Where("`is_entry` = ? AND `class_id` = ?", 1, 0).Find(&students).Error

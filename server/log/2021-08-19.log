@@ -50,3 +50,23 @@
 [GIN-VUE-ADMIN]2021/08/19 - 22:00:06.285	[34minfo[0m	register swagger handler
 [GIN-VUE-ADMIN]2021/08/19 - 22:00:06.324	[34minfo[0m	router register success
 [GIN-VUE-ADMIN]2021/08/19 - 22:00:06.325	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.000	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.004	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.004	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.005	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.035	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 22:28:49.037	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 22:41:44.024	[31merror[0m	添加失败!	{"err": "存在重复name，请修改name"}
+[GIN-VUE-ADMIN]2021/08/19 - 22:42:40.866	[31merror[0m	添加失败!	{"err": "存在重复name，请修改name"}
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.540	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.544	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.544	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.545	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.584	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 23:04:37.586	[34minfo[0m	server run success on 	{"address": ":8888"}
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.185	[34minfo[0m	register table success
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.186	[34minfo[0m	use middleware logger
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.186	[34minfo[0m	use middleware cors
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.187	[34minfo[0m	register swagger handler
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.196	[34minfo[0m	router register success
+[GIN-VUE-ADMIN]2021/08/19 - 23:21:12.197	[34minfo[0m	server run success on 	{"address": ":8888"}
