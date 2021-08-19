@@ -122,14 +122,14 @@ func GetFeedbackCourseRecordInfoList(info request.CourseRecordSearch) (err error
 
 func FeedbackCourseRecord(CourseRecord model.CourseRecord) (err error) {
 	CourseRecord.NeedFeedback = 0
-	total := 0
-	total += CourseRecord.Punctuality 		/ 5 * 100
-	total += CourseRecord.Discipline 		/ 10 * 100
-	total += CourseRecord.Concentration 	/ 15 * 100
-	total += CourseRecord.Innovation		/ 15 * 100
-	total += CourseRecord.Logic				/ 20 * 100
-	total += CourseRecord.Mathematics 		/ 20 * 100
-	total += CourseRecord.Complete 			/ 15 * 100
+	total := 0.0
+	total += CourseRecord.Punctuality 		/5 *5
+	total += CourseRecord.Discipline 		/5 *10
+	total += CourseRecord.Concentration 	/5 *15
+	total += CourseRecord.Innovation		/5 *15
+	total += CourseRecord.Logic				/5 *20
+	total += CourseRecord.Mathematics 		/5 *20
+	total += CourseRecord.Complete 			/5 *15
 	CourseRecord.Total = total
 	err = global.GVA_DB.Save(&CourseRecord).Error
 	return err
