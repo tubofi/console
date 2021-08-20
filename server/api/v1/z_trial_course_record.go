@@ -144,4 +144,15 @@ func GetAllTrialStudents(c *gin.Context) {
 	}
 }
 
+func FeedbackTrialCourseRecord(c *gin.Context) {
+	var trialCourseRecord model.TrialCourseRecord
+	_ = c.ShouldBindJSON(&trialCourseRecord)
+	if err := service.FeedbackTrialCourseRecord(trialCourseRecord); err != nil {
+		global.GVA_LOG.Error("反馈失败!", zap.Any("err", err))
+		response.FailWithMessage("反馈失败: " + err.Error(), c)
+	} else {
+		response.OkWithMessage("反馈成功", c)
+	}
+}
+
 

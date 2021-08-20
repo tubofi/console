@@ -14,7 +14,7 @@ type TrialCourseRecord struct {
 	CourseName 		string		`json:"courseName" form:"courseName"`
 	Time 			time.Time	`json:"time" form:"time"`
 	Room			int			`json:"room" form:"room"`
-	NeedFeedback 	int 		`json:"needFeedback" form:"needFeedback"`
+	NeedFeedback 	int 		`json:"needFeedback" form:"needFeedback" gorm:"default:1"`
 
 	Total 			float64 	`json:"total" form:"total" gorm:"default:0.0"`	 				//总分 0~100
 	Punctuality		float64		`json:"punctuality" form:"punctuality" gorm:"default:0.0"`		//遵纪守时0~5，是否有迟到早退情况

@@ -104,3 +104,11 @@ export const getAllTrialStudents = (params) => {
     })
 };
 
+export const feedbackTrialCourseRecord = (data) => {
+    return service({
+        url: '/trial/feedbackTrialCourseRecord',
+        method: 'put',
+        data
+    })
+};
+

@@ -17,5 +17,6 @@ func InitTrialRouter(Router *gin.RouterGroup) {
 		TrialRouter.GET("findTrialCourseRecord", v1.FindTrialCourseRecord)        // 根据ID获取TrialCourseRecord
 		TrialRouter.GET("getTrialCourseRecordList", v1.GetTrialCourseRecordList)  // 获取TrialCourseRecord列表
 		TrialRouter.GET("getAllTrialStudents", v1.GetAllTrialStudents)  		// 获取所有体验学生列表
+		TrialRouter.PUT("feedbackTrialCourseRecord", v1.FeedbackTrialCourseRecord)  		// 获取所有体验学生列表
 	}
 }

@@ -51,8 +51,17 @@ func GetTrialCourseRecordInfoList(info request.TrialCourseRecordSearch) (err err
 	db := global.GVA_DB.Model(&model.TrialCourseRecord{})
 	var trialCourseRecords []model.TrialCourseRecord
 	// 如果有条件搜索 下方会自动创建搜索语句
+	if info.StudentName != "" {
+		db = db.Where("`student_name` LIKE ?","%"+ info.StudentName+"%")
+	}
+	if info.CourseName != "" {
+		db = db.Where("`course_name` LIKE ?","%"+ info.CourseName+"%")
+	}
+	if info.TeacherName != "" {
+		db = db.Where("`teacher_name` LIKE ?","%"+ info.TeacherName+"%")
+	}
 	err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Find(&trialCourseRecords).Error
+	err = db.Limit(limit).Offset(offset).Order("need_feedback desc").Order("time desc").Find(&trialCourseRecords).Error
 	return err, trialCourseRecords, total
 }
 
@@ -65,4 +74,27 @@ func GetAllTrialStudents() (err error, trialStudents []model.Student) {
 
 	return err, trialStudents
 }
+
+func FeedbackTrialCourseRecord(trialCourseRecord model.TrialCourseRecord) (err error) {
+	trialCourseRecord.NeedFeedback = 0
+	trialCourseRecord.Punctuality = trialCourseRecord.Punctuality / 5 * 5
+	trialCourseRecord.Discipline  = trialCourseRecord.Discipline / 5 * 10
+	trialCourseRecord.Concentration = trialCourseRecord.Concentration / 5 * 15
+	trialCourseRecord.Innovation = trialCourseRecord.Innovation / 5 * 15
+	trialCourseRecord.Logic = trialCourseRecord.Logic / 5 * 20
+	trialCourseRecord.Mathematics = trialCourseRecord.Mathematics / 5 * 20
+	trialCourseRecord.Complete = trialCourseRecord.Complete / 5 * 15
+
+	trialCourseRecord.Total =
+			trialCourseRecord.Punctuality +
+			trialCourseRecord.Discipline +
+			trialCourseRecord.Concentration +
+			trialCourseRecord.Innovation +
+			trialCourseRecord.Logic +
+			trialCourseRecord.Mathematics +
+			trialCourseRecord.Complete
+	err = global.GVA_DB.Save(&trialCourseRecord).Error
+	return err
+}
+
 

@@ -2,18 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_trial_course_record.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/model/request/z_trial_course_record.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/router/z_trial_course_record.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../server/service/z_trial_course_record.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/z_trial_course_record.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/trial/trialFeedback.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/trial/trialTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/initialize/gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/initialize/gorm.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/log/2021-08-19.log" beforeDir="false" afterPath="$PROJECT_DIR$/../server/log/2021-08-19.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/model/z_trial_course.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_trial_course_record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/api/v1/z_trial_course_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/api/v1/z_trial_course_record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/z_trial_course_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_trial_course_record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/router/z_trial_course_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/router/z_trial_course_record.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/service/z_trial_course_record.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/service/z_trial_course_record.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/class/courseRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/courseRecord.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/z_trial_course_record.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/z_trial_course_record.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/trial/trialFeedback.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/trial/trialFeedback.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/trial/trialTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/trial/trialTable.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +106,7 @@
       <workItem from="1629340694117" duration="1816000" />
       <workItem from="1629354745118" duration="12978000" />
       <workItem from="1629377665191" duration="9105000" />
+      <workItem from="1629421213957" duration="3993000" />
     </task>
     <servers />
   </component>

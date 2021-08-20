@@ -34,13 +34,20 @@
                 tooltip-effect="dark"
                 :data="tableData"
                 @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="60px" />
+            <el-table-column type="selection" width="60px" align="center" />
             <el-table-column label="日期" prop="time" align="center" width="150" :formatter="formatDate"/>
             <el-table-column label="学生姓名" prop="studentName" align="center"/>
             <el-table-column label="课程类型" prop="courseType" align="center"/>
             <el-table-column label="课程名称" prop="courseName" align="center"/>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
-            <el-table-column label="教室" prop="name" align="center"/>
+            <el-table-column label="教室" prop="room" align="center"/>
+            <el-table-column label="是否反馈" prop="needFeedback" align="center">
+                <template slot-scope="scope">
+                    <el-tag size="small" v-if="scope.row.needFeedback === 1 && scope.row.total === 0" type="warning">待反馈</el-tag>
+                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total > 0" size="small" type="success">已反馈</el-tag>
+                    <el-tag v-else size="small" type="danger">异常</el-tag>
+                </template>
+            </el-table-column>
             <el-table-column label="详情" align="center" width="100">
                 <template slot-scope="scope">
                     <div>
@@ -82,7 +89,7 @@
                                 v-for="item in studentOptions"
                                 :key="item.ID"
                                 :label="item.name"
-                                :value="item">
+                                :value="item.name">
                         </el-option>
                     </el-select>
                 </el-form-item>
@@ -95,12 +102,12 @@
                                 :value="item.value"/>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="课程名称:">
+                <el-form-item label="课程名称:" prop="courseName">
                     <el-input v-model="formData.courseName" clearable placeholder="请输入" />
                 </el-form-item>
-                <el-form-item label="上课时间:">
+                <el-form-item label="上课时间:" prop="time">
                     <el-date-picker
-                            v-model="formData.attendTime"
+                            v-model="formData.time"
                             type="datetime"
                             placeholder="选择日期时间">
                     </el-date-picker>
@@ -114,7 +121,7 @@
                                 :value="item.value"/>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="教师:">
+                <el-form-item label="教师:" prop="teacherName">
                     <el-input v-model="formData.teacherName" clearable placeholder="请输入" />
                 </el-form-item>
                 <el-form-item label="备注:" prop="comment">
@@ -123,7 +130,7 @@
             </el-form>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="enterDialog">确 定</el-button>
+                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -187,13 +194,21 @@
                     complete: null,
                     review: null,
                     comment: null,
-                }
+                },
+                rules: {
+                    studentName: [{ required: true, message: '请选择试听学生', trigger: 'blur' }],
+                    courseType: [{ required: true, message: '请选择课程类型', trigger: 'blur' }],
+                    courseName: [{ required: true, message: '请填写课程名称', trigger: 'blur' }],
+                    teacherName: [{ required: true, message: '请输入上课教师', trigger: 'blur' }],
+                    time: [{ required: true, message: '请选择上课时间', trigger: 'blur' }],
+                    room: [{ required: true, message: '请选择上课教室', trigger: 'blur' }],
+                },
             }
         },
         filters: {
             formatDate: function(time) {
                 if (time !== null && time !== '') {
-                    var date = new Date(time);
+                    let date = new Date(time);
                     return formatTimeToStr(date, 'yyyy-MM-dd hh:mm:ss');
                 } else {
                     return ''
@@ -212,6 +227,13 @@
 
         },
         methods: {
+            fmtBody(value) {
+                try {
+                    return JSON.parse(value)
+                } catch (err) {
+                    return value
+                }
+            },
             async trialStudents() {
                 const res = await getAllTrialStudents()
                 if (res.code === 0) {
@@ -276,22 +298,23 @@
             closeDialog() {
                 this.dialogFormVisible = false;
                 this.formData = {
-                    studentName: '',
-                    teacherName: '',
-                    courseType: '',
-                    courseName: '',
+                    studentName: null,
+                    teacherName: null,
+                    courseType: null,
+                    courseName: null,
                     time: new Date(),
-                    room: 0,
-                    total: 0,
-                    punctuality: 0,
-                    discipline: 0,
-                    concentration: 0,
-                    innovation: 0,
-                    logic: 0,
-                    mathematics: 0,
-                    complete: 0,
-                    review: '',
-                    comment: '',
+                    room: null,
+                    needFeedback: null,
+                    total: null,
+                    punctuality: null,
+                    discipline: null,
+                    concentration: null,
+                    innovation: null,
+                    logic: null,
+                    mathematics: null,
+                    complete: null,
+                    review: null,
+                    comment: null,
                 };
                 this.studentOptions = [];
             },
@@ -307,6 +330,13 @@
                     }
                     this.getTableData()
                 }
+            },
+            beforeEnterDialog(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        this.enterDialog()
+                    }
+                })
             },
             async enterDialog() {
                 let res
