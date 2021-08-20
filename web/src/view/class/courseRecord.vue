@@ -102,8 +102,14 @@
                 <el-form-item label="学生姓名:">
                     <el-input v-model="formData.studentName" clearable placeholder="请输入" />
                 </el-form-item>
-                <el-form-item label="教师:">
-                    <el-input v-model="formData.teacherName" clearable placeholder="请输入" />
+                <el-form-item label="选择教师:">
+                    <el-select v-model.number="formData.teacherName" placeholder="请选择教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="课程阶段:">
                     <el-input v-model="formData.courseContent" clearable placeholder="请输入" />
@@ -147,6 +153,7 @@
     } from '@/api/z_course_record' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'CourseRecord',
         mixins: [infoList],
@@ -158,6 +165,7 @@
                 deleteVisible: false,
                 multipleSelection: [],
                 absentOptions: absentOptions,
+                teacherOptions: [],
 
                 formData: {
                     CreatedAt: new Date(),
@@ -210,6 +218,12 @@
 
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             fmtBody(value) {
                 try {
                     return JSON.parse(value)
@@ -276,7 +290,7 @@
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     CreatedAt: new Date(),
                     classId: null,
@@ -298,8 +312,8 @@
                     mathematics: null,
                     complete: null,
                     comment: null,
-
-                }
+                };
+                this.teacherOptions = [];
             },
             async deleteCourseRecord(row) {
                 const res = await deleteCourseRecord({ ID: row.ID })
@@ -337,6 +351,7 @@
                 }
             },
             openDialog() {
+                this.allTeachers()
                 this.type = 'create'
                 this.dialogFormVisible = true
             }

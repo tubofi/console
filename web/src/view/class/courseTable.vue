@@ -98,7 +98,13 @@
                     <el-input :disabled="true" v-model="formData.room" placeholder="根据班级ID自动生成"/>
                 </el-form-item>
                 <el-form-item label="授课教师:" prop="teacherName">
-                    <el-input v-model="formData.teacherName" clearable placeholder="根据班级ID自动生成"/>
+                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="课程名称:" prop="name">
                     <el-input v-model="formData.name" clearable placeholder="请填写本节课的名称"/>
@@ -155,6 +161,7 @@
     } from '@/api/z_course' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'Course',
         mixins: [infoList],
@@ -167,6 +174,7 @@
                 multipleSelection: [],
                 classOptions: [],
                 studentOptions: [],
+                teacherOptions: [],
 
                 formData: {
                     classId: null,
@@ -208,6 +216,12 @@
             await this.getTableData()
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             formatDate(row) {
                 return formatTimeToStr(row.CreatedAt, 'yyyy-MM-dd');
             },
@@ -294,10 +308,11 @@
                         this.studentOptions.push(this.formData.absentStudents[i])
                     }
                     this.dialogFormVisible = true
+                    this.allTeachers()
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     classId: null,
                     name: null,
@@ -308,9 +323,10 @@
                     comment: null,
                     students: [],
                     absentStudents: [],
-                }
-                this.classOptions = []
-                this.studentOptions = []
+                };
+                this.classOptions = [];
+                this.studentOptions = [];
+                this.teacherOptions = [];
             },
             async deleteCourse(row) {
                 const res = await deleteCourse({ ID: row.ID })
@@ -358,6 +374,7 @@
                 await this.getClasses()
                 this.type = 'create'
                 this.dialogFormVisible = true
+                this.allTeachers()
             }
         },
     }

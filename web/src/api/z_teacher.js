@@ -95,3 +95,11 @@ export const getTeacherList = (params) => {
         params
     })
 }
+
+export const getAllTeachers = (params) => {
+    return service({
+        url: '/teacher/getAllTeachers',
+        method: 'get',
+        params
+    })
+}

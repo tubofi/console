@@ -54,3 +54,13 @@ func GetTeacherInfoList(info request.TeacherSearch) (err error, list interface{}
 	err = db.Limit(limit).Offset(offset).Find(&teachers).Error
 	return err, teachers, total
 }
+
+func GetAllTeachers() (err error, teachers []model.Teacher) {
+	db := global.GVA_DB.Model(&model.Teacher{})
+	err = db.Find(&teachers).Error
+	if err != nil {
+		return err, nil
+	}
+
+	return err, teachers
+}

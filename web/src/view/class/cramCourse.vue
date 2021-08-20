@@ -67,7 +67,13 @@
                     <el-input :disabled="true" v-model="formData.courseName" placeholder="请输入" />
                 </el-form-item>
                 <el-form-item label="授课教师:">
-                    <el-input v-model="formData.teacherName" clearable placeholder="请输入" />
+                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="上课时间:">
                     <el-date-picker
@@ -106,6 +112,7 @@
     } from '@/api/z_course_record' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'CourseRecord',
         mixins: [infoList],
@@ -117,6 +124,7 @@
                 deleteVisible: false,
                 multipleSelection: [],
                 absentOptions: absentOptions,
+                teacherOptions: [],
 
                 formData: {
                     CreatedAt: new Date(),
@@ -165,9 +173,14 @@
         },
         async created() {
             await this.getTableData()
-
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             beforeEnterDialog(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
@@ -242,10 +255,11 @@
                 if (res.code === 0) {
                     this.formData = res.data.recourseRecord
                     this.dialogFormVisible = true
+                    this.allTeachers()
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     CreatedAt: new Date(),
                     classId: null,
@@ -267,7 +281,7 @@
                     mathematics: null,
                     complete: null,
                     comment: null,
-                }
+                };
             },
             async deleteCourseRecord(row) {
                 const res = await deleteCourseRecord({ ID: row.ID })
@@ -307,6 +321,7 @@
             openDialog() {
                 this.type = 'create'
                 this.dialogFormVisible = true
+                this.allTeachers()
             }
         },
     }

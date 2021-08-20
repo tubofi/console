@@ -122,7 +122,13 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="教师:" prop="teacherName">
-                    <el-input v-model="formData.teacherName" clearable placeholder="请输入" />
+                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="备注:" prop="comment">
                     <el-input type="textarea" :rows="3" v-model.number="formData.comment" clearable placeholder="备注信息"/>
@@ -162,6 +168,7 @@
     } from '@/api/z_trial' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'TrialCourseRecord',
         mixins: [infoList],
@@ -175,6 +182,7 @@
                 courseOptions: courseOptions,
                 roomOptions: roomOptions,
                 studentOptions: [],
+                teacherOptions: [],
 
                 formData: {
                     studentName: null,
@@ -227,6 +235,12 @@
 
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             fmtBody(value) {
                 try {
                     return JSON.parse(value)
@@ -273,13 +287,13 @@
                 this.multipleSelection &&
                 this.multipleSelection.map(item => {
                     ids.push(item.ID)
-                })
+                });
                 const res = await deleteTrialCourseRecordByIds({ ids })
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === ids.length && this.page > 1) {
                         this.page--
                     }
@@ -288,11 +302,12 @@
                 }
             },
             async updateTrialCourseRecord(row) {
-                const res = await findTrialCourseRecord({ ID: row.ID })
-                this.type = 'update'
+                const res = await findTrialCourseRecord({ ID: row.ID });
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.retrialCourseRecord
-                    this.dialogFormVisible = true
+                    this.formData = res.data.retrialCourseRecord;
+                    this.dialogFormVisible = true;
+                    this.allTeachers()
                 }
             },
             closeDialog() {
@@ -317,6 +332,7 @@
                     comment: null,
                 };
                 this.studentOptions = [];
+                this.teacherOptions = [];
             },
             async deleteTrialCourseRecord(row) {
                 const res = await deleteTrialCourseRecord({ ID: row.ID })
@@ -361,9 +377,10 @@
                 }
             },
             openDialog() {
-                this.trialStudents()
-                this.type = 'create'
-                this.dialogFormVisible = true
+                this.type = 'create';
+                this.dialogFormVisible = true;
+                this.trialStudents();
+                this.allTeachers()
             }
         },
     }

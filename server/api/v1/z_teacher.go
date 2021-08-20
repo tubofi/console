@@ -135,3 +135,12 @@ func GetTeacherList(c *gin.Context) {
 		}, "获取成功", c)
 	}
 }
+
+func GetAllTeachers(c *gin.Context) {
+	if err, teachers := service.GetAllTeachers(); err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败: " + err.Error(), c)
+	} else {
+		response.OkWithDetailed(teachers, "获取成功!", c)
+	}
+}

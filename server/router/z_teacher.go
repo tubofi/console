@@ -16,5 +16,6 @@ func InitTeacherRouter(Router *gin.RouterGroup) {
 		TeacherRouter.PUT("updateTeacher", v1.UpdateTeacher)    // 更新Teacher
 		TeacherRouter.GET("findTeacher", v1.FindTeacher)        // 根据ID获取Teacher
 		TeacherRouter.GET("getTeacherList", v1.GetTeacherList)  // 获取Teacher列表
+		TeacherRouter.GET("getAllTeachers", v1.GetAllTeachers)  // 获取所有Teacher列表
 	}
 }

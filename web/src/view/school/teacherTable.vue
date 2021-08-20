@@ -27,24 +27,12 @@
             <el-table-column label="手机号" prop="phone" align="center" width="180"/>
             <el-table-column label="地址" prop="address" align="center" />
             <el-table-column label="身份证号" prop="identityNumber" align="center"/>
-            <el-table-column label="工资信息" align="center" width="100">
+            <el-table-column label="详情" align="center" width="100">
                 <template slot-scope="scope">
                     <div>
                         <el-popover v-if="scope.row" placement="top-start" trigger="hover">
                             <div class="popover-box">
-                                <span style="font-size: 16px">基本工资</span>
-                                <span>基础工资：{{scope.row.baseWage}}</span>
-                                <span>岗位工资：{{scope.row.postWage}}</span>
-                                <span>岗位补贴：{{scope.row.allowance}}</span>
-                                <span style="font-size: 16px">教师岗位</span>
-                                <span>  课时费：{{scope.row.coursePer}}</span>
-                                <span>转化提成：{{scope.row.turnPercent}}</span>
-                                <span>续费提成：{{scope.row.renewPercent}}</span>
-                                <span style="font-size: 16px">招生岗位</span>
-                                <span>新单提成：{{scope.row.newPercent}}</span>
-                                <span>续费提成：{{scope.row.oldPercent}}</span>
-                                <span>新单团队：{{scope.row.newTeamPercent}}</span>
-                                <span>续费团队：{{scope.row.oldTeamPercent}}</span>
+                                <pre>{{ fmtBody(scope.row) }}</pre>
                             </div>
                             <i slot="reference" class="el-icon-view" />
                         </el-popover>
@@ -73,14 +61,14 @@
                 <el-form-item>
                     <span style="font-size: 18px">基本信息</span>
                     <!---第一行--->
-                    <el-row gutter="10px" type="flex" justify="space-between">
+                    <el-row :gutter="10" type="flex" justify="space-between">
                         <el-col :span="8">
-                            <el-form-item label="姓名:" prop="name" label-width="80px">
+                            <el-form-item label="姓名:" prop="name" label-width="100px">
                                 <el-input v-model="formData.name" clearable placeholder="请输入教师姓名" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="性别:" prop="sex" label-width="80px">
+                            <el-form-item label="性别:" prop="sex" label-width="100px">
                                 <el-select v-model="formData.sex" placeholder="请选择性别">
                                     <el-option
                                             v-for="item in sexOptions"
@@ -91,25 +79,25 @@
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="电话:" prop="phone" label-width="80px">
+                            <el-form-item label="电话:" prop="phone" label-width="100px">
                                 <el-input v-model="formData.phone" clearable placeholder="请输入电话号码" />
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <!---第二行--->
-                    <el-row gutter="10px" type="flex" justify="space-between">
+                    <el-row :gutter="10" type="flex" justify="space-between">
                         <el-col :span="8">
-                            <el-form-item label="现居地址:" prop="address" label-width="80px">
+                            <el-form-item label="现居地址:" prop="address" label-width="100px">
                                 <el-input v-model="formData.address" clearable placeholder="请输入地址" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="身份证号:" prop="identityNumber" label-width="80px">
+                            <el-form-item label="身份证号:" prop="identityNumber" label-width="100px">
                                 <el-input v-model="formData.identityNumber" clearable placeholder="请输入身份证号" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="加入时间:" prop="time" label-width="80px">
+                            <el-form-item label="加入时间:" prop="time" label-width="100px">
                                 <el-date-picker v-model="formData.time" type="date" placeholder="请选择日期"/>
                             </el-form-item>
                         </el-col>
@@ -119,58 +107,88 @@
                 <el-form-item>
                     <!---第一行--->
                     <span style="font-size: 18px">基础工资</span>
-                    <el-row gutter="10px" type="flex" justify="space-between">
+                    <el-row :gutter="10" type="flex" justify="space-between">
                         <el-col :span="8">
-                            <el-form-item label="基本工资:" prop="baseWage" label-width="80px">
+                            <el-form-item label="基本工资:" prop="baseWage" label-width="100px">
                                 <el-input v-model.number="formData.baseWage" clearable placeholder="请输入基本工资" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="岗位工资:" prop="postWage" label-width="80px">
-                                <el-input v-model.number="formData.baseWage" clearable placeholder="请输入岗位工资" />
+                            <el-form-item label="岗位工资:" prop="postWage" label-width="100px">
+                                <el-input v-model.number="formData.postWage" clearable placeholder="请输入岗位工资" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="岗位补贴:" prop="allowance" label-width="80px">
-                                <el-input v-model.number="formData.baseWage" clearable placeholder="请输入岗位补贴" />
+                            <el-form-item label="岗位补贴:" prop="allowance" label-width="100px">
+                                <el-input v-model.number="formData.allowance" clearable placeholder="请输入岗位补贴" />
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <!---第二行--->
                     <span style="font-size: 18px">教师工资</span>
-                    <el-row gutter="10px" type="flex" justify="space-between">
+                    <el-row :gutter="10" type="flex" justify="space-between">
                         <el-col :span="8">
-                            <el-form-item label="课时费:" prop="coursePer" label-width="80px">
+                            <el-form-item label="课时费:" prop="coursePer" label-width="100px">
                                 <el-input v-model.number="formData.coursePer" clearable placeholder="？元/次/人" />
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="转化提成:" prop="turnPercent" label-width="80px">
-                                <el-input v-model.number="formData.turnPercent" clearable placeholder="？% 输入整数" />
+                            <el-form-item label="转化提成:" prop="turnPercent" label-width="100px">
+                                <el-select v-model.number="formData.turnPercent" placeholder="请选择提成比例">
+                                    <el-option
+                                            v-for="item in percentOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"/>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="续费提成:" prop="renewPercent" label-width="80px">
-                                <el-input v-model.number="formData.renewPercent" clearable placeholder="？% 输入整数" />
+                            <el-form-item label="续费提成:" prop="renewPercent" label-width="100px">
+                                <el-select v-model.number="formData.renewPercent" placeholder="请选择提成比例">
+                                    <el-option
+                                            v-for="item in percentOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"/>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                     </el-row>
                     <!---第三行--->
                     <span style="font-size: 18px">招生工资</span>
-                    <el-row gutter="10px" type="flex" justify="space-between">
+                    <el-row :gutter="10" type="flex" justify="space-between">
                         <el-col :span="8">
-                            <el-form-item label="新单提成:" prop="newPercent" label-width="80px">
-                                <el-input v-model.number="formData.newPercent" clearable placeholder="？% 输入整数" />
+                            <el-form-item label="新单提成:" prop="newPercent" label-width="100px">
+                                <el-select v-model.number="formData.newPercent" placeholder="请选择提成比例">
+                                    <el-option
+                                            v-for="item in percentOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"/>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="续费提成:" prop="oldPercent" label-width="80px">
-                                <el-input v-model.number="formData.oldPercent" clearable placeholder="？% 输入整数" />
+                            <el-form-item label="续费提成:" prop="oldPercent" label-width="100px">
+                                <el-select v-model.number="formData.oldPercent" placeholder="请选择提成比例">
+                                    <el-option
+                                            v-for="item in percentOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"/>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                         <el-col :span="8">
-                            <el-form-item label="团队提成:" prop="newTeamPercent" label-width="80px">
-                                <el-input v-model.number="formData.newTeamPercent" clearable placeholder="？% 输入整数" />
+                            <el-form-item label="团队提成:" prop="newTeamPercent" label-width="100px">
+                                <el-select v-model.number="formData.newTeamPercent" placeholder="请选择提成比例">
+                                    <el-option
+                                            v-for="item in percentOptions"
+                                            :key="item.value"
+                                            :label="item.label"
+                                            :value="item.value"/>
+                                </el-select>
                             </el-form-item>
                         </el-col>
                     </el-row>
@@ -188,6 +206,14 @@
     const sexOptions = [
         {label: '男', value: '男'},
         {label: '女', value: '女'},
+    ];
+    const percentOptions = [
+        {label: '0%', value: 0.0},
+        {label: '2%', value: 0.02},
+        {label: '3%', value: 0.03},
+        {label: '5%', value: 0.05},
+        {label: '10%', value: 0.1},
+        {label: '20%', value: 0.2},
     ];
     import {
         createTeacher,
@@ -210,6 +236,7 @@
                 deleteVisible: false,
                 multipleSelection: [],
                 sexOptions: sexOptions,
+                percentOptions: percentOptions,
 
                 formData: {
                     name: null,
@@ -231,8 +258,18 @@
                     comment: null,
                 },
                 rules: {
-                    name: [{ required: true, message: '学生姓名不能为空', trigger: 'blur' }],
+                    name: [{ required: true, message: '姓名不能为空', trigger: 'blur' }],
+                    sex: [{ required: true, message: '性别不能为空', trigger: 'blur' }],
                     phone: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
+                    baseWage: [{ required: true, message: '基本工资不能为空', trigger: 'blur' }],
+                    postWage: [{ required: true, message: '岗位工资不能为空', trigger: 'blur' }],
+                    allowance: [{ required: true, message: '岗位补贴不能为空', trigger: 'blur' }],
+                    coursePer: [{ required: true, message: '课时费不能为空', trigger: 'blur' }],
+                    turnPercent: [{ required: true, message: '请选择提成比例', trigger: 'blur' }],
+                    renewPercent: [{ required: true, message: '请选择提成比例', trigger: 'blur' }],
+                    newPercent: [{ required: true, message: '请选择提成比例', trigger: 'blur' }],
+                    oldPercent: [{ required: true, message: '请选择提成比例', trigger: 'blur' }],
+                    newTeamPercent: [{ required: true, message: '请选择提成比例', trigger: 'blur' }],
                 }
             }
         },
@@ -258,6 +295,13 @@
 
         },
         methods: {
+            fmtBody(value) {
+                try {
+                    return JSON.parse(value)
+                } catch (err) {
+                    return value
+                }
+            },
             beforeEnterDialog(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {

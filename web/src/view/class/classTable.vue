@@ -157,7 +157,13 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="选择教师:" prop="teacherName">
-                    <el-input v-model.number="formData.teacherName" clearable placeholder="输入教师姓名"/>
+                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="备注:" prop="comment">
                     <el-input type="textarea" :rows="3" v-model.number="formData.comment" clearable placeholder="备注信息"/>
@@ -231,6 +237,7 @@
         getClassList,
         getIdleStudents
     } from '@/api/z_class' //  此处请自行替换地址
+    import {getAllTeachers} from '@/api/z_teacher'
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
     export default {
@@ -251,6 +258,7 @@
                 minuteOptions: minuteOptions,
                 roomOptions: roomOptions,
                 studentOptions: [],
+                teacherOptions: [],
                 students: [],
 
                 formData: {
@@ -277,6 +285,7 @@
                     weekday: [{ required: true, message: '请选择星期几', trigger: 'blur' }],
                     hour: [{ required: true, message: '请选择上课时间', trigger: 'blur' }],
                     minute: [{ required: true, message: '请选择上课时间', trigger: 'blur' }],
+                    students: [{ required: true, message: '请选择学生', trigger: 'blur' }],
                 },
             }
         },
@@ -304,13 +313,13 @@
             async idleStudents(){
                 const res = await getIdleStudents()
                 if (res.code === 0) {
-                    //for (let i = 0; i < res.data.length; i++) {
-                        //let obj = {}
-                        //obj.value = res.data[i]
-                        //obj.label = res.data[i].name
-                        //this.studentOptions.push(obj)
-                    //}
                     this.studentOptions = res.data
+                }
+            },
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
                 }
             },
             formatDate(row) {
@@ -361,7 +370,6 @@
                 }
             },
             async updateClass(row) {
-                await this.idleStudents()
                 const res = await findClass({ ID: row.ID })
                 this.type = 'update'
                 if (res.code === 0) {
@@ -370,12 +378,12 @@
                         this.studentOptions.push(this.formData.students[i])
                     }
                     this.dialogFormVisible = true
+                    this.allTeachers();
+                    this.idleStudents();
                 }
-                console.log(this.studentOptions)
-                console.log(this.formData.students)
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     ID: null,
                     teacherName: null,
@@ -390,8 +398,9 @@
                     comment: null,
                     timeString: null,
                     students: [],
-                }
-                this.studentOptions = []
+                };
+                this.studentOptions = [];
+                this.teacherOptions = [];
             },
             async deleteClass(row) {
                 const res = await deleteClass({ ID: row.ID })
@@ -435,10 +444,11 @@
                     this.getTableData()
                 }
             },
-            async openDialog() {
-                await this.idleStudents()
-                this.type = 'create'
+            openDialog() {
+                this.type = 'create';
                 this.dialogFormVisible = true
+                this.allTeachers();
+                this.idleStudents();
             },
             fmtBody(value) {
                 try {
