@@ -159,7 +159,7 @@
         findTrialCourseRecord,
         getTrialCourseRecordList,
         getAllTrialStudents,
-    } from '@/api/z_trial_course_record' //  此处请自行替换地址
+    } from '@/api/z_trial' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
     export default {

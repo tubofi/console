@@ -62,8 +62,7 @@
                 :header-cell-style="{color: '#224b8f',fontFamily:'MicrosoftYaHeiUI',fontSize:'16px',fontWeight:900}"
                 tooltip-effect="dark"
                 :data="tableData"
-                @selection-change="handleSelectionChange"
-        >
+                @selection-change="handleSelectionChange">
             <el-table-column label="日期" prop="entryTime" align="center" width="150" :formatter="formatDate"/>
             <el-table-column label="姓名" prop="name" align="center"/>
             <el-table-column label="性别" prop="sex" align="center" />
@@ -104,8 +103,7 @@
                 :style="{float:'right',padding:'20px'}"
                 :total="total"
                 @current-change="handleCurrentChange"
-                @size-change="handleSizeChange"
-        />
+                @size-change="handleSizeChange"/>
         <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="新学员表单" width="30%">
             <el-form ref="formData" :model="formData" :rules="rules" label-position="right" label-width="100px">
                 <el-form-item label="姓名:" prop="name">

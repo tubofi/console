@@ -7,7 +7,7 @@ import (
 
 type Wage struct {
 	gorm.Model
-	BillID			uint				`json:"billId" form:"billId"`
+	BillID				uint			`json:"billId" form:"billId"`
 	TeacherName			string			`json:"teacherName" form:"teacherName"`
 	Year				int				`json:"year" form:"year"`
 	Month 				time.Month 		`json:"month" form:"month"`
