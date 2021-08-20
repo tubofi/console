@@ -184,8 +184,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('rateForm')">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="beforeEnterDialog('rateForm')">确 定</el-button>
             </div>
         </el-dialog>
     </div>

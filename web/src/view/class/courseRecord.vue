@@ -39,14 +39,14 @@
             <el-table-column label="课程名称" prop="courseName" align="center"/>
             <el-table-column label="是否参加" prop="isAbsentee" align="center">
                 <template slot-scope="scope">
-                    <el-tag size="small" type="warning" v-if="scope.row.isAbsentee === 1">未参加</el-tag>
+                    <el-tag size="medium" type="warning" v-if="scope.row.isAbsentee === 1">未参加</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="是否补课" prop="needAttend" align="center">
                 <template slot-scope="scope">
                     <div v-if="scope.row.isAbsentee === 1">
-                        <el-tag size="small" v-if="scope.row.needCram === 1" type="danger">未补课</el-tag>
-                        <el-tag v-else size="small" type="success">已补课</el-tag>
+                        <el-tag size="medium" v-if="scope.row.needCram === 1" type="danger">未补课</el-tag>
+                        <el-tag v-else size="medium" type="success">已补课</el-tag>
                     </div>
                 </template>
             </el-table-column>
@@ -57,10 +57,10 @@
             </el-table-column>
             <el-table-column label="是否反馈" prop="needFeedback" align="center">
                 <template slot-scope="scope">
-                    <el-tag size="small" v-if="scope.row.needFeedback === 1 && scope.row.needCram === 0" type="warning">待反馈</el-tag>
-                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total > 0" size="small" type="success">已反馈</el-tag>
-                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total === 0" size="small" type="info">已忽略</el-tag>
-                    <el-tag v-else size="small" type="danger">异常</el-tag>
+                    <el-tag size="medium" v-if="scope.row.needFeedback === 1 && scope.row.needCram === 0" type="warning">待反馈</el-tag>
+                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total > 0" size="medium" type="success">已反馈</el-tag>
+                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total === 0" size="medium" type="info">已忽略</el-tag>
+                    <el-tag v-else size="medium" type="danger">异常</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
@@ -124,8 +124,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="enterDialog">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="enterDialog">确 定</el-button>
             </div>
         </el-dialog>
     </div>

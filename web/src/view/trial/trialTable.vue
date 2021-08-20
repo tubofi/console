@@ -43,9 +43,9 @@
             <el-table-column label="教室" prop="room" align="center"/>
             <el-table-column label="是否反馈" prop="needFeedback" align="center">
                 <template slot-scope="scope">
-                    <el-tag size="small" v-if="scope.row.needFeedback === 1 && scope.row.total === 0" type="warning">待反馈</el-tag>
-                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total > 0" size="small" type="success">已反馈</el-tag>
-                    <el-tag v-else size="small" type="danger">异常</el-tag>
+                    <el-tag size="medium" v-if="scope.row.needFeedback === 1 && scope.row.total === 0" type="warning">待反馈</el-tag>
+                    <el-tag v-else-if="scope.row.needFeedback === 0 && scope.row.total > 0" size="medium" type="success">已反馈</el-tag>
+                    <el-tag v-else size="medium" type="danger">异常</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="详情" align="center" width="100">
@@ -63,8 +63,8 @@
             </el-table-column>
             <el-table-column label="按钮组" align="center" width="200">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateTrialCourseRecord(scope.row)">编辑</el-button>
-                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateTrialCourseRecord(scope.row)">编辑</el-button>
+                    <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -129,8 +129,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
     </div>

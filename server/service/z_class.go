@@ -97,7 +97,7 @@ func GetClassInfoList(info request.ClassSearch) (err error, list interface{}, to
 	}
 
 	err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Preload("Students").Order("time_string").Find(&classs).Error
+	err = db.Limit(limit).Offset(offset).Preload("Students").Order("weekday").Find(&classs).Error
 	return err, classs, total
 }
 

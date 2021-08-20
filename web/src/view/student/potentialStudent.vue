@@ -41,9 +41,9 @@
             <el-table-column label="负责人" prop="managerName" align="center" />
             <el-table-column label="状态" prop="level" align="center">
                 <template slot-scope="scope">
-                    <el-tag v-if="scope.row.level >= 2" type="danger">积极</el-tag>
-                    <el-tag v-else-if="scope.row.level === 1" type="warning">一般</el-tag>
-                    <el-tag v-else type="info">忽略</el-tag>
+                    <el-tag v-if="scope.row.level >= 2" size="medium" type="danger">积极</el-tag>
+                    <el-tag v-else-if="scope.row.level === 1" size="medium" type="warning">一般</el-tag>
+                    <el-tag v-else size="medium" type="info">忽略</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="监护人" prop="guardian" align="center"/>
@@ -116,8 +116,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button plain size="mini" @click="closeDialog">取 消</el-button>
+                <el-button plain type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
         <el-dialog :before-close="closeTrialDialog" :visible.sync="dialogTrialVisible" title="选择试听课程" width="30%">

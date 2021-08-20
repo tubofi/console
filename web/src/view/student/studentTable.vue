@@ -91,8 +91,8 @@
             </el-table-column>
             <el-table-column label="按钮组" align="center" width="180">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateStudent(scope.row)">编辑</el-button>
-                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateStudent(scope.row)">编辑</el-button>
+                    <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -155,8 +155,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
     </div>

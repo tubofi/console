@@ -46,14 +46,14 @@
             <el-table-column label="课程名称" prop="name" align="center"/>
             <el-table-column label="占用教室" prop="room" align="center"/>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
-            <el-table-column label="参课学员" prop="students" align="center">
+            <el-table-column label="参课学员" prop="students" align="left" header-align="center" width="350">
                 <template slot-scope="scope">
                     <span v-for="item in scope.row.students">
                         <el-tag size="medium">{{item}}</el-tag>
                     </span>
                 </template>
             </el-table-column>
-            <el-table-column label="请假学员" prop="absentStudents" align="center">
+            <el-table-column label="请假学员" prop="absentStudents" align="left" header-align="center" width="200">
                 <template slot-scope="scope" v-if="scope.row.absentStudents">
                     <span v-for="item in scope.row.absentStudents">
                         <el-tag type="warning" size="medium">{{item}}</el-tag>
@@ -63,8 +63,8 @@
 
             <el-table-column label="按钮组" align="center" width="200">
                 <template slot-scope="scope">
-                    <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
-                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
+                    <el-button plain size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
+                    <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>

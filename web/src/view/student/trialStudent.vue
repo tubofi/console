@@ -29,8 +29,8 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item>
-                    <el-button size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
-                    <el-button size="mini" type="primary" icon="el-icon-plus" @click="openDialog('addApi')">新增</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-plus" @click="openDialog('addApi')">新增</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -144,8 +144,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
     </div>
