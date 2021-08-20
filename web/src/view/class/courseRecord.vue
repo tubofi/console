@@ -40,6 +40,7 @@
             <el-table-column label="是否参加" prop="isAbsentee" align="center">
                 <template slot-scope="scope">
                     <el-tag size="medium" type="warning" v-if="scope.row.isAbsentee === 1">未参加</el-tag>
+                    <el-tag size="medium" type="success" v-else>已参加</el-tag>
                 </template>
             </el-table-column>
             <el-table-column label="是否补课" prop="needAttend" align="center">

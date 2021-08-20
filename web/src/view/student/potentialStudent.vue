@@ -64,10 +64,10 @@
             </el-table-column>
             <el-table-column label="按钮组" align="center" width="320">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updatePotential(scope.row.ID)">编辑</el-button>
-                    <el-button size="mini" type="success" icon="el-icon-top"  @click="increaseLevel(scope.row.ID)">升序</el-button>
-                    <el-button size="mini" type="warning" icon="el-icon-bottom"  @click="reduceLevel(scope.row.ID)">降序</el-button>
-                    <el-button size="mini" type="danger" icon="el-icon-finished"  @click="turnTrial(scope.row.ID)">试听</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updatePotential(scope.row.ID)">编辑</el-button>
+                    <el-button plain size="mini" type="success" icon="el-icon-top"  @click="increaseLevel(scope.row.ID)">升序</el-button>
+                    <el-button plain size="mini" type="warning" icon="el-icon-bottom"  @click="reduceLevel(scope.row.ID)">降序</el-button>
+                    <el-button plain size="mini" type="danger" icon="el-icon-finished"  @click="turnTrial(scope.row.ID)">试听</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -116,8 +116,8 @@
                 </el-form-item>
             </el-form>
             <div slot="footer" class="dialog-footer">
-                <el-button plain size="mini" @click="closeDialog">取 消</el-button>
-                <el-button plain type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
+                <el-button size="mini" @click="closeDialog">取 消</el-button>
+                <el-button type="primary" size="mini" @click="beforeEnterDialog('formData')">确 定</el-button>
             </div>
         </el-dialog>
         <el-dialog :before-close="closeTrialDialog" :visible.sync="dialogTrialVisible" title="选择试听课程" width="30%">

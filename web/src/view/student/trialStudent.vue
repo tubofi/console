@@ -29,8 +29,8 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item>
-                    <el-button plain size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
-                    <el-button plain size="mini" type="primary" icon="el-icon-plus" @click="openDialog('addApi')">新增</el-button>
+                    <el-button size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
+                    <el-button size="mini" type="primary" icon="el-icon-plus" @click="openDialog('addApi')">新增</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -67,9 +67,9 @@
             </el-table-column>
             <el-table-column label="按钮组" align="center" width="300">
                 <template slot-scope="scope">
-                    <el-button size="mini" type="success" icon="el-icon-open"  @click="conversion(scope.row)">转正</el-button>
-                    <el-button size="mini" type="primary" icon="el-icon-edit"  @click="updateStudent(scope.row)">编辑</el-button>
-                    <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
+                    <el-button plain size="mini" type="success" icon="el-icon-open"  @click="conversion(scope.row)">转正</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit"  @click="updateStudent(scope.row)">编辑</el-button>
+                    <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
         </el-table>
