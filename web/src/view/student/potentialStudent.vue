@@ -100,7 +100,13 @@
                     <el-input v-model.number="formData.age" clearable placeholder="请输入学生年龄"/>
                 </el-form-item>
                 <el-form-item label="负责人:" prop="managerName">
-                    <el-input v-model="formData.managerName" clearable placeholder="学生管理、维护负责人" />
+                    <el-select v-model="formData.managerName" placeholder="请选择管理教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="监护人:" prop="guardian">
                     <el-input v-model="formData.guardian" clearable placeholder="监护人身份" />
@@ -173,6 +179,7 @@
     } from '@/api/z_potential' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'Potential',
         mixins: [infoList],
@@ -187,6 +194,8 @@
                 courseOptions: courseOptions,
                 sexOptions: sexOptions,
                 ageOptions: ageOptions,
+                teacherOptions: [],
+
                 formData: {
                     CreatedAt: new Date(),
                     address: '',
@@ -205,6 +214,7 @@
                 rules: {
                     name: [{ required: true, message: '学生姓名不能为空', trigger: 'blur' }],
                     phone: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
+                    managerName: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
                 },
                 rulesTrial: {
                     courseType: [{ required: true, message: '课程不能为空', trigger: 'blur' }],
@@ -233,6 +243,12 @@
 
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             formatDate(row) {
                 return formatTimeToStr(row.CreatedAt, 'yyyy-MM-dd');
             },
@@ -286,6 +302,7 @@
                 if (res.code === 0) {
                     this.formData = res.data.repotential
                     this.dialogFormVisible = true
+                    this.allTeachers()
                 }
             },
             async increaseLevel(id) {
@@ -305,7 +322,7 @@
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     address: '',
                     age: 0,
@@ -317,10 +334,11 @@
                     referee: '',
                     sex: '',
                     courseType: '',
-                }
+                };
+                this.teacherOptions = [];
             },
             closeTrialDialog() {
-                this.dialogTrialVisible = false
+                this.dialogTrialVisible = false;
                 this.formData = {
                     address: '',
                     age: 0,
@@ -332,7 +350,8 @@
                     referee: '',
                     sex: '',
                     courseType: '',
-                }
+                };
+                this.teacherOptions = [];
             },
             async deletePotential(row) {
                 const res = await deletePotential({ ID: row.ID })
@@ -400,14 +419,15 @@
                     this.$message({
                         type: 'success',
                         message: '创建/更改成功'
-                    })
-                    this.closeTrialDialog()
-                    this.getTableData()
+                    });
+                    this.closeTrialDialog();
+                    this.getTableData();
                 }
             },
             openDialog() {
-                this.type = 'create'
-                this.dialogFormVisible = true
+                this.type = 'create';
+                this.dialogFormVisible = true;
+                this.allTeachers();
             },
             fmtBody(value) {
                 try {

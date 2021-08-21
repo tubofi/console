@@ -232,7 +232,6 @@
         },
         async created() {
             await this.getTableData()
-
         },
         methods: {
             async allTeachers(){

@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../server/api/v1/z_teacher.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/api/v1/z_teacher.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/log/2021-08-20.log" beforeDir="false" afterPath="$PROJECT_DIR$/../server/log/2021-08-20.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/router/z_teacher.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/router/z_teacher.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/service/z_teacher.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/service/z_teacher.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bc430bb35c3b1be530a3131fa2ca8e14.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bc430bb35c3b1be530a3131fa2ca8e14.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ef3ffe4e40e7340a13102dc235124348.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ef3ffe4e40e7340a13102dc235124348.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/z_teacher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/z_teacher.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/class/classTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/classTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/class/courseRecord.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/courseRecord.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/class/courseTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/courseTable.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/class/cramCourse.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/class/cramCourse.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/school/teacherTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/school/teacherTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/student/potentialStudent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/student/potentialStudent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/student/studentTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/student/studentTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/student/trialStudent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/student/trialStudent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/trial/trialTable.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/trial/trialTable.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +106,7 @@
       <workItem from="1629354745118" duration="12978000" />
       <workItem from="1629377665191" duration="9105000" />
       <workItem from="1629421213957" duration="19426000" />
-      <workItem from="1629475113089" duration="8418000" />
+      <workItem from="1629475113089" duration="11138000" />
     </task>
     <servers />
   </component>
@@ -133,10 +126,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="617" y="289" key="Vcs.Push.Dialog.v2/0.0.2048.1112@0.0.2048.1112" timestamp="1629354813473" />
-    <state x="831" y="303" width="782" height="600" key="find.popup" timestamp="1629278448088">
+    <state x="831" y="303" width="782" height="600" key="find.popup" timestamp="1629515414080">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="831" y="303" width="782" height="600" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1629278448088" />
+    <state x="831" y="303" width="782" height="600" key="find.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1629515414080" />
     <state x="681" y="259" key="run.anything.popup" timestamp="1629387962600">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

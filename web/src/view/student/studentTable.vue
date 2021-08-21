@@ -145,8 +145,14 @@
                         </el-date-picker>
                     </template>
                 </el-form-item>
-                <el-form-item label="管理人:" prop="managerName">
-                    <el-input v-model="formData.managerName" clearable placeholder="学生管理、维护负责人" />
+                <el-form-item label="负责人:" prop="managerName">
+                    <el-select v-model="formData.managerName" placeholder="请选择管理教师">
+                        <el-option
+                                v-for="item in teacherOptions"
+                                :key="item.ID"
+                                :label="item.name"
+                                :value="item.name"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item label="备注:" prop="comment">
                     <el-input type="textarea" :rows="3" v-model="formData.comment" clearable placeholder="请输入" />
@@ -203,6 +209,7 @@
     } from '@/api/z_student' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
+    import {getAllTeachers} from '@/api/z_teacher'
     export default {
         name: 'Student',
         mixins: [infoList],
@@ -218,6 +225,8 @@
                 ageOptions: ageOptions,
                 courseRemainOptions: courseRemainOptions,
                 creditRemainOptions: creditRemainOptions,
+                teacherOptions: [],
+
                 formData: {
                     address: '',
                     age: 0,
@@ -240,6 +249,7 @@
                 rules: {
                     name: [{ required: true, message: '学生姓名不能为空', trigger: 'blur' }],
                     phone: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
+                    managerName: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
                 }
             }
         },
@@ -265,6 +275,12 @@
 
         },
         methods: {
+            async allTeachers(){
+                const res = await getAllTeachers()
+                if (res.code === 0) {
+                    this.teacherOptions = res.data
+                }
+            },
             formatDate(row) {
                 return formatTimeToStr(row.entryTime, 'yyyy-MM-dd');
             },
@@ -318,10 +334,11 @@
                 if (res.code === 0) {
                     this.formData = res.data.restudent
                     this.dialogFormVisible = true
+                    this.allTeachers()
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     address: '',
                     age: 0,
@@ -336,7 +353,8 @@
                     school: '',
                     sex: '',
                     teacherName: '',
-                }
+                };
+                this.teacherOptions = [];
             },
             async deleteStudent(row) {
                 const res = await deleteStudent({ ID: row.ID })
@@ -383,6 +401,7 @@
             openDialog() {
                 this.type = 'create'
                 this.dialogFormVisible = true
+                this.allTeachers()
             },
             fmtBody(value) {
                 try {
