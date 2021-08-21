@@ -163,7 +163,7 @@
                             </div>
                             <el-form-item prop="complete" style="margin-bottom: 0" required>
                                 <el-rate v-model.number="formData.complete" :colors="colors" :allow-half="true" :show-text="true"/>
-                                <span class="card-description">反应独立完成作品能力，自己探索的部分有多少？是不是跟着老师做下来的？</span>
+                                <span class="card-description">反应独立完成作品能力和动手能力，自己探索的部分有多少？是不是跟着老师做下来的？</span>
                             </el-form-item>
                         </el-card>
                     </el-col>
