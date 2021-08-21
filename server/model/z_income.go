@@ -2,7 +2,6 @@ package model
 
 import (
 	"gorm.io/gorm"
-	"time"
 )
 
 type Payment struct {
@@ -10,10 +9,9 @@ type Payment struct {
 	BillID				uint			`json:"billId" form:"billId"`
 	StudentName			string			`json:"studentName" form:"studentName"`
 
-	Pay 				float32			`json:"pay" form:"pay" gorm:"default:0.0"`
-	PayTime 			time.Time		`json:"payTime" form:"payTime"`
-	Pattern 			int 			`json:"pattern" form:"pattern" gorm:"default:0"`		//0新单 1续费
-	Times 				int 			`json:"times" form:"times" gorm:"default:0"`			//课程次数
+	Money 				float64			`json:"money" form:"money"`
+	Pattern 			int 			`json:"pattern" form:"pattern"`		//1新单 2续费 3试听
+	Times 				int 			`json:"times" form:"times"`			//课程次数
 
 	Comment 			string 			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
 }
@@ -21,8 +19,7 @@ type Payment struct {
 type OtherIncome struct {
 	gorm.Model
 	BillID				uint			`json:"billId" form:"billId"`
-	Money 				float32			`json:"money" form:"money" gorm:"default:0.0"`
-	Time 				time.Time		`json:"time" form:"time"`
+	Money 				float64			`json:"money" form:"money"`
 
 	Comment 			string 			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
 }

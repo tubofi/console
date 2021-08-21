@@ -9,7 +9,11 @@ import (
 type Bill struct {
 	gorm.Model
 	SchoolID 		uint			`json:"schoolId" form:"schoolId"`
-	BillInfo 		BillInfo 		`gorm:"embedded;embeddedPrefix:bill_"`
+	Year			int				`json:"year" form:"year"`
+	Month 			time.Month		`json:"month" form:"month"`
+	AllIn 			float64			`json:"allIn" form:"allIn" gorm:"default:0.0"`
+	AllOut 			float64			`json:"allOut" form:"allOut" gorm:"default:0.0"`
+	Profit 			float64			`json:"profit" form:"profit" gorm:"default:0.0"`
 
 	Payments 		[]Payment		`json:"payments" form:"payments"`
 	OtherIncomes	[]OtherIncome	`json:"otherIncomes" form:"otherIncomes"`
@@ -19,12 +23,5 @@ type Bill struct {
 	Comment 		string 			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
 }
 
-type BillInfo struct {
-	Year			int				`json:"year" form:"year"`
-	Month 			time.Month		`json:"month" form:"month"`
-	AllIn 			float32			`json:"allIn" form:"allIn" gorm:"default:0.0"`
-	AllOut 			float32			`json:"allOut" form:"allOut" gorm:"default:0.0"`
-	Profit 			float32			`json:"profit" form:"profit" gorm:"default:0.0"`
-}
 
 
