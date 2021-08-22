@@ -45,6 +45,8 @@ func InitBillRouter(Router *gin.RouterGroup) {
 		BillRouter.PUT("updateWage", v1.UpdateWage)    // 更新Wage
 		BillRouter.GET("findWage", v1.FindWage)        // 根据ID获取Wage
 		BillRouter.GET("getWageList", v1.GetWageList)  // 获取Wage列表
+
+		BillRouter.GET("getAllStudents", v1.GetAllStudents)  	// 获取所有学生
 	}
 }
 

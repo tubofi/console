@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <div class="search-term">

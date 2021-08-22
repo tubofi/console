@@ -27,10 +27,43 @@ func DeleteBillByIds(ids request.IdsReq) (err error) {
 	return err
 }
 
-// UpdateBill 更新Bill记录
-// Author [piexlmax](https://github.com/piexlmax)
+//重新计算月账单
 func UpdateBill(bill model.Bill) (err error) {
-	err = global.GVA_DB.Save(&bill).Error
+	newBill := model.Bill{}
+	global.GVA_DB.Where(
+		`ID = ?`, bill.ID).Preload(
+			"Payments").Preload(
+				"Incomes").Preload(
+				"Outcomes").Preload(
+					"Wages").First(&newBill)
+
+	//计算收入
+	newBill.PaymentIncome = 0
+	for _, pay := range newBill.Payments {
+		newBill.PaymentIncome += pay.Money
+	}
+	newBill.OtherIncome = 0
+	for _, pay := range newBill.Incomes {
+		newBill.OtherIncome += pay.Money
+	}
+	newBill.AllIncome = newBill.PaymentIncome + newBill.OtherIncome
+
+	//计算支出
+	newBill.WageOutcome = 0
+	for _, pay := range newBill.Wages {
+		newBill.WageOutcome += pay.All
+	}
+	newBill.OtherOutcome = 0
+	for _, pay := range newBill.Outcomes {
+		newBill.OtherOutcome += pay.Money
+	}
+	newBill.AllOutcome = newBill.WageOutcome + newBill.OtherOutcome
+
+	//计算利润
+	newBill.Profit = newBill.AllIncome - newBill.AllOutcome
+	newBill.IsFinished = 1
+
+	err = global.GVA_DB.Save(&newBill).Error
 	return err
 }
 
@@ -54,3 +87,14 @@ func GetBillInfoList(info request.BillSearch) (err error, list interface{}, tota
 	err = db.Limit(limit).Offset(offset).Find(&bills).Error
 	return err, bills, total
 }
+
+func GetAllStudents() (err error, students []model.Student) {
+	db := global.GVA_DB.Model(&model.Student{})
+	err = db.Where("`is_entry` = ?", 1).Find(&students).Error
+	if err != nil {
+		return err, nil
+	}
+
+	return err, students
+}
+

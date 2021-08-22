@@ -24,7 +24,7 @@ func CreateBill(c *gin.Context) {
 	_ = c.ShouldBindJSON(&bill)
 	if err := service.CreateBill(bill); err != nil {
 		global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
-		response.FailWithMessage("创建失败", c)
+		response.FailWithMessage("创建失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("创建成功", c)
 	}
@@ -44,7 +44,7 @@ func DeleteBill(c *gin.Context) {
 	_ = c.ShouldBindJSON(&bill)
 	if err := service.DeleteBill(bill); err != nil {
 		global.GVA_LOG.Error("删除失败!", zap.Any("err", err))
-		response.FailWithMessage("删除失败", c)
+		response.FailWithMessage("删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("删除成功", c)
 	}
@@ -64,7 +64,7 @@ func DeleteBillByIds(c *gin.Context) {
 	_ = c.ShouldBindJSON(&IDS)
 	if err := service.DeleteBillByIds(IDS); err != nil {
 		global.GVA_LOG.Error("批量删除失败!", zap.Any("err", err))
-		response.FailWithMessage("批量删除失败", c)
+		response.FailWithMessage("批量删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
 	}
@@ -84,7 +84,7 @@ func UpdateBill(c *gin.Context) {
 	_ = c.ShouldBindJSON(&bill)
 	if err := service.UpdateBill(bill); err != nil {
 		global.GVA_LOG.Error("更新失败!", zap.Any("err", err))
-		response.FailWithMessage("更新失败", c)
+		response.FailWithMessage("更新失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("更新成功", c)
 	}
@@ -104,7 +104,7 @@ func FindBill(c *gin.Context) {
 	_ = c.ShouldBindQuery(&bill)
 	if err, rebill := service.GetBill(bill.ID); err != nil {
 		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
-		response.FailWithMessage("查询失败", c)
+		response.FailWithMessage("查询失败: " + err.Error(), c)
 	} else {
 		response.OkWithData(gin.H{"rebill": rebill}, c)
 	}
@@ -124,7 +124,7 @@ func GetBillList(c *gin.Context) {
 	_ = c.ShouldBindQuery(&pageInfo)
 	if err, list, total := service.GetBillInfoList(pageInfo); err != nil {
 		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
+		response.FailWithMessage("获取失败: " + err.Error(), c)
 	} else {
 		response.OkWithDetailed(response.PageResult{
 			List:     list,
@@ -132,5 +132,14 @@ func GetBillList(c *gin.Context) {
 			Page:     pageInfo.Page,
 			PageSize: pageInfo.PageSize,
 		}, "获取成功", c)
+	}
+}
+
+func GetAllStudents(c *gin.Context) {
+	if err, students := service.GetAllStudents(); err != nil {
+		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
+		response.FailWithMessage("获取失败: " + err.Error(), c)
+	} else {
+		response.OkWithDetailed(students, "获取成功!", c)
 	}
 }

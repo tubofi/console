@@ -95,3 +95,12 @@ export const getPaymentList = (params) => {
         params
     })
 }
+
+export const getAllStudents = (params) => {
+    return service({
+        url: '/bill/getAllStudents',
+        method: 'get',
+        params
+    })
+}
+

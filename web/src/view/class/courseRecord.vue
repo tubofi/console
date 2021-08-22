@@ -103,7 +103,7 @@
                     <el-input v-model="formData.studentName" clearable placeholder="请输入" />
                 </el-form-item>
                 <el-form-item label="选择教师:">
-                    <el-select v-model.number="formData.teacherName" placeholder="请选择教师">
+                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
                         <el-option
                                 v-for="item in teacherOptions"
                                 :key="item.ID"

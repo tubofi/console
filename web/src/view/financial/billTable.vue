@@ -2,17 +2,14 @@
     <div>
         <div class="search-term">
             <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
+                <el-form-item label="年">
+                    <el-input v-model.nuber="searchInfo.year" placeholder="请输入整数"/>
+                </el-form-item>
+                <el-form-item label="月">
+                    <el-input v-model.number="searchInfo.month" placeholder="请输入整数"/>
+                </el-form-item>
                 <el-form-item>
                     <el-button size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
-                    <el-button size="mini" type="primary" icon="el-icon-plus" @click="openDialog">新增</el-button>
-                    <el-popover v-model="deleteVisible" placement="top" width="160">
-                        <p>确定要删除吗？</p>
-                        <div style="text-align: right; margin: 0">
-                            <el-button size="mini" type="text" @click="deleteVisible = false">取消</el-button>
-                            <el-button size="mini" type="primary" @click="onDelete">确定</el-button>
-                        </div>
-                        <el-button slot="reference" icon="el-icon-delete" size="mini" type="danger" style="margin-left: 10px;">批量删除</el-button>
-                    </el-popover>
                 </el-form-item>
             </el-form>
         </div>
@@ -21,27 +18,51 @@
                 border
                 stripe
                 style="width: 100%"
+                :header-cell-style="{color: '#224b8f',fontFamily:'MicrosoftYaHeiUI',fontSize:'16px',fontWeight:900}"
                 tooltip-effect="dark"
                 :data="tableData"
-                @selection-change="handleSelectionChange"
-        >
-            <el-table-column type="selection" width="55" />
-            <el-table-column label="日期" width="180">
-                <template slot-scope="scope">{{ scope.row.CreatedAt|formatDate }}</template>
+                @selection-change="handleSelectionChange">
+            <el-table-column label="日期" align="center" width="150">
+                <template slot-scope="scope">
+                    <pre>{{scope.row.year}}年{{scope.row.month}}月</pre>
+                </template>
             </el-table-column>
-            <el-table-column label="schoolId字段" prop="schoolId" width="120" />
-            <el-table-column label="year字段" prop="year" width="120" />
-            <el-table-column label="month字段" prop="month" width="120" />
-            <el-table-column label="isFinished字段" prop="isFinished" width="120" />
-            <el-table-column label="allIn字段" prop="allIn" width="120" />
-            <el-table-column label="allOut字段" prop="allOut" width="120" />
-            <el-table-column label="profit字段" prop="profit" width="120" />
-            <el-table-column label="comment字段" prop="comment" width="120" /> <el-table-column label="按钮组">
-            <template slot-scope="scope">
-                <el-button size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateBill(scope.row)">变更</el-button>
-                <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
-            </template>
-        </el-table-column>
+            <el-table-column label="收入情况" align="center">
+                <el-table-column label="缴费收入" prop="paymentIncome" align="center"></el-table-column>
+                <el-table-column label="其它收入" prop="otherIncome" align="center"></el-table-column>
+                <el-table-column label="总收入" prop="allIncome" align="center"></el-table-column>
+            </el-table-column>
+            <el-table-column label="支出情况" align="center">
+                <el-table-column label="工资支出" prop="wageOutcome" align="center"></el-table-column>
+                <el-table-column label="其它支出" prop="otherOutcome" align="center"></el-table-column>
+                <el-table-column label="总支出" prop="allOutcome" align="center"></el-table-column>
+            </el-table-column>
+            <el-table-column label="利润" prop="profit" align="center"/>
+            <el-table-column label="是否结算" align="center">
+                <template slot-scope="scope">
+                    <el-tag size="medium" v-if="scope.row.isFinished === 1" type="success">已结算</el-tag>
+                    <el-tag size="medium" v-if="scope.row.isFinished === 0" type="warning">未结算</el-tag>
+                    <el-tag size="medium" v-else type="danger">异常</el-tag>
+                </template>
+            </el-table-column>
+            <el-table-column label="详情" align="center" width="100">
+                <template slot-scope="scope">
+                    <div>
+                        <el-popover v-if="scope.row" placement="top-start" trigger="hover">
+                            <div class="popover-box">
+                                <pre>{{ fmtBody(scope.row) }}</pre>
+                            </div>
+                            <i slot="reference" class="el-icon-view" />
+                        </el-popover>
+                        <span v-else>无</span>
+                    </div>
+                </template>
+            </el-table-column>
+            <el-table-column label="按钮组" align="center" width="200">
+                <template slot-scope="scope">
+                    <el-button size="mini" type="danger" icon="el-icon-edit" class="table-button" @click="updateBill(scope.row)">更新</el-button>
+                </template>
+            </el-table-column>
         </el-table>
         <el-pagination
                 layout="total, sizes, prev, pager, next, jumper"
@@ -51,48 +72,7 @@
                 :style="{float:'right',padding:'20px'}"
                 :total="total"
                 @current-change="handleCurrentChange"
-                @size-change="handleSizeChange"
-        />
-        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="弹窗操作">
-            <el-form :model="formData" label-position="right" label-width="80px">
-                <el-form-item label="schoolId字段:">
-
-                    <el-input v-model.number="formData.schoolId" clearable placeholder="请输入" />
-                </el-form-item>
-                <el-form-item label="year字段:">
-
-                    <el-input v-model.number="formData.year" clearable placeholder="请输入" />
-                </el-form-item>
-                <el-form-item label="month字段:">
-
-                    <el-input v-model.number="formData.month" clearable placeholder="请输入" />
-                </el-form-item>
-                <el-form-item label="isFinished字段:">
-
-                    <el-input v-model.number="formData.isFinished" clearable placeholder="请输入" />
-                </el-form-item>
-                <el-form-item label="allIn字段:">
-
-                    <el-input-number v-model="formData.allIn" :precision="2" clearable />
-                </el-form-item>
-                <el-form-item label="allOut字段:">
-
-                    <el-input-number v-model="formData.allOut" :precision="2" clearable />
-                </el-form-item>
-                <el-form-item label="profit字段:">
-
-                    <el-input-number v-model="formData.profit" :precision="2" clearable />
-                </el-form-item>
-                <el-form-item label="comment字段:">
-
-                    <el-input v-model="formData.comment" clearable placeholder="请输入" />
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="enterDialog">确 定</el-button>
-            </div>
-        </el-dialog>
+                @size-change="handleSizeChange"/>
     </div>
 </template>
 
@@ -119,22 +99,24 @@
                 multipleSelection: [],
 
                 formData: {
-                    schoolId: 0,
-                    year: 0,
-                    month: 0,
-                    isFinished: 0,
-                    allIn: 0,
-                    allOut: 0,
-                    profit: 0,
-                    comment: '',
-
+                    year: null,
+                    month: null,
+                    isFinished: null,
+                    paymentIncome: null,
+                    otherIncome: null,
+                    allIncome: null,
+                    wageOutcome: null,
+                    otherOutcome: null,
+                    allOutcome: null,
+                    profit: null,
+                    comment: null,
                 }
             }
         },
         filters: {
             formatDate: function(time) {
                 if (time !== null && time !== '') {
-                    var date = new Date(time);
+                    let date = new Date(time);
                     return formatTimeToStr(date, 'yyyy-MM-dd hh:mm:ss');
                 } else {
                     return ''
@@ -153,6 +135,16 @@
 
         },
         methods: {
+            fmtBody(value) {
+                try {
+                    return JSON.parse(value)
+                } catch (err) {
+                    return value
+                }
+            },
+            formatDate(row) {
+                return formatTimeToStr(row.entryTime, 'yyyy-MM');
+            },
             // 条件搜索前端看此方法
             onSubmit() {
                 this.page = 1
@@ -198,25 +190,28 @@
                 }
             },
             async updateBill(row) {
-                const res = await findBill({ ID: row.ID })
-                this.type = 'update'
+                const res = await updateBill({ ID: row.ID })
                 if (res.code === 0) {
-                    this.formData = res.data.rebill
-                    this.dialogFormVisible = true
+                    this.$message({
+                        type: 'success',
+                        message: '更新成功'
+                    })
                 }
             },
             closeDialog() {
                 this.dialogFormVisible = false
                 this.formData = {
-                    schoolId: 0,
-                    year: 0,
-                    month: 0,
-                    isFinished: 0,
-                    allIn: 0,
-                    allOut: 0,
-                    profit: 0,
-                    comment: '',
-
+                    year: null,
+                    month: null,
+                    isFinished: null,
+                    paymentIncome: null,
+                    otherIncome: null,
+                    allIncome: null,
+                    wageOutcome: null,
+                    otherOutcome: null,
+                    allOutcome: null,
+                    profit: null,
+                    comment: null,
                 }
             },
             async deleteBill(row) {
@@ -236,13 +231,13 @@
                 let res
                 switch (this.type) {
                     case "create":
-                        res = await createBill(this.formData)
+                        res = await createBill(this.formData);
                         break
                     case "update":
-                        res = await updateBill(this.formData)
+                        res = await updateBill(this.formData);
                         break
                     default:
-                        res = await createBill(this.formData)
+                        res = await createBill(this.formData);
                         break
                 }
                 if (res.code === 0) {

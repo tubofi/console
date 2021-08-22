@@ -24,7 +24,7 @@ func CreateIncome(c *gin.Context) {
 	_ = c.ShouldBindJSON(&income)
 	if err := service.CreateIncome(income); err != nil {
 		global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
-		response.FailWithMessage("创建失败", c)
+		response.FailWithMessage("创建失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("创建成功", c)
 	}
@@ -44,7 +44,7 @@ func DeleteIncome(c *gin.Context) {
 	_ = c.ShouldBindJSON(&income)
 	if err := service.DeleteIncome(income); err != nil {
 		global.GVA_LOG.Error("删除失败!", zap.Any("err", err))
-		response.FailWithMessage("删除失败", c)
+		response.FailWithMessage("删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("删除成功", c)
 	}
@@ -64,7 +64,7 @@ func DeleteIncomeByIds(c *gin.Context) {
 	_ = c.ShouldBindJSON(&IDS)
 	if err := service.DeleteIncomeByIds(IDS); err != nil {
 		global.GVA_LOG.Error("批量删除失败!", zap.Any("err", err))
-		response.FailWithMessage("批量删除失败", c)
+		response.FailWithMessage("批量删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
 	}
@@ -84,7 +84,7 @@ func UpdateIncome(c *gin.Context) {
 	_ = c.ShouldBindJSON(&income)
 	if err := service.UpdateIncome(income); err != nil {
 		global.GVA_LOG.Error("更新失败!", zap.Any("err", err))
-		response.FailWithMessage("更新失败", c)
+		response.FailWithMessage("更新失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("更新成功", c)
 	}
@@ -104,7 +104,7 @@ func FindIncome(c *gin.Context) {
 	_ = c.ShouldBindQuery(&income)
 	if err, reincome := service.GetIncome(income.ID); err != nil {
 		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
-		response.FailWithMessage("查询失败", c)
+		response.FailWithMessage("查询失败: " + err.Error(), c)
 	} else {
 		response.OkWithData(gin.H{"reincome": reincome}, c)
 	}
@@ -124,7 +124,7 @@ func GetIncomeList(c *gin.Context) {
 	_ = c.ShouldBindQuery(&pageInfo)
 	if err, list, total := service.GetIncomeInfoList(pageInfo); err != nil {
 		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
+		response.FailWithMessage("获取失败: " + err.Error(), c)
 	} else {
 		response.OkWithDetailed(response.PageResult{
 			List:     list,

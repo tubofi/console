@@ -51,6 +51,6 @@ func GetPaymentInfoList(info request.PaymentSearch) (err error, list interface{}
 	var payments []model.Payment
 	// 如果有条件搜索 下方会自动创建搜索语句
 	err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Find(&payments).Error
+	err = db.Limit(limit).Offset(offset).Order(`created_at desc`).Find(&payments).Error
 	return err, payments, total
 }

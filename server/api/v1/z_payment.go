@@ -24,7 +24,7 @@ func CreatePayment(c *gin.Context) {
 	_ = c.ShouldBindJSON(&payment)
 	if err := service.CreatePayment(payment); err != nil {
 		global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
-		response.FailWithMessage("创建失败", c)
+		response.FailWithMessage("创建失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("创建成功", c)
 	}
@@ -44,7 +44,7 @@ func DeletePayment(c *gin.Context) {
 	_ = c.ShouldBindJSON(&payment)
 	if err := service.DeletePayment(payment); err != nil {
 		global.GVA_LOG.Error("删除失败!", zap.Any("err", err))
-		response.FailWithMessage("删除失败", c)
+		response.FailWithMessage("删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("删除成功", c)
 	}
@@ -64,7 +64,7 @@ func DeletePaymentByIds(c *gin.Context) {
 	_ = c.ShouldBindJSON(&IDS)
 	if err := service.DeletePaymentByIds(IDS); err != nil {
 		global.GVA_LOG.Error("批量删除失败!", zap.Any("err", err))
-		response.FailWithMessage("批量删除失败", c)
+		response.FailWithMessage("批量删除失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("批量删除成功", c)
 	}
@@ -84,7 +84,7 @@ func UpdatePayment(c *gin.Context) {
 	_ = c.ShouldBindJSON(&payment)
 	if err := service.UpdatePayment(payment); err != nil {
 		global.GVA_LOG.Error("更新失败!", zap.Any("err", err))
-		response.FailWithMessage("更新失败", c)
+		response.FailWithMessage("更新失败: " + err.Error(), c)
 	} else {
 		response.OkWithMessage("更新成功", c)
 	}
@@ -104,7 +104,7 @@ func FindPayment(c *gin.Context) {
 	_ = c.ShouldBindQuery(&payment)
 	if err, repayment := service.GetPayment(payment.ID); err != nil {
 		global.GVA_LOG.Error("查询失败!", zap.Any("err", err))
-		response.FailWithMessage("查询失败", c)
+		response.FailWithMessage("查询失败: " + err.Error(), c)
 	} else {
 		response.OkWithData(gin.H{"repayment": repayment}, c)
 	}
@@ -124,7 +124,7 @@ func GetPaymentList(c *gin.Context) {
 	_ = c.ShouldBindQuery(&pageInfo)
 	if err, list, total := service.GetPaymentInfoList(pageInfo); err != nil {
 		global.GVA_LOG.Error("获取失败!", zap.Any("err", err))
-		response.FailWithMessage("获取失败", c)
+		response.FailWithMessage("获取失败: " + err.Error(), c)
 	} else {
 		response.OkWithDetailed(response.PageResult{
 			List:     list,

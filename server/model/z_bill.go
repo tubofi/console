@@ -12,8 +12,15 @@ type Bill struct {
 	Year			int				`json:"year" form:"year"`
 	Month 			time.Month		`json:"month" form:"month"`
 	IsFinished 		int 			`json:"isFinished" form:"isFinished"`			//0是未结算	1为已结算
-	AllIn 			float64			`json:"allIn" form:"allIn"`
-	AllOut 			float64			`json:"allOut" form:"allOut"`
+
+	PaymentIncome   float64			`json:"paymentIncome" form:"paymentIncome"`
+	OtherIncome 	float64			`json:"otherIncome" form:"otherIncome"`
+	AllIncome 		float64			`json:"allIncome" form:"allIncome"`
+
+	WageOutcome		float64			`json:"wageOutcome" form:"wageOutcome"`
+	OtherOutcome 	float64			`json:"otherOutcome" form:"otherOutcome"`
+	AllOutcome 		float64			`json:"allOutcome" form:"allOutcome"`
+
 	Profit 			float64			`json:"profit" form:"profit"`
 
 	Payments 		[]Payment		`json:"payments" form:"payments"`
