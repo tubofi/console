@@ -2,7 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_bill.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_income.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_outcome.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_payment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_wage.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/model/request/z_bill_all.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/model/z_payment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/router/z_bill_all.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_bill.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_income.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_outcome.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_payment.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_wage.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/z_bill.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/z_income.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/z_outcome.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/z_payment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/z_wage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/billTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/incomeTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/livingTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/outcomeTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/paymentTable.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/financial/wageTable.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/initialize/gorm.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/initialize/gorm.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/initialize/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/initialize/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/z_bill.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_bill.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/z_income.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_income.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/z_outcome.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_outcome.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/z_wage.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/z_wage.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/257d9afc125f6d57e8bab82c268f4783.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/257d9afc125f6d57e8bab82c268f4783.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3859b28e5ffda063d509cc5d29410783.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3859b28e5ffda063d509cc5d29410783.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/46cd37ccbdde53793036a7cfedc4d679.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/46cd37ccbdde53793036a7cfedc4d679.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4f37a547de919c5f21dc0d62d00415a2.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/4f37a547de919c5f21dc0d62d00415a2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/900d248de049345b44ae85416689bd2e.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/900d248de049345b44ae85416689bd2e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9cbb4860b55aa42262f96ce6e82387e7.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9cbb4860b55aa42262f96ce6e82387e7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a33b0bdbad84bb2f67ff13fd3033a63e.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a33b0bdbad84bb2f67ff13fd3033a63e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/08f33c91ba5a49bbb5992ec51a1422e3.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/08f33c91ba5a49bbb5992ec51a1422e3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/177caac245405aec76de0b1e0e48741e.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/177caac245405aec76de0b1e0e48741e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1a295c19c922633bb973717af0c4ad6c.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1a295c19c922633bb973717af0c4ad6c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/25e425c00d1b9f1636da1e89a2dd061d.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/25e425c00d1b9f1636da1e89a2dd061d.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/27a3dafe7d83603a977261c9dc3b8c4e.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/27a3dafe7d83603a977261c9dc3b8c4e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4860613fac094681aa8752af24f9d019.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4860613fac094681aa8752af24f9d019.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4cd361912b39433a35eefa2321c4b7ca.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4cd361912b39433a35eefa2321c4b7ca.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4e6d7f216ef4298659b5e6d8cf175387.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4e6d7f216ef4298659b5e6d8cf175387.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/63618e07e3190728c9f89462809eef27.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/63618e07e3190728c9f89462809eef27.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/6db56da295181427e145609b585e17eb.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/6db56da295181427e145609b585e17eb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/7016e98c46c264b8d48b6de0dca25e46.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/7016e98c46c264b8d48b6de0dca25e46.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/806e9301ee455ef9f8b8f59a2ac00984.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/806e9301ee455ef9f8b8f59a2ac00984.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/93313c5115db3272724435f686b50c73.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/93313c5115db3272724435f686b50c73.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9e42c5822e9d63dbe172fead26d0a7a0.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9e42c5822e9d63dbe172fead26d0a7a0.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a0312d31968342cf406f9fd1d37a592d.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a0312d31968342cf406f9fd1d37a592d.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c5d2583e8cbdee04daacb84472dd0277.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c5d2583e8cbdee04daacb84472dd0277.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c9d24778cfc1d3e7c1f08214dcba3241.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c9d24778cfc1d3e7c1f08214dcba3241.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ccac3f22dd29f7aedca9011c63cfe1f7.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ccac3f22dd29f7aedca9011c63cfe1f7.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cff6d14238c29771361b78b366137cdb.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cff6d14238c29771361b78b366137cdb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d4a9c27b4ab134a7adea507faed09196.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d4a9c27b4ab134a7adea507faed09196.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dddfc8ce1aad89cb20bcf89b37578e15.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dddfc8ce1aad89cb20bcf89b37578e15.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dfd8a12d3127e3124ef0d3eae8c2ebb8.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dfd8a12d3127e3124ef0d3eae8c2ebb8.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e055596ccb776c6499feeb5216557c86.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e055596ccb776c6499feeb5216557c86.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e54adbe2dfe01fde70ee319814bf0847.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e54adbe2dfe01fde70ee319814bf0847.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +162,7 @@
       <workItem from="1629377665191" duration="9105000" />
       <workItem from="1629421213957" duration="19426000" />
       <workItem from="1629475113089" duration="14992000" />
+      <workItem from="1629595659894" duration="2329000" />
     </task>
     <servers />
   </component>

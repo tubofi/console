@@ -1,8 +1,6 @@
 package model
 
-import (
-	"gorm.io/gorm"
-)
+import "gorm.io/gorm"
 
 type Outcome struct {
 	gorm.Model
@@ -10,4 +8,8 @@ type Outcome struct {
 
 	Money				float32			`json:"money" form:"money"`
 	Comment 			string			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
+}
+
+func (Outcome) TableName() string {
+	return "outcomes"
 }
