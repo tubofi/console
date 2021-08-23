@@ -31,7 +31,8 @@ func (*TencentCOS) UploadFile(file *multipart.FileHeader) (string, string, error
 	if err != nil {
 		panic(err)
 	}
-	return global.GVA_CONFIG.TencentCOS.BaseURL + "/" + global.GVA_CONFIG.TencentCOS.PathPrefix + "/" + fileKey, fileKey, nil
+	//return global.GVA_CONFIG.TencentCOS.BaseURL + "/" + global.GVA_CONFIG.TencentCOS.PathPrefix + "/" + fileKey, fileKey, nil
+	return  client.BaseURL.BucketURL.String() + "/" + global.GVA_CONFIG.TencentCOS.PathPrefix + "/" + fileKey, fileKey, nil
 }
 
 // DeleteFile delete file form COS
@@ -56,5 +57,6 @@ func NewClient() *cos.Client {
 			SecretKey: global.GVA_CONFIG.TencentCOS.SecretKey,
 		},
 	})
+
 	return client
 }

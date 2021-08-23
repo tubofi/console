@@ -68,13 +68,13 @@ system:
   env: public
   addr: 8888
   db-type: mysql
-  oss-type: local
+  oss-type: tencent-cos
   use-multipoint: false
 tencent-cos:
-  bucket: xxxxx-10005608
-  region: ap-shanghai
-  secret-id: xxxxxxxx
-  secret-key: xxxxxxxx
+  bucket: saisicode-1304003768
+  region: ap-chengdu
+  secret-id: AKIDPcZHislOmtjJcePt74k9IAm7AxjGXYIl
+  secret-key: ECtIQHUTAcP1NSGo6iGgy892mMm3BAzo
   base-url: https://gin.vue.admin
   path-prefix: gin-vue-admin
 timer:
