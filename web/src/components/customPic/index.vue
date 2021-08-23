@@ -55,6 +55,7 @@ export default {
       if (this.picSrc && this.picSrc.slice(0, 4) !== 'http') {
         return this.path + this.picSrc
       }
+      console.log("test:" + this.picSrc)
       return this.picSrc
     }
   }

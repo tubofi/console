@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customPic/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customPic/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/example/upload/upload.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/example/upload/upload.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +107,7 @@
       <workItem from="1629595659894" duration="17700000" />
       <workItem from="1629645154337" duration="1393000" />
       <workItem from="1629679030567" duration="8021000" />
+      <workItem from="1629724217706" duration="3301000" />
     </task>
     <servers />
   </component>
