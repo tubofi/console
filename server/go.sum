@@ -409,6 +409,8 @@ github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts v1.0.235 h1:qUFk17V
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/sts v1.0.235/go.mod h1:3LRL4bjS4JieTruoWSqnMA/rPOxd2TXsstNBKtN+2qQ=
 github.com/tencentyun/cos-go-sdk-v5 v0.7.19 h1:janAfTO4MglOrUFuKGTQJBuMc66+F7TgtEIt1wPsJ+k=
 github.com/tencentyun/cos-go-sdk-v5 v0.7.19/go.mod h1:wQBO5HdAkLjj2q6XQiIfDSP8DXDNrppDRw2Kp/1BODA=
+github.com/tencentyun/qcloud-cos-sts-sdk v0.0.0-20210824072546-568579d0d307 h1:OOsKufXbn/AfCpXLUpMAvCCaQWTsSODSZZn6ZuTTYwA=
+github.com/tencentyun/qcloud-cos-sts-sdk v0.0.0-20210824072546-568579d0d307/go.mod h1:b18KQa4IxHbxeseW1GcZox53d7J0z39VNONTxvvlkXw=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/ugorji/go v1.1.4/go.mod h1:uQMGLiO92mf5W77hV/PUCpI3pbzQx3CRekS0kk+RGrc=
 github.com/ugorji/go v1.1.5-pre/go.mod h1:FwP/aQVg39TXzItUBMwnWp9T9gPQnXw4Poh4/oBQZ/0=

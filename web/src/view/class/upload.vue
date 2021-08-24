@@ -35,10 +35,7 @@
             <el-table-column label="占用教室" prop="room" align="center"/>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
 
-            <el-table-column label="源码上传" align="center" width="200">
-                <template slot-scope="scope">
-                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">点击上传</el-button>
-                </template>
+            <el-table-column label="源码上传" align="center" width="300">
                 <template slot-scope="scope">
                     <el-upload
                             class="upload-demo"
@@ -50,11 +47,23 @@
                             :limit="3"
                             :on-exceed="handleExceed"
                             :file-list="fileList">
-                        <el-button size="small" type="primary">点击上传</el-button>
-                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        <el-button size="mini" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">上传本节课sb3格式源码</div>
                     </el-upload>
                 </template>
-
+            </el-table-column>
+            <el-table-column label="素材上传" align="center" width="300">
+                <template>
+                    <el-upload
+                            class="avatar-uploader"
+                            action="https://saisicode-1304003768.cos.ap-chengdu.myqcloud.com"
+                            :show-file-list="false"
+                            :before-upload="beforeAvatarUpload"
+                            :on-progress="getTmp_secret_keys">
+                        <el-button size="mini" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">上传本节课素材压缩文件</div>
+                    </el-upload>
+                </template>
             </el-table-column>
 
         </el-table>
@@ -67,75 +76,6 @@
                 :total="total"
                 @current-change="handleCurrentChange"
                 @size-change="handleSizeChange"/>
-        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="课程登记表单" width="30%">
-            <el-form ref="formData" :model="formData" :rules="rules" label-position="right" label-width="100px">
-                <el-form-item label="登记班级:" prop="classId">
-                    <el-select v-model.number="formData.classId" clearable placeholder="请选择班级" @change="autoFill">
-                        <el-option
-                                v-for="item in classOptions"
-                                :key="item.ID"
-                                :label="item.courseContent + ' ' + item.timeString"
-                                :value="item.ID"/>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="课程阶段:" prop="courseContent">
-                    <el-input :disabled="true" v-model="formData.courseContent" placeholder="根据班级ID自动生成"/>
-                </el-form-item>
-                <el-form-item label="上课时间:" prop="timeString">
-                    <el-input :disabled="true" v-model="formData.timeString" placeholder="根据班级ID自动生成"/>
-                </el-form-item>
-                <el-form-item label="占用教室:" prop="room">
-                    <el-input :disabled="true" v-model="formData.room" placeholder="根据班级ID自动生成"/>
-                </el-form-item>
-                <el-form-item label="授课教师:" prop="teacherName">
-                    <el-select v-model="formData.teacherName" placeholder="请选择教师">
-                        <el-option
-                                v-for="item in teacherOptions"
-                                :key="item.ID"
-                                :label="item.name"
-                                :value="item.name"/>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="课程名称:" prop="name">
-                    <el-input v-model="formData.name" clearable placeholder="请填写本节课的名称"/>
-                </el-form-item>
-                <el-form-item label="参课学生:" prop="students">
-                    <el-select
-                            v-model="formData.students"
-                            multiple
-                            @change="autoFillAbsent"
-                            placeholder="请选择参课学生">
-                        <el-option
-                                v-for="item in studentOptions"
-                                :key="item"
-                                :label="item"
-                                :value="item">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="请假学生:" prop="absentStudents">
-                    <el-select
-                            v-model="formData.absentStudents"
-                            multiple
-                            :disabled="true"
-                            placeholder="自动填充请假学生">
-                        <el-option
-                                v-for="item in studentOptions"
-                                :key="item"
-                                :label="item"
-                                :value="item">
-                        </el-option>
-                    </el-select>
-                </el-form-item>
-                <el-form-item label="备注:" prop="comment">
-                    <el-input type="textarea" :rows="3" v-model="formData.comment" clearable placeholder="备注信息"/>
-                </el-form-item>
-            </el-form>
-            <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog">取 消</el-button>
-                <el-button type="primary" @click="beforeEnterDialog('formData')">确 定</el-button>
-            </div>
-        </el-dialog>
     </div>
 </template>
 
@@ -152,6 +92,7 @@
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
     import {getAllTeachers} from '@/api/z_teacher'
+    import upload from '@/utils/z_upload'
     export default {
         name: 'Course',
         mixins: [infoList],
@@ -165,6 +106,7 @@
                 classOptions: [],
                 studentOptions: [],
                 teacherOptions: [],
+                fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}],
 
                 formData: {
                     classId: null,
@@ -206,6 +148,29 @@
             await this.getTableData()
         },
         methods: {
+            beforeAvatarUpload (file) {
+                console.log(file)
+                this.uploadFile = file
+            },
+            // 上传文件
+            getTmp_secret_keys() {
+                let files = upload(this.uploadFile,res => {
+                    console.log(res,'ddddd')
+
+                })
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePreview(file) {
+                console.log(file);
+            },
+            handleExceed(files, fileList) {
+                this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+            },
+            beforeRemove(file, fileList) {
+                return this.$confirm(`确定移除 ${ file.name }？`);
+            },
             async allTeachers(){
                 const res = await getAllTeachers()
                 if (res.code === 0) {

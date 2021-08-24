@@ -6,9 +6,9 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func InitUserDefinedRouter(Router *gin.RouterGroup) {
-	UserRouter := Router.Group("trial").Use(middleware.OperationRecord())
+func InitCosRouter(Router *gin.RouterGroup) {
+	CosRouter := Router.Group("cos").Use(middleware.OperationRecord())
 	{
-		UserRouter.GET("getCredential", v1.GetCredential)  		// 获取访问cos临时密钥
+		CosRouter.GET("getTmpSecret", v1.GetTmpSecret)  		// 获取访问cos临时密钥
 	}
 }

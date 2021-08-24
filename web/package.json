@@ -15,6 +15,7 @@
     "@antv/util": "~2.0.9",
     "@moefe/vue-aplayer": "^2.0.0-beta.5",
     "axios": "^0.21.1",
+    "cos-js-sdk-v5": "^1.2.16",
     "cos-nodejs-sdk-v5": "^2.10.0",
     "element-ui": "^2.12.0",
     "highlight.js": "^10.6.0",

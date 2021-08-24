@@ -8,11 +8,11 @@ import (
 	"go.uber.org/zap"
 )
 
-func GetCredential(c *gin.Context) {
-	if err, res := service.GetCredential(); err != nil {
+func GetTmpSecret (c *gin.Context) {
+	if err, res := service.GetTmpSecret(""); err != nil {
 		global.GVA_LOG.Error("获取临时密钥失败!", zap.Any("err", err))
 		response.FailWithMessage("获取临时密钥失败: " + err.Error(), c)
 	} else {
-		response.OkWithData(gin.H{"response":res.Response}, c)
+		response.OkWithData(res, c)
 	}
 }

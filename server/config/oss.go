@@ -23,6 +23,7 @@ type AliyunOSS struct {
 	BasePath 		string `mapstructure:"base-path" json:"basePath" yaml:"base-path"`
 }
 type TencentCOS struct {
+	AppID	   string `mapstructure:"app-id" json:"appID" yaml:"app-id"`
 	Bucket     string `mapstructure:"bucket" json:"bucket" yaml:"bucket"`
 	Region     string `mapstructure:"region" json:"region" yaml:"region"`
 	SecretID   string `mapstructure:"secret-id" json:"secretID" yaml:"secret-id"`
