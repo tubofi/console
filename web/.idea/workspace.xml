@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c7460854-9164-4a77-a8e6-da7f06c54856" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../server/api/v1/z_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/router/z_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/service/z_user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/example/test.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/../server/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/../server/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/initialize/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/initialize/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/log/2021-08-23.log" beforeDir="false" afterPath="$PROJECT_DIR$/../server/log/2021-08-23.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/model/sys_user.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/model/sys_user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/source/admin.go" beforeDir="false" afterPath="$PROJECT_DIR$/../server/source/admin.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@babel/helper-create-class-features-plugin/node_modules/lodash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@babel/helper-create-class-features-plugin/node_modules/lodash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-classes/node_modules/lodash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-classes/node_modules/lodash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-function-name/node_modules/lodash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-function-name/node_modules/lodash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-parameters/node_modules/lodash/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@babel/plugin-transform-parameters/node_modules/lodash/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -103,7 +119,7 @@
       <workItem from="1629475113089" duration="14992000" />
       <workItem from="1629595659894" duration="17700000" />
       <workItem from="1629645154337" duration="1393000" />
-      <workItem from="1629679030567" duration="8021000" />
+      <workItem from="1629679030567" duration="15512000" />
     </task>
     <servers />
   </component>
