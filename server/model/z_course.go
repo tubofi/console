@@ -19,6 +19,10 @@ type Course struct {
 	AbsentStudents 	string			`json:"absentStudents" form:"absentStudents"`	//请假学生
 	CourseRecords 	[]CourseRecord 	`json:"courseRecords" form:"courseRecords"`
 
+	IsUpload 		int				`json:"isUpload" form:"isUpload"`				//是否上传素材
+	SourceCodeUrl 	string			`json:"sourceCodeUrl" form:"sourceCodeUrl"`		//保存源码的链接
+	FodderUrl 		string			`json:"fodderUrl" form:"fodderUrl"`				//保存素材的链接
+
 	Comment 		string 			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
 }
 
@@ -41,6 +45,10 @@ type ResCourse struct {
 	Students 		[]string		`json:"students" form:"students"`				//参课学生
 	AbsentStudents 	[]string		`json:"absentStudents" form:"absentStudents"`	//请假学生
 	CourseRecords 	[]CourseRecord 	`json:"courseRecords" form:"courseRecords"`
+
+	IsUpload 		int				`json:"isUpload" form:"isUpload"`				//是否上传素材
+	SourceCodeUrl 	string			`json:"sourceCodeUrl" form:"sourceCodeUrl"`		//保存源码的链接
+	FodderUrl 		string			`json:"fodderUrl" form:"fodderUrl"`				//保存素材的链接
 
 	Comment 		string 			`json:"comment" form:"comment" gorm:"type:varchar(512)"`
 }

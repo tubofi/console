@@ -57,8 +57,7 @@
         :total="total"
         layout="total, sizes, prev, pager, next, jumper"
         @current-change="handleCurrentChange"
-        @size-change="handleSizeChange"
-      />
+        @size-change="handleSizeChange"/>
     </div>
   </div>
 </template>
