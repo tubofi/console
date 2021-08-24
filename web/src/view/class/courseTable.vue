@@ -63,7 +63,7 @@
 
             <el-table-column label="按钮组" align="center" width="200">
                 <template slot-scope="scope">
-                    <el-button plain size="small" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
                     <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
                 </template>
             </el-table-column>
