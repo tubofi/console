@@ -6,23 +6,11 @@
                 <el-form-item label="班号">
                     <el-input v-model.number="searchInfo.classId" placeholder="请输入班级编号" />
                 </el-form-item>
-                <el-form-item label="时间">
-                    <el-input v-model="searchInfo.timeString" placeholder="请输入模糊关键词" />
-                </el-form-item>
                 <el-form-item label="课名">
                     <el-input v-model="searchInfo.name" placeholder="请输入模糊关键词" />
                 </el-form-item>
-                <el-form-item label="教室">
-                    <el-input v-model.number="searchInfo.room" placeholder="请输入教室编号" />
-                </el-form-item>
                 <el-form-item label="教师">
                     <el-input v-model="searchInfo.teacherName" placeholder="请输入模糊关键词" />
-                </el-form-item>
-                <el-form-item label="参课">
-                    <el-input v-model="searchInfo.students" placeholder="请输入模糊关键词" />
-                </el-form-item>
-                <el-form-item label="请假">
-                    <el-input v-model="searchInfo.absentStudents" placeholder="请输入模糊关键词" />
                 </el-form-item>
                 <el-form-item>
                     <el-button size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
@@ -46,27 +34,29 @@
             <el-table-column label="课程名称" prop="name" align="center"/>
             <el-table-column label="占用教室" prop="room" align="center"/>
             <el-table-column label="授课教师" prop="teacherName" align="center"/>
-            <el-table-column label="参课学员" prop="students" align="left" header-align="center" width="350">
+
+            <el-table-column label="源码上传" align="center" width="200">
                 <template slot-scope="scope">
-                    <span v-for="item in scope.row.students">
-                        <el-tag size="medium">{{item}}</el-tag>
-                    </span>
+                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">点击上传</el-button>
                 </template>
-            </el-table-column>
-            <el-table-column label="请假学员" prop="absentStudents" align="left" header-align="center" width="200">
-                <template slot-scope="scope" v-if="scope.row.absentStudents">
-                    <span v-for="item in scope.row.absentStudents">
-                        <el-tag type="warning" size="medium">{{item}}</el-tag>
-                    </span>
+                <template slot-scope="scope">
+                    <el-upload
+                            class="upload-demo"
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            :on-preview="handlePreview"
+                            :on-remove="handleRemove"
+                            :before-remove="beforeRemove"
+                            multiple
+                            :limit="3"
+                            :on-exceed="handleExceed"
+                            :file-list="fileList">
+                        <el-button size="small" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                    </el-upload>
                 </template>
+
             </el-table-column>
 
-            <el-table-column label="按钮组" align="center" width="200">
-                <template slot-scope="scope">
-                    <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
-                    <el-button plain type="danger" icon="el-icon-delete" size="mini" @click="deleteRow(scope.row)">删除</el-button>
-                </template>
-            </el-table-column>
         </el-table>
         <el-pagination
                 layout="total, sizes, prev, pager, next, jumper"
