@@ -179,6 +179,7 @@
                 formData: {
                     classId: null,
                     name: null,
+                    courseType: null,
                     courseContent: null,
                     timeString: null,
                     room: null,
@@ -232,20 +233,21 @@
                 }
             },
             autoFill() {
-                let id = this.formData.classId
+                let id = this.formData.classId;
                 //选择指定id的班级
-                let selectedClass = this.classOptions.find((item) => {return item.ID === id})
+                let selectedClass = this.classOptions.find((item) => {return item.ID === id});
 
-                this.formData.courseContent = selectedClass.courseContent
-                this.formData.timeString = selectedClass.timeString
-                this.formData.room = selectedClass.room
-                this.formData.teacherName = selectedClass.teacherName
+                this.formData.courseType = selectedClass.courseType;
+                this.formData.courseContent = selectedClass.courseContent;
+                this.formData.timeString = selectedClass.timeString;
+                this.formData.room = selectedClass.room;
+                this.formData.teacherName = selectedClass.teacherName;
                 //使用map方法获取对象列表中的某个属性集合
-                this.studentOptions = selectedClass.students.map((item)=>{return item.name})
+                this.studentOptions = selectedClass.students.map((item)=>{return item.name});
                 this.formData.students = this.studentOptions
             },
             autoFillAbsent() {
-                this.formData.absentStudents = []
+                this.formData.absentStudents = [];
                 for (let i = 0; i < this.studentOptions.length; i++) {
                     if (this.formData.students.includes(this.studentOptions[i])) {
                         //
@@ -256,8 +258,8 @@
             },
             // 条件搜索前端看此方法
             onSubmit() {
-                this.page = 1
-                this.pageSize = 10
+                this.page = 1;
+                this.pageSize = 10;
                 this.getTableData()
             },
             handleSelectionChange(val) {
@@ -316,6 +318,7 @@
                 this.formData = {
                     classId: null,
                     name: null,
+                    courseType: null,
                     courseContent: null,
                     timeString: null,
                     room: null,
