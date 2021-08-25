@@ -12,6 +12,7 @@ func CreateCourse(resCourse model.ResCourse) (err error) {
 	resCourse = createCourseRecords(resCourse)
 	course := resCourseToCourse(resCourse)
 	err = global.GVA_DB.Create(&course).Error
+	creatUpload(course)				//判断upload是否存在，如果没有那么创建
 	return err
 }
 
@@ -90,6 +91,7 @@ func resCourseToCourse(resCourse model.ResCourse) model.Course {
 		SchoolID:   	resCourse.SchoolID,
 		ClassID:  		resCourse.ClassID,
 		Name: 			resCourse.Name,
+		CourseType:     resCourse.CourseType,
 		CourseContent:  resCourse.CourseContent,
 		TimeString:  	resCourse.TimeString,
 		Room:  			resCourse.Room,
@@ -113,6 +115,7 @@ func courseToResCourse(course model.Course) model.ResCourse{
 		SchoolID:   	course.SchoolID,
 		ClassID:  		course.ClassID,
 		Name: 			course.Name,
+		CourseType:     course.CourseType,
 		CourseContent:  course.CourseContent,
 		TimeString:  	course.TimeString,
 		Room:  			course.Room,
@@ -164,4 +167,24 @@ func createCourseRecords(reCourse model.ResCourse)(res model.ResCourse){
 
 func deleteCourseRecords(id uint) {
 	global.GVA_DB.Where("course_id = ?", id).Delete(&model.CourseRecord{})
+}
+
+func creatUpload(course model.Course) {
+	if global.GVA_DB.Where(`course_type = ? AND course_name = ?`,
+		course.CourseType, course.Name).Find(&[]model.Upload{}).RowsAffected > 0 {
+		return
+	}
+	upload := model.Upload{
+		CourseType:			course.CourseType,
+		CourseName:  		course.Name,
+		Bucket:  			global.GVA_CONFIG.TencentCOS.Bucket,
+		Region:  			global.GVA_CONFIG.TencentCOS.Region,
+		IsUploadFodder:  	0,
+		IsUploadSourceCode: 0,
+		SourceCodeFolder:  	"source-code/",
+		FodderFolder:  		"fodder",
+		SourceCodeUrl:  	"",
+		FodderUrl:  		"",
+	}
+	global.GVA_DB.Create(&upload)
 }

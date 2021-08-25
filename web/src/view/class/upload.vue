@@ -25,68 +25,42 @@
             <el-table-column label="日期" prop="CreatedAt" align="center" width="150" :formatter="formatDate"/>
             <el-table-column label="课程类型" prop="courseType" align="center"/>
             <el-table-column label="课程名称" prop="courseName" align="center"/>
-            <el-table-column label="源码上传" align="center" width="300">
+            <el-table-column label="源码上传" align="center" width="500">
                 <template slot-scope="scope">
-                    <div v-if="scope.row.isUploadSourceCode !== 1">
-                        <el-upload
-                                class="avatar-uploader"
-                                action="#999"
-                                accept=".sb3, .py, .cpp"
-                                :before-upload="beforeAvatarUpload"
-                                :show-file-list="false"
-                                :on-progress="uploadSourceCode(scope.row)"
-                                :auto-upload="false"
-                                :on-success = "finishSourceCode(scope.row)">
-                            <el-button size="mini" type="primary">点击上传</el-button>
-                            <div slot="tip" class="el-upload__tip">上传本节课源程序</div>
-                        </el-upload>
-                    </div>
-                    <div v-else>
-                        <el-upload
-                                class="avatar-uploader"
-                                action="#999"
-                                accept=".sb3, .py, .cpp"
-                                :before-upload="beforeAvatarUpload"
-                                :show-file-list="false"
-                                :on-progress="uploadSourceCode(scope.row)"
-                                :auto-upload="false"
-                                :on-success = "finishSourceCode(scope.row)">
-                            <el-button size="mini" type="info">重新上传</el-button>
-                            <div slot="tip" class="el-upload__tip">程序已上传，需要重新上传请点击</div>
-                        </el-upload>
-                    </div>
+                    <el-upload
+                            class="avatar-uploader"
+                            ref="uploadSourceCode"
+                            action=""
+                            accept=".sb3, .py, .cpp"
+                            :before-upload="beforeUploadSourceCode"
+                            :show-file-list="false"
+                            :on-progress="uploadSourceCode"
+                            :auto-upload="false">
+                        <el-button slot="trigger" size="mini" type="primary">选取文件</el-button>
+                        <el-button v-if="scope.row.isUploadSourceCode === 0" style="margin-left: 10px;" size="mini" type="success" @click="submitUploadSourceCode(scope.row)">上传到服务器</el-button>
+                        <el-button v-else-if="scope.row.isUploadSourceCode === 1" style="margin-left: 10px;" size="mini" type="info" @click="submitUploadSourceCode(scope.row)">重新上传</el-button>
+                        <el-button v-else style="margin-left: 10px;" size="mini" type="danger">文件状态异常</el-button>
+                        <div slot="tip" class="el-upload__tip">上传本节课素材压缩包，仅支持sb3/py/cpp格式</div>
+                    </el-upload>
                 </template>
             </el-table-column>
-            <el-table-column label="源码上传" align="center" width="300">
+            <el-table-column label="素材上传" align="center" width="500">
                 <template slot-scope="scope">
-                    <div v-if="scope.row.isUploadFodder !== 1">
-                        <el-upload
-                                class="avatar-uploader"
-                                action="#999"
-                                accept=".rar, .zip, .7z, .tar"
-                                :before-upload="beforeAvatarUpload"
-                                :show-file-list="false"
-                                :on-progress="uploadFodder(scope.row)"
-                                :auto-upload="false"
-                                :on-success = "finishFodder(scope.row)">
-                            <el-button size="mini" type="primary">点击上传</el-button>
-                            <div slot="tip" class="el-upload__tip">上传本节课素材压缩包</div>
-                        </el-upload>
-                    </div>
-                    <div v-else>
-                        <el-upload
-                                class="avatar-uploader"
-                                action="#999"
-                                accept=".rar, .zip, .7z, .tar"
-                                :before-upload="beforeAvatarUpload"
-                                :show-file-list="false"
-                                :on-progress="uploadFodder(scope.row)"
-                                :auto-upload="false"
-                                :on-success = "finishFodder(scope.row)">
-                            <el-button size="mini" type="info">重新上传</el-button>
-                            <div slot="tip" class="el-upload__tip">素材已上传，需要重新上传请点击</div>
-                        </el-upload>
-                    </div>
+                    <el-upload
+                            class="avatar-uploader"
+                            ref="uploadFodder"
+                            action=""
+                            accept=".rar, .zip, .7z, .tar"
+                            :before-upload="beforeUploadFodder"
+                            :show-file-list="false"
+                            :on-progress="uploadFodder"
+                            :auto-upload="false">
+                        <el-button slot="trigger" size="mini" type="primary">选取文件</el-button>
+                        <el-button v-if="scope.row.isUploadFodder === 0" style="margin-left: 10px;" size="mini" type="success" @click="submitUploadFodder(scope.row)">上传到服务器</el-button>
+                        <el-button v-else-if="scope.row.isUploadFodder === 1" style="margin-left: 10px;" size="mini" type="info" @click="submitUploadFodder(scope.row)">重新上传</el-button>
+                        <el-button v-else style="margin-left: 10px;" size="mini" type="danger">文件状态异常</el-button>
+                        <div slot="tip" class="el-upload__tip">上传本节课素材压缩包，仅支持rar/zip/7z/tar格式</div>
+                    </el-upload>
                 </template>
             </el-table-column>
         </el-table>
@@ -120,6 +94,8 @@
                 listApi: getUploadList,
                 dialogFormVisible: false,
                 type: '',
+                fodderFile: null,
+                sourceCodeFile: null,
 
                 formData: {
                     CreatedAt: null,
@@ -140,7 +116,47 @@
             await this.getTableData()
         },
         methods: {
-            async uploadSourceCode(row) {
+            async submitUploadFodder(row) {
+                await this.$refs.uploadFodder.submit();
+                if (this.fodderFile === null) {
+                    this.$message({
+                        type: 'warning',
+                        message: '请先选择文件后再上传'
+                    });
+                    return
+                }
+                row.isUploadFodder = 1;
+                row.fodderUrl =  'https://' + row.bucket + '.cos.' + row.region + '.myqcloud.com/fodder/' + this.fodderFile.name;
+                let res = await updateUpload(row);
+                if (res.code === 0) {
+                    this.$message({
+                        type: 'success',
+                        message: '上传素材成功'
+                    });
+                    //this.fodderFile = null
+                }
+            },
+            async submitUploadSourceCode(row) {
+                await this.$refs.uploadSourceCode.submit();
+                if (this.sourceCodeFile === null) {
+                    this.$message({
+                        type: 'warning',
+                        message: '请先选择文件后再上传'
+                    });
+                    return
+                }
+                row.isUploadSourceCode = 1;
+                row.sourceCodeUrl =  'https://' + row.bucket + '.cos.' + row.region + '.myqcloud.com/source-code/' + this.sourceCodeFile.name;
+                let res = await updateUpload(row);
+                if (res.code === 0) {
+                    this.$message({
+                        type: 'success',
+                        message: '上传源码成功'
+                    });
+                    //this.sourceCodeFile = null
+                }
+            },
+            async uploadSourceCode() {
                 let res = await getTmpSecret();
                 if (res.code !== 0 ) {return console.error('credentials invalid')}
                 let cos = new COS({
@@ -151,19 +167,19 @@
                     ExpiredTime: res.data.ExpiredTime,
                 });
                 cos.putObject({
-                    Bucket: row.bucket,
-                    Region: row.region,
-                    Key: row.sourceCodeFolder + this.uploadFile.name,              /* 必须 */
+                    Bucket: 'saisicode-1304003768',
+                    Region: 'ap-chengdu',
+                    Key: 'source-code/' + this.sourceCodeFile.name,              /* 必须 */
                     StorageClass: 'STANDARD',
-                    Body: this.uploadFile, // 上传文件对象
+                    Body: this.sourceCodeFile, // 上传文件对象
                     onProgress: function(progressData) {
                         console.log(JSON.stringify(progressData));
                     }
                 }, function(err, data) {
-                    console.log(err || data);
+                    //console.log(err || data);
                 });
             },
-            async uploadFodder(row) {
+            async uploadFodder() {
                 let res = await getTmpSecret();
                 if (res.code !== 0 ) {return console.error('credentials invalid')}
                 let cos = new COS({
@@ -174,20 +190,25 @@
                     ExpiredTime: res.data.ExpiredTime,
                 });
                 cos.putObject({
-                    Bucket: row.bucket,
-                    Region: row.region,
-                    Key: row.fodderFolder + this.uploadFile.name,              /* 必须 */
+                    Bucket: 'saisicode-1304003768',
+                    Region: 'ap-chengdu',
+                    Key: 'fodder/' + this.fodderFile.name,              /* 必须 */
                     StorageClass: 'STANDARD',
-                    Body: this.uploadFile, // 上传文件对象
+                    Body: this.fodderFile, // 上传文件对象
                     onProgress: function(progressData) {
                         console.log(JSON.stringify(progressData));
                     }
                 }, function(err, data) {
-                    console.log(err || data);
+                    //console.log(err || data);
                 });
             },
-            beforeAvatarUpload (file) {
-                this.uploadFile = file
+            beforeUploadFodder (file) {
+                this.fodderFile = file
+                console.log(file.name)
+            },
+            beforeUploadSourceCode (file) {
+                this.sourceCodeFile = file
+                console.log(file.name)
             },
             formatDate(row) {
                 return formatTimeToStr(row.CreatedAt, 'yyyy-MM-dd');
@@ -197,6 +218,9 @@
                 this.page = 1;
                 this.pageSize = 10;
                 this.getTableData()
+            },
+            handleSelectionChange(val) {
+                this.multipleSelection = val
             },
         },
     }
