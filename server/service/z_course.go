@@ -182,7 +182,7 @@ func creatUpload(course model.Course) {
 		IsUploadFodder:  	0,
 		IsUploadSourceCode: 0,
 		SourceCodeFolder:  	"source-code/",
-		FodderFolder:  		"fodder",
+		FodderFolder:  		"fodder/",
 		SourceCodeUrl:  	"",
 		FodderUrl:  		"",
 	}

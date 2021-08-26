@@ -92,7 +92,7 @@ func GetUploadInfoList(info request.UploadSearch) (err error, list interface{}, 
 	var uploads []model.Upload
 	// 如果有条件搜索 下方会自动创建搜索语句
 	err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Find(&uploads).Error
+	err = db.Limit(limit).Offset(offset).Order("created_at desc").Find(&uploads).Error
 	return err, uploads, total
 }
 
