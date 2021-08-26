@@ -130,6 +130,9 @@
                 <el-form-item label="推荐人:" prop="referee">
                     <el-input v-model="formData.referee" clearable placeholder="填写已报名学员名称，没有则不填" />
                 </el-form-item>
+                <el-form-item label="课次:" prop="courseRemain">
+                    <el-input v-model.number="formData.courseRemain" clearable placeholder="请输入课程次数"/>
+                </el-form-item>
                 <el-form-item label="地址:" prop="address">
                     <el-input v-model="formData.address" clearable placeholder="家庭住址" />
                 </el-form-item>
@@ -228,28 +231,29 @@
                 teacherOptions: [],
 
                 formData: {
-                    address: '',
-                    age: 0,
-                    comment: '',
-                    courseRemain: 0,
-                    creditRemain: 0,
-                    entryTime: new Date(),
-                    guardian: '',
-                    isEntry: 1,
-                    managerName: '',
-                    name: '',
-                    phone: '',
-                    referee: '',
-                    school: '',
-                    sex: '',
-                    teacherName: '',
-                    courseType: '',
-                    courseContent: '',
+                    address: null,
+                    age: null,
+                    comment: null,
+                    courseRemain: null,
+                    creditRemain: null,
+                    entryTime: null,
+                    guardian: null,
+                    isEntry: null,
+                    managerName: null,
+                    name: null,
+                    phone: null,
+                    referee: null,
+                    school: null,
+                    sex: null,
+                    teacherName: null,
+                    courseType: null,
+                    courseContent: null,
                 },
                 rules: {
                     name: [{ required: true, message: '学生姓名不能为空', trigger: 'blur' }],
                     phone: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
                     managerName: [{ required: true, message: '联系方式不能为空', trigger: 'blur' }],
+                    courseRemain: [{ required: true, message: '课程次数不能为空', trigger: 'blur' }],
                 }
             }
         },
