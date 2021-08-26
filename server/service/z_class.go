@@ -23,14 +23,24 @@ func CreateClass(class model.Class) (err error) {
 		return errors.New("该教室在相同时间已经安排班级")
 	}
 
-	for _, student := range class.Students {
+	//这种方法不能修改class.Students字段
+/*	for _, student := range class.Students {
 		student.CourseContent = class.CourseContent
 		student.CourseType = class.CourseType
 		student.TeacherName = class.TeacherName
+	}*/
+
+	for i, _ := range class.Students {
+		class.Students[i].CourseContent = class.CourseContent
+		class.Students[i].CourseType = class.CourseType
+		class.Students[i].TeacherName = class.TeacherName
 	}
 
 	err = global.GVA_DB.Create(&class).Error
 	if err != nil { return err }
+
+	//用save，不能用update
+	global.GVA_DB.Save(class.Students)
 
 	return nil
 }
@@ -39,15 +49,25 @@ func DeleteClass(class model.Class) (err error) {
 	var students []model.Student
 	err = global.GVA_DB.Where("class_id = ?", class.ID).Find(&students).Error
 	if err != nil {return err}
-	for _, student := range students {
+/*	for _, student := range students {
 		student.ClassID = 0
 		student.TeacherName = ""
 		student.CourseContent = ""
 		student.CourseType = ""
 		global.GVA_DB.Save(&student)
+	}*/
+	for i, _ := range students {
+		students[i].ClassID = 0
+		students[i].TeacherName = ""
+		students[i].CourseContent = ""
+		students[i].CourseType = ""
 	}
+
 	err = global.GVA_DB.Delete(&class).Error
-	return err
+	if err != nil {return err}
+
+	global.GVA_DB.Save(&students)
+	return nil
 }
 
 func UpdateClass(class model.Class) (err error) {
