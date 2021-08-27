@@ -39,8 +39,7 @@
                 style="width: 100%"
                 tooltip-effect="dark"
                 :data="tableData"
-                @selection-change="handleSelectionChange"
-        >
+                @selection-change="handleSelectionChange">
             <el-table-column label="日期" prop="entryTime" align="center" width="150" :formatter="formatDate"/>
             <el-table-column label="姓名" prop="name" align="center"/>
             <el-table-column label="性别" prop="sex" align="center" />
@@ -268,12 +267,12 @@
                 }
             },
             formatDate(row) {
-                return formatTimeToStr(row.entryTime, 'yyyy-MM-dd');
+                return formatTimeToStr(row.entryTime, 'yyyy-MM-dd hh:mm:ss');
             },
             // 条件搜索前端看此方法
             onSubmit() {
-                this.page = 1
-                this.pageSize = 10
+                this.page = 1;
+                this.pageSize = 10;
                 this.getTableData()
             },
             handleSelectionChange(val) {
