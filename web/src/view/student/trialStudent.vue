@@ -11,8 +11,7 @@
                                 v-for="item in ageOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="电话">
@@ -24,8 +23,7 @@
                                 v-for="item in courseOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item>
@@ -46,7 +44,7 @@
             <el-table-column label="日期" prop="entryTime" align="center" width="150" :formatter="formatDate"/>
             <el-table-column label="姓名" prop="name" align="center"/>
             <el-table-column label="性别" prop="sex" align="center" />
-            <el-table-column label="年龄" prop="age" align="center" />
+            <el-table-column label="年龄" prop="age" align="center"/>
             <el-table-column label="课程" prop="courseType" align="center"/>
             <el-table-column label="负责人" prop="managerName" align="center"/>
             <el-table-column label="监护人" prop="guardian" align="center"/>
@@ -60,7 +58,6 @@
                             </div>
                             <i slot="reference" class="el-icon-view" />
                         </el-popover>
-
                         <span v-else>无</span>
                     </div>
                 </template>
@@ -82,8 +79,7 @@
                 :header-cell-style="{color: '#224b8f',fontFamily:'MicrosoftYaHeiUI',fontSize:'16px',fontWeight:900}"
                 :total="total"
                 @current-change="handleCurrentChange"
-                @size-change="handleSizeChange"
-        />
+                @size-change="handleSizeChange"/>
         <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="试听学员表单" width="30%">
             <el-form ref="formData" :model="formData" :rules="rules" label-position="right" label-width="100px">
                 <el-form-item label="姓名:" prop="name">
@@ -95,12 +91,18 @@
                                 v-for="item in sexOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="年龄:" prop="age">
                     <el-input v-model.number="formData.age" clearable placeholder="请输入学生年龄"/>
+                </el-form-item>
+                <el-form-item label="出生日期:" prop="birthday">
+                    <el-date-picker
+                            v-model="formData.birthday"
+                            type="date"
+                            placeholder="选择日期">
+                    </el-date-picker>
                 </el-form-item>
                 <el-form-item label="监护人:" prop="guardian">
                     <el-input v-model="formData.guardian" clearable placeholder="监护人身份" />
@@ -123,16 +125,15 @@
                                 v-for="item in courseOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="试听日期:" prop="entryTime">
                     <template>
                         <el-date-picker
                                 v-model="formData.entryTime"
-                                type="date"
-                                placeholder="选择日期">
+                                type="datetime"
+                                placeholder="选择日期时间">
                         </el-date-picker>
                     </template>
                 </el-form-item>
@@ -204,23 +205,24 @@
                 teacherOptions: [],
 
                 formData: {
-                    address: '',
-                    age: 0,
-                    comment: '',
-                    courseRemain: 0,
-                    creditRemain: 0,
-                    entryTime: new Date(),
-                    guardian: '',
-                    isEntry: 0,
-                    managerName: '',
-                    name: '',
-                    phone: '',
-                    referee: '',
-                    school: '',
-                    sex: '',
-                    teacherName: '',
-                    courseType: '',
-                    courseContent: '',
+                    address: null,
+                    age: null,
+                    birthday: null,
+                    comment: null,
+                    courseRemain: null,
+                    creditRemain: null,
+                    entryTime: null,
+                    guardian: null,
+                    isEntry: null,
+                    managerName: null,
+                    name: null,
+                    phone: null,
+                    referee: null,
+                    school: null,
+                    sex: null,
+                    teacherName: null,
+                    courseType: null,
+                    courseContent: null,
                 },
                 rules: {
                     name: [{ required: true, message: '学生姓名不能为空', trigger: 'blur' }],
@@ -231,14 +233,6 @@
             }
         },
         filters: {
-            formatDate: function(time) {
-                if (time !== null && time !== '') {
-                    let date = new Date(time);
-                    return formatTimeToStr(date, 'yyyy-MM-dd');
-                } else {
-                    return ''
-                }
-            },
             formatBoolean: function(bool) {
                 if (bool != null) {
                     return bool ? '是' : '否'
@@ -252,6 +246,21 @@
 
         },
         methods: {
+            getAge(row){
+                let birthday = new Date(row.birthday.replace(/-/g, "/"));
+                let d = new Date();
+                let age =
+                    d.getFullYear() -
+                    birthday.getFullYear() -
+                    (d.getMonth() < birthday.getMonth() ||
+                    (d.getMonth() === birthday.getMonth() &&
+                        d.getDate() < birthday.getDate())
+                        ? 1
+                        : 0);
+                if (age > 0 && age < 20) {
+                    return age
+                } else { return row.age}
+            },
             async allTeachers(){
                 const res = await getAllTeachers()
                 if (res.code === 0) {
@@ -322,19 +331,24 @@
             closeDialog() {
                 this.dialogFormVisible = false;
                 this.formData = {
-                    address: '',
-                    age: 0,
-                    comment: '',
-                    entryTime: new Date(),
-                    guardian: '',
-                    isEntry: 0,
-                    managerName: '',
-                    name: '',
-                    phone: '',
-                    referee: '',
-                    school: '',
-                    sex: '',
-                    teacherName: '',
+                    address: null,
+                    age: null,
+                    birthday: null,
+                    comment: null,
+                    courseRemain: null,
+                    creditRemain: null,
+                    entryTime: null,
+                    guardian: null,
+                    isEntry: null,
+                    managerName: null,
+                    name: null,
+                    phone: null,
+                    referee: null,
+                    school: null,
+                    sex: null,
+                    teacherName: null,
+                    courseType: null,
+                    courseContent: null,
                 };
                 this.teacherOptions = [];
             },
@@ -344,7 +358,7 @@
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === 1 && this.page > 1 ) {
                         this.page--
                     }
@@ -359,7 +373,7 @@
                 })
             },
             async enterDialog() {
-                let res
+                let res;
                 switch (this.type) {
                     case "create":
                         res = await createStudent(this.formData)
@@ -375,14 +389,14 @@
                     this.$message({
                         type: 'success',
                         message: '创建/更改成功'
-                    })
+                    });
                     this.closeDialog()
                     this.getTableData()
                 }
             },
             openDialog() {
-                this.type = 'create'
-                this.dialogFormVisible = true
+                this.type = 'create';
+                this.dialogFormVisible = true;
                 this.allTeachers()
             },
             fmtBody(value) {
