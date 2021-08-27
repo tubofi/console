@@ -12,7 +12,17 @@ func CreateCourse(resCourse model.ResCourse) (err error) {
 	resCourse = createCourseRecords(resCourse)
 	course := resCourseToCourse(resCourse)
 	err = global.GVA_DB.Create(&course).Error
-	creatUpload(course)				//判断upload是否存在，如果没有那么创建
+
+	//所有参课学员课程次数-1
+	var students []model.Student
+	global.GVA_DB.Where(`name IN ?`, resCourse.Students).Find(&students)
+	for i, _ := range students {
+		students[i].CourseRemain = students[i].CourseRemain - 1
+		global.GVA_DB.Save(&students[i])
+	}
+
+	//判断upload是否存在，如果没有那么创建
+	creatUpload(course)
 	return err
 }
 

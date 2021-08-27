@@ -176,7 +176,7 @@
         },
         methods: {
             async allTeachers(){
-                const res = await getAllTeachers()
+                const res = await getAllTeachers();
                 if (res.code === 0) {
                     this.teacherOptions = res.data
                 }
@@ -200,8 +200,8 @@
             },
             // 条件搜索前端看此方法
             onSubmit() {
-                this.page = 1
-                this.pageSize = 10
+                this.page = 1;
+                this.pageSize = 10;
                 this.getTableData()
             },
             handleSelectionChange(val) {
@@ -235,26 +235,26 @@
                 this.multipleSelection &&
                 this.multipleSelection.map(item => {
                     ids.push(item.ID)
-                })
+                });
                 const res = await deleteCourseRecordByIds({ ids })
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === ids.length && this.page > 1) {
                         this.page--
                     }
-                    this.deleteVisible = false
+                    this.deleteVisible = false;
                     this.getTableData()
                 }
             },
             async updateCourseRecord(row) {
                 const res = await findCourseRecord({ ID: row.ID })
-                this.type = 'update'
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.recourseRecord
-                    this.dialogFormVisible = true
+                    this.formData = res.data.recourseRecord;
+                    this.dialogFormVisible = true;
                     this.allTeachers()
                 }
             },
@@ -297,30 +297,30 @@
                 }
             },
             async enterDialog() {
-                let res
+                let res;
                 switch (this.type) {
                     case "create":
-                        res = await createCourseRecord(this.formData)
-                        break
+                        res = await createCourseRecord(this.formData);
+                        break;
                     case "update":
-                        res = await cramCourseRecord(this.formData)
-                        break
+                        res = await cramCourseRecord(this.formData);
+                        break;
                     default:
-                        res = await createCourseRecord(this.formData)
+                        res = await createCourseRecord(this.formData);
                         break
                 }
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '创建/更改成功'
-                    })
-                    this.closeDialog()
+                    });
+                    this.closeDialog();
                     this.getTableData()
                 }
             },
             openDialog() {
-                this.type = 'create'
-                this.dialogFormVisible = true
+                this.type = 'create';
+                this.dialogFormVisible = true;
                 this.allTeachers()
             }
         },

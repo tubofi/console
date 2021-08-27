@@ -71,7 +71,7 @@
             <el-table-column label="负责人" prop="managerName" align="center"/>
             <el-table-column label="教师" prop="teacherName" align="center"/>
             <el-table-column label="课次" prop="courseRemain" align="center" />
-            <el-table-column label="积分" prop="creditRemain" align="center" />
+            <!---<el-table-column label="积分" prop="creditRemain" align="center" />--->
             <el-table-column label="监护人" prop="guardian" align="center"/>
             <el-table-column label="联系方式" prop="phone" align="center" width="180"/>
             <el-table-column label="详情" align="center" width="80">

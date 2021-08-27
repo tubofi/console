@@ -89,6 +89,12 @@ func GetCramCourseRecordInfoList(info request.CourseRecordSearch) (err error, li
 func CramCourseRecord(CourseRecord model.CourseRecord) (err error) {
 	CourseRecord.NeedCram = 0
 	err = global.GVA_DB.Save(&CourseRecord).Error
+
+	//补课后减少学员课次
+	student := model.Student{}
+	global.GVA_DB.Where(`name = ?`, CourseRecord.StudentName).First(&student)
+	student.CourseRemain = student.CourseRemain - 1
+	global.GVA_DB.Save(&student)
 	return err
 }
 

@@ -10,12 +10,27 @@ import (
 // Author [piexlmax](https://github.com/piexlmax)
 func CreatePayment(payment model.Payment) (err error) {
 	err = global.GVA_DB.Create(&payment).Error
+	if err != nil {return err}
+
+	//缴费后增加课程次数
+	student := model.Student{}
+	err = global.GVA_DB.Where(`name = ?`, payment.StudentName).First(&student).Error
+	student.CourseRemain = student.CourseRemain + payment.Times
+	err = global.GVA_DB.Save(&student).Error
 	return err
 }
 
 // DeletePayment 删除Payment记录
 // Author [piexlmax](https://github.com/piexlmax)
 func DeletePayment(payment model.Payment) (err error) {
+	global.GVA_DB.Where(`id = ?`, payment.ID).First(&payment)
+
+	//删除记录后恢复课程次数
+	student := model.Student{}
+	err = global.GVA_DB.Where(`name = ?`, payment.StudentName).First(&student).Error
+	student.CourseRemain = student.CourseRemain - payment.Times
+	err = global.GVA_DB.Save(&student).Error
+
 	err = global.GVA_DB.Delete(&payment).Error
 	return err
 }
@@ -30,6 +45,26 @@ func DeletePaymentByIds(ids request.IdsReq) (err error) {
 // UpdatePayment 更新Payment记录
 // Author [piexlmax](https://github.com/piexlmax)
 func UpdatePayment(payment model.Payment) (err error) {
+	oldPayment := model.Payment{}
+	global.GVA_DB.Where(`id = ?`, payment.ID).First(&oldPayment)
+
+	if payment.StudentName == oldPayment.StudentName {
+		student := model.Student{}
+		global.GVA_DB.Where(`name = ?`, payment.StudentName).First(&student)
+		student.CourseRemain = student.CourseRemain - oldPayment.Times + payment.Times
+		global.GVA_DB.Save(&student)
+	} else {
+		oldStudent := model.Student{}
+		global.GVA_DB.Where(`name = ?`, oldPayment.StudentName).First(&oldStudent)
+		oldStudent.CourseRemain = oldStudent.CourseRemain - oldPayment.Times
+		global.GVA_DB.Save(&oldStudent)
+
+		student := model.Student{}
+		global.GVA_DB.Where(`name = ?`, payment.StudentName).First(&student)
+		student.CourseRemain = student.CourseRemain + payment.Times
+		global.GVA_DB.Save(&student)
+	}
+
 	err = global.GVA_DB.Save(&payment).Error
 	return err
 }

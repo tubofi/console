@@ -94,7 +94,7 @@ export const getCourseRecordList = (params) => {
         method: 'get',
         params
     })
-}
+};
 
 export const getCramCourseRecordList = (params) => {
     return service({
@@ -102,7 +102,7 @@ export const getCramCourseRecordList = (params) => {
         method: 'get',
         params
     })
-}
+};
 
 export const cramCourseRecord = (data) => {
     return service({
@@ -110,7 +110,7 @@ export const cramCourseRecord = (data) => {
         method: 'put',
         data
     })
-}
+};
 
 export const ignoreCramCourseRecord = (data) => {
     return service({
@@ -118,7 +118,7 @@ export const ignoreCramCourseRecord = (data) => {
         method: 'put',
         data
     })
-}
+};
 
 export const getFeedbackCourseRecordList = (params) => {
     return service({
@@ -126,7 +126,7 @@ export const getFeedbackCourseRecordList = (params) => {
         method: 'get',
         params
     })
-}
+};
 
 export const feedbackCourseRecord = (data) => {
     return service({

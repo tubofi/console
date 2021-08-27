@@ -227,15 +227,15 @@
                 }
             },
             async updatePayment(row) {
-                const res = await findPayment({ ID: row.ID })
-                this.type = 'update'
+                const res = await findPayment({ ID: row.ID });
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.repayment
+                    this.formData = res.data.repayment;
                     this.dialogFormVisible = true
                 }
             },
             closeDialog() {
-                this.dialogFormVisible = false
+                this.dialogFormVisible = false;
                 this.formData = {
                     CreatedAt: null,
                     studentName: null,
@@ -247,12 +247,12 @@
                 this.studentOptions = [];
             },
             async deletePayment(row) {
-                const res = await deletePayment({ ID: row.ID })
+                const res = await deletePayment({ ID: row.ID });
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === 1 && this.page > 1 ) {
                         this.page--
                     }
@@ -260,14 +260,14 @@
                 }
             },
             async enterDialog() {
-                let res
+                let res;
                 switch (this.type) {
                     case "create":
                         res = await createPayment(this.formData)
-                        break
+                        break;
                     case "update":
                         res = await updatePayment(this.formData)
-                        break
+                        break;
                     default:
                         res = await createPayment(this.formData)
                         break
