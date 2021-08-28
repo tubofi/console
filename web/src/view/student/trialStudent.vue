@@ -96,13 +96,13 @@
                 <el-form-item label="年龄:" prop="age">
                     <el-input v-model.number="formData.age" clearable placeholder="请输入学生年龄"/>
                 </el-form-item>
-                <el-form-item label="出生日期:" prop="birthday">
+<!--                <el-form-item label="出生日期:" prop="birthday">
                     <el-date-picker
                             v-model="formData.birthday"
                             type="date"
                             placeholder="选择日期">
                     </el-date-picker>
-                </el-form-item>
+                </el-form-item>-->
                 <el-form-item label="监护人:" prop="guardian">
                     <el-input v-model="formData.guardian" clearable placeholder="监护人身份" />
                 </el-form-item>
@@ -206,7 +206,6 @@
                 formData: {
                     address: null,
                     age: null,
-                    birthday: null,
                     comment: null,
                     courseRemain: null,
                     creditRemain: null,
@@ -245,21 +244,6 @@
 
         },
         methods: {
-            getAge(row){
-                let birthday = new Date(row.birthday.replace(/-/g, "/"));
-                let d = new Date();
-                let age =
-                    d.getFullYear() -
-                    birthday.getFullYear() -
-                    (d.getMonth() < birthday.getMonth() ||
-                    (d.getMonth() === birthday.getMonth() &&
-                        d.getDate() < birthday.getDate())
-                        ? 1
-                        : 0);
-                if (age > 0 && age < 20) {
-                    return age
-                } else { return row.age}
-            },
             async allTeachers(){
                 const res = await getAllTeachers()
                 if (res.code === 0) {
@@ -332,7 +316,6 @@
                 this.formData = {
                     address: null,
                     age: null,
-                    birthday: null,
                     comment: null,
                     courseRemain: null,
                     creditRemain: null,

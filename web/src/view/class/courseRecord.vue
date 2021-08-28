@@ -31,9 +31,9 @@
                 tooltip-effect="dark"
                 :data="tableData"
                 @selection-change="handleSelectionChange">
-            <el-table-column label="日期" prop="CreatedAt" align="center" width="150" :formatter="formatDate"/>
+            <el-table-column label="日期" prop="CreatedAt" align="center" width="130" :formatter="formatDate"/>
             <el-table-column label="学生姓名" prop="studentName" align="center"/>
-            <el-table-column label="班级ID" prop="classId" align="center"/>
+            <el-table-column label="班级ID" prop="classId" align="center" width="80"/>
             <el-table-column label="课程ID" prop="courseId" align="center"/>
             <el-table-column label="课程阶段" prop="courseContent" align="center"/>
             <el-table-column label="课程名称" prop="courseName" align="center"/>

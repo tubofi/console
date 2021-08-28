@@ -14,8 +14,7 @@
                                 v-for="item in courseOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="年龄">
@@ -24,8 +23,7 @@
                                 v-for="item in ageOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="课次">
@@ -34,8 +32,7 @@
                                 v-for="item in courseRemainOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item label="积分">
@@ -44,8 +41,7 @@
                                 v-for="item in creditRemainOptions"
                                 :key="item.value"
                                 :label="item.label"
-                                :value="item.value"
-                        />
+                                :value="item.value"/>
                     </el-select>
                 </el-form-item>
                 <el-form-item>

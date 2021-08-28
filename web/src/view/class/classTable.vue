@@ -36,10 +36,10 @@
                 tooltip-effect="dark"
                 :data="tableData"
                 @selection-change="handleSelectionChange">
-            <el-table-column label="班级ID" prop="ID" align="center" width="100"/>
-            <el-table-column label="日期" prop="CreatedAt" align="center" width="150" :formatter="formatDate"/>
+            <el-table-column label="班级ID" prop="ID" align="center" width="80"/>
+            <el-table-column label="日期" prop="CreatedAt" align="center" width="130" :formatter="formatDate"/>
             <el-table-column label="课程" prop="courseContent" align="center"/>
-            <el-table-column label="时间" prop="timeString" align="center"/>
+            <el-table-column label="时间" prop="timeString" align="center" width="120"/>
             <el-table-column label="教室" prop="room" align="center"/>
             <el-table-column label="教师" prop="teacherName" align="center"/>
             <el-table-column label="学员" prop="students" align="left" header-align="center" width="400">
@@ -49,7 +49,7 @@
                     </span>
                 </template>
             </el-table-column>
-            <el-table-column label="详情" align="center" width="100">
+            <el-table-column label="详情" align="center" width="80">
                 <template slot-scope="scope">
                     <div>
                         <el-popover v-if="scope.row" placement="top-start" trigger="hover">
