@@ -84,7 +84,7 @@
                         <el-option
                                 v-for="item in classOptions"
                                 :key="item.ID"
-                                :label="item.courseContent + ' ' + item.timeString"
+                                :label="item.courseContent + ' ' + item.timeString + ' ' + item.teacherName"
                                 :value="item.ID"/>
                     </el-select>
                 </el-form-item>

@@ -370,16 +370,16 @@
                 }
             },
             async updateClass(row) {
-                const res = await findClass({ ID: row.ID })
-                this.type = 'update'
+                await this.idleStudents();
+                const res = await findClass({ ID: row.ID });
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.reclass
+                    this.formData = res.data.reclass;
                     for (let i = 0; i < this.formData.students.length; i++) {
                         this.studentOptions.push(this.formData.students[i])
                     }
-                    this.dialogFormVisible = true
+                    this.dialogFormVisible = true;
                     this.allTeachers();
-                    this.idleStudents();
                 }
             },
             closeDialog() {
@@ -408,7 +408,7 @@
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === 1 && this.page > 1 ) {
                         this.page--
                     }
@@ -423,7 +423,7 @@
                 })
             },
             async enterDialog() {
-                let res
+                let res;
                 switch (this.type) {
                     case "create":
                         res = await createClass(this.formData)
@@ -439,8 +439,8 @@
                     this.$message({
                         type: 'success',
                         message: '创建/更改成功'
-                    })
-                    this.closeDialog()
+                    });
+                    this.closeDialog();
                     this.getTableData()
                 }
             },
