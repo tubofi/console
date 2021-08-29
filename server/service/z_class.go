@@ -30,17 +30,16 @@ func CreateClass(class model.Class) (err error) {
 		student.TeacherName = class.TeacherName
 	}*/
 
-	for i, _ := range class.Students {
-		class.Students[i].CourseContent = class.CourseContent
-		class.Students[i].CourseType = class.CourseType
-		class.Students[i].TeacherName = class.TeacherName
-	}
-
 	err = global.GVA_DB.Create(&class).Error
 	if err != nil { return err }
 
 	//用save，不能用update
-	global.GVA_DB.Save(class.Students)
+	for _, student := range class.Students {
+		student.CourseContent = class.CourseContent
+		student.CourseType = class.CourseType
+		student.TeacherName = class.TeacherName
+		global.GVA_DB.Save(student)
+	}
 
 	return nil
 }
@@ -56,17 +55,18 @@ func DeleteClass(class model.Class) (err error) {
 		student.CourseType = ""
 		global.GVA_DB.Save(&student)
 	}*/
-	for i, _ := range students {
-		students[i].ClassID = 0
-		students[i].TeacherName = ""
-		students[i].CourseContent = ""
-		students[i].CourseType = ""
-	}
 
 	err = global.GVA_DB.Delete(&class).Error
 	if err != nil {return err}
 
-	global.GVA_DB.Save(&students)
+	for _, student := range students {
+		student.ClassID = 0
+		student.TeacherName = ""
+		student.CourseContent = ""
+		student.CourseType = ""
+		global.GVA_DB.Save(&student)
+	}
+
 	return nil
 }
 
@@ -82,12 +82,14 @@ func UpdateClass(class model.Class) (err error) {
 		global.GVA_DB.Save(&student)
 	}
 
+	err = global.GVA_DB.Save(&class).Error
+
 	for _, student := range class.Students {
 		student.TeacherName = class.TeacherName
 		student.CourseType = class.CourseType
 		student.CourseContent = class.CourseContent
+		global.GVA_DB.Save(&student)
 	}
-	err = global.GVA_DB.Save(&class).Error
 	return err
 }
 

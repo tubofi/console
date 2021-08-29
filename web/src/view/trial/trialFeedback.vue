@@ -74,7 +74,7 @@
                 :total="total"
                 @current-change="handleCurrentChange"
                 @size-change="handleSizeChange"/>
-        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="试听反馈表单" width="40%">
+        <el-dialog :before-close="closeDialog" :visible.sync="dialogFormVisible" title="试听反馈表单" width="60%">
             <el-form ref="formData" :model="formData" label-position="right" label-width="100px">
                 <el-form-item label="学生姓名:" prop="studentName" >
                     <el-input :disabled="true" v-model="formData.studentName" placeholder="请输入"/>

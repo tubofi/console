@@ -40,7 +40,7 @@
                 tooltip-effect="dark"
                 :data="tableData"
                 @selection-change="handleSelectionChange">
-            <el-table-column label="日期" prop="entryTime" align="center" width="150" :formatter="formatDate"/>
+            <el-table-column label="日期" prop="entryTime" align="center" width="180" :formatter="formatDate"/>
             <el-table-column label="姓名" prop="name" align="center"/>
             <el-table-column label="性别" prop="sex" align="center" />
             <el-table-column label="年龄" prop="age" align="center"/>
