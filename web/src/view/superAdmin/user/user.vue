@@ -22,8 +22,7 @@
             :show-all-levels="false"
             :props="{ checkStrictly: true,label:'authorityName',value:'authorityId',disabled:'disabled',emitPath:false}"
             filterable
-            @change="changeAuthority(scope.row)"
-          />
+            @change="changeAuthority(scope.row)"/>
         </template>
       </el-table-column>
       <el-table-column label="操作" min-width="150">
@@ -139,8 +138,8 @@ export default {
     ...mapGetters('user', ['token'])
   },
   async created() {
-    this.getTableData()
-    const res = await getAuthorityList({ page: 1, pageSize: 999 })
+    this.getTableData();
+    const res = await getAuthorityList({ page: 1, pageSize: 999 });
     this.setOptions(res.data.list)
   },
   methods: {
@@ -148,7 +147,7 @@ export default {
       this.$refs.chooseImg.open()
     },
     setOptions(authData) {
-      this.authOptions = []
+      this.authOptions = [];
       this.setAuthorityOptions(authData, this.authOptions)
     },
     setAuthorityOptions(AuthorityData, optionsData) {
@@ -159,14 +158,14 @@ export default {
               authorityId: item.authorityId,
               authorityName: item.authorityName,
               children: []
-            }
-            this.setAuthorityOptions(item.children, option.children)
+            };
+            this.setAuthorityOptions(item.children, option.children);
             optionsData.push(option)
           } else {
             const option = {
               authorityId: item.authorityId,
               authorityName: item.authorityName
-            }
+            };
             optionsData.push(option)
           }
         })
@@ -174,24 +173,24 @@ export default {
     async deleteUser(row) {
       const res = await deleteUser({ id: row.ID })
       if (res.code === 0) {
-        this.getTableData()
+        this.getTableData();
         row.visible = false
       }
     },
     async enterAddUserDialog() {
       this.$refs.userForm.validate(async valid => {
         if (valid) {
-          const res = await register(this.userInfo)
+          const res = await register(this.userInfo);
           if (res.code === 0) {
             this.$message({ type: 'success', message: '创建成功' })
           }
-          await this.getTableData()
+          await this.getTableData();
           this.closeAddUserDialog()
         }
       })
     },
     closeAddUserDialog() {
-      this.$refs.userForm.resetFields()
+      this.$refs.userForm.resetFields();
       this.addUserDialog = false
     },
     handleAvatarSuccess(res) {
@@ -204,7 +203,7 @@ export default {
       const res = await setUserAuthority({
         uuid: row.uuid,
         authorityId: row.authority.authorityId
-      })
+      });
       if (res.code === 0) {
         this.$message({ type: 'success', message: '角色设置成功' })
       }

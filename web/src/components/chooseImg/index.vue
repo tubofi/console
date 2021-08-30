@@ -6,10 +6,9 @@
         :key="key"
         class="header-img-box-list"
         :src="(item.url && item.url.slice(0, 4) !== 'http')?path+item.url:item.url"
-        @click.native="chooseImg(item.url,target,targetKey)"
-      >
+        @click.native="chooseImg(item.url,target,targetKey)">
         <div slot="error" class="header-img-box-list">
-          <i class="el-icon-picture-outline" />
+          <i class="el-icon-picture-outline"/>
         </div>
       </el-image>
     </div>

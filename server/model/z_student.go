@@ -30,7 +30,7 @@ type Student struct {
 
 	Name 			string			`json:"name" form:"name"`
 	Age 			int				`json:"age" form:"age"`
-	//Birthday 		time.Time 		`json:"birthday" form:"birthday"`		//出生日期
+	Birthday 		time.Time 		`json:"birthday" form:"birthday"`		//出生日期
 	Sex 			string			`json:"sex" form:"sex"`
 	//Grade			int				`json:"grade" form:"grade"`
 	School 			string			`json:"school" form:"school"`			//这里指就读的学校
