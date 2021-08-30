@@ -8,6 +8,14 @@ export const getTmpSecret = (params) => {
     })
 };
 
+export const getImageTmpSecret = (params) => {
+    return service({
+        url: '/upload/getImageTmpSecret',
+        method: 'get',
+        params
+    })
+};
+
 // @Tags Upload
 // @Summary 创建Upload
 // @Security ApiKeyAuth

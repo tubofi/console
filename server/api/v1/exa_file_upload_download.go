@@ -10,6 +10,17 @@ import (
 	"go.uber.org/zap"
 )
 
+func CreateFile(c *gin.Context) {
+	var file model.ExaFileUploadAndDownload
+	_ = c.ShouldBindJSON(&file)
+	if err := service.CreateFile(file); err != nil {
+		global.GVA_LOG.Error("创建失败!", zap.Any("err", err))
+		response.FailWithMessage("创建失败: " + err.Error(), c)
+	} else {
+		response.OkWithMessage("创建成功", c)
+	}
+}
+
 // @Tags ExaFileUploadAndDownload
 // @Summary 上传文件示例
 // @Security ApiKeyAuth

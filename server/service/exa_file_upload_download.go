@@ -88,3 +88,8 @@ func UploadFile(header *multipart.FileHeader, noSave string) (err error, file mo
 	}
 	return
 }
+
+func CreateFile(file model.ExaFileUploadAndDownload) (err error) {
+	err = global.GVA_DB.Create(&file).Error
+	return err
+}

@@ -17,6 +17,7 @@ func InitUploadRouter(Router *gin.RouterGroup) {
 		UploadRouter.GET("findUpload", v1.FindUpload)        // 根据ID获取Upload
 		UploadRouter.GET("getUploadList", v1.GetUploadList)  // 获取Upload列表
 
-		UploadRouter.GET("getTmpSecret", v1.GetTmpSecret)  		// 获取访问cos临时密钥
+		UploadRouter.GET("getTmpSecret", v1.GetTmpSecret)  				// 获取访问cos临时密钥
+		UploadRouter.GET("getImageTmpSecret", v1.GetImageTmpSecret)  		// 获取访问cos临时密钥-images这个bucket
 	}
 }

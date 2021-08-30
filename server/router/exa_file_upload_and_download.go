@@ -15,5 +15,7 @@ func InitFileUploadAndDownloadRouter(Router *gin.RouterGroup) {
 		FileUploadAndDownloadRouter.GET("/findFile", v1.FindFile)                                  // 查询当前文件成功的切片
 		FileUploadAndDownloadRouter.POST("/breakpointContinueFinish", v1.BreakpointContinueFinish) // 查询当前文件成功的切片
 		FileUploadAndDownloadRouter.POST("/removeChunk", v1.RemoveChunk)                           // 查询当前文件成功的切片
+
+		FileUploadAndDownloadRouter.POST("/createFile", v1.CreateFile)                             // 上传头像文件
 	}
 }

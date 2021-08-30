@@ -19,6 +19,15 @@ func GetTmpSecret (c *gin.Context) {
 	}
 }
 
+func GetImageTmpSecret (c *gin.Context) {
+	if err, res := service.GetImageTmpSecret(""); err != nil {
+		global.GVA_LOG.Error("获取临时密钥失败!", zap.Any("err", err))
+		response.FailWithMessage("获取临时密钥失败: " + err.Error(), c)
+	} else {
+		response.OkWithData(res, c)
+	}
+}
+
 // CreateUpload 创建Upload
 // @Tags Upload
 // @Summary 创建Upload

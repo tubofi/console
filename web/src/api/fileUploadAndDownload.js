@@ -14,7 +14,7 @@ export const getFileList = (data) => {
     method: 'post',
     data
   })
-}
+};
 
 // @Tags FileUploadAndDownload
 // @Summary 删除文件
@@ -29,4 +29,12 @@ export const deleteFile = (data) => {
     method: 'post',
     data
   })
-}
+};
+
+export const createFile = (data) => {
+  return service({
+    url: '/fileUploadAndDownload/createFile',
+    method: 'post',
+    data
+  })
+};

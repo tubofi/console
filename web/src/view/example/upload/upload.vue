@@ -2,7 +2,7 @@
   <div v-loading.fullscreen.lock="fullscreenLoading">
     <div class="upload">
       <el-row>
-        <el-col :span="12">
+        <el-col :span="6">
           <el-upload
             :action="`${path}/fileUploadAndDownload/upload`"
             :before-upload="checkFile"
@@ -12,6 +12,18 @@
             :show-file-list="false">
             <el-button size="small" type="primary">点击上传</el-button>
             <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+          </el-upload>
+        </el-col>
+        <el-col :span="6">
+          <el-upload
+                  class="avatar-uploader"
+                  action=""
+                  :show-file-list="false"
+                  multiple
+                  accept=".jpg, .png"
+                  :http-request="uploadHeaderImage">
+            <el-button size="mini" type="success">上传头像</el-button>
+            <div slot="tip" class="el-upload__tip">上传用户头像到cos，仅支持.jpg, .png格式</div>
           </el-upload>
         </el-col>
         <el-col :span="12">
@@ -63,14 +75,17 @@
 </template>
 
 <script>
-const path = process.env.VUE_APP_BASE_API
+  import {getImageTmpSecret, updateUpload} from "@/api/z_upload";
+
+  const path = process.env.VUE_APP_BASE_API
 import { mapGetters } from 'vuex'
 import infoList from '@/mixins/infoList'
-import { getFileList, deleteFile } from '@/api/fileUploadAndDownload'
+import { getFileList, deleteFile, createFile } from '@/api/fileUploadAndDownload'
 import { downloadImage } from '@/utils/downloadImg'
 import { formatTimeToStr } from '@/utils/date'
 import CustomPic from '@/components/customPic'
 import UploadImage from '@/components/upload/image.vue'
+  import COS from "cos-js-sdk-v5";
 export default {
   name: 'Upload',
   components: {
@@ -80,7 +95,7 @@ export default {
   filters: {
     formatDate: function(time) {
       if (time !== null && time !== '') {
-        var date = new Date(time)
+        var date = new Date(time);
         return formatTimeToStr(date, 'yyyy-MM-dd hh:mm:ss')
       } else {
         return ''
@@ -94,7 +109,14 @@ export default {
       listApi: getFileList,
       path: path,
       tableData: [],
-      imageUrl: ''
+      imageUrl: '',
+
+      formData: {
+        name: null,
+        url:  null,
+        tag:  null,
+        key:  null,
+      },
     }
   },
   computed: {
@@ -104,6 +126,54 @@ export default {
     this.getTableData()
   },
   methods: {
+    async uploadHeaderImage(params){
+      let res = await getImageTmpSecret();
+      if (res.code !== 0 ) {console.error('credentials invalid'); return}
+      let that = this;            //子函数的this不能指向vue对象的api
+      let cos = new COS({
+        SecretId: res.data.Credentials.TmpSecretId,
+        SecretKey: res.data.Credentials.TmpSecretKey,
+        SecurityToken: res.data.Credentials.Token,
+        StartTime: res.data.StartTime,
+        ExpiredTime: res.data.ExpiredTime,
+      });
+      cos.putObject({
+        Bucket: 'images-1304003768',
+        Region: 'ap-chengdu',
+        Key: 'header/' + new Date().Format('yyyy-MM-dd-hh-mm-ss') + params.file.name,              /* 必须 */
+        StorageClass: 'STANDARD',
+        Body: params.file, // 上传文件对象
+        onProgress: function(progressData) {
+          //console.log(JSON.stringify(progressData));
+        }
+      }, async function(err, data) {
+        if (err === null) {
+          that.formData.name = params.file.name;
+          that.formData.url = 'https://' + data.Location;
+          that.formData.tag = params.file.name.substring(params.file.name.indexOf('.')+1).toLowerCase();
+          that.formData.key = cos.options.Key;
+        } else {
+          that.$message({
+            type: 'danger',
+            message: '图片上传失败！'
+          });return
+        }
+        let response = await createFile(that.formData);
+        if (response.code === 0) {
+          that.$message({
+            type: 'success',
+            message: '图片上传成功！'
+          });
+          that.formData = {
+            name: null,
+            url:  null,
+            tag:  null,
+            key:  null,
+          };
+        }
+      });
+    },
+
     async deleteFile(row) {
       this.$confirm('此操作将永久文件, 是否继续?', '提示', {
         confirmButtonText: '确定',
