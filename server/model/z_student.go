@@ -29,7 +29,7 @@ type Student struct {
 	//StudentInfo 	StudentInfo 		`gorm:"embedded"`
 
 	Name 			string			`json:"name" form:"name"`
-	Age 			int				`json:"age" form:"age"`
+	Age 			float64			`json:"age" form:"age"`
 	Birthday 		time.Time 		`json:"birthday" form:"birthday"`		//出生日期
 	Sex 			string			`json:"sex" form:"sex"`
 	//Grade			int				`json:"grade" form:"grade"`

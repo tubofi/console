@@ -11,7 +11,7 @@ type Potential struct {
 	ManagerName	string		`json:"managerName" form:"managerName"`		//管理人
 
 	Name 		string		`json:"name" form:"name"`
-	Age 		int			`json:"age" form:"age"`
+	Age 		float64		`json:"age" form:"age"`
 	Sex 		string		`json:"sex" form:"sex"`
 	Guardian 	string		`json:"guardian" form:"guardian"`
 	Phone 		string		`json:"phone" form:"phone"`

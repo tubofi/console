@@ -96,13 +96,13 @@
                 <el-form-item label="年龄:" prop="age">
                     <el-input v-model.number="formData.age" clearable placeholder="请输入学生年龄"/>
                 </el-form-item>
-<!--                <el-form-item label="出生日期:" prop="birthday">
+                <el-form-item label="出生日期:" prop="birthday">
                     <el-date-picker
                             v-model="formData.birthday"
                             type="date"
                             placeholder="选择日期">
                     </el-date-picker>
-                </el-form-item>-->
+                </el-form-item>
                 <el-form-item label="监护人:" prop="guardian">
                     <el-input v-model="formData.guardian" clearable placeholder="监护人身份" />
                 </el-form-item>
@@ -206,6 +206,7 @@
                 formData: {
                     address: null,
                     age: null,
+                    birthday: null,
                     comment: null,
                     courseRemain: null,
                     creditRemain: null,
@@ -277,19 +278,19 @@
                     this.$message({
                         type: 'warning',
                         message: '请选择要删除的数据'
-                    })
+                    });
                     return
                 }
                 this.multipleSelection &&
                 this.multipleSelection.map(item => {
                     ids.push(item.ID)
-                })
-                const res = await deleteStudentByIds({ ids })
+                });
+                const res = await deleteStudentByIds({ ids });
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === ids.length && this.page > 1) {
                         this.page--
                     }
@@ -299,15 +300,15 @@
             },
             //试听转正
             async conversion(row){
-                await turnStudent({ID: row.ID})
-                this.getTableData()
+                await turnStudent({ID: row.ID});
+                this.getTableData();
             },
             async updateStudent(row) {
-                const res = await findStudent({ ID: row.ID })
-                this.type = 'update'
+                const res = await findStudent({ ID: row.ID });
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.restudent
-                    this.dialogFormVisible = true
+                    this.formData = res.data.restudent;
+                    this.dialogFormVisible = true;
                     this.allTeachers()
                 }
             },
@@ -316,6 +317,7 @@
                 this.formData = {
                     address: null,
                     age: null,
+                    birthday: null,
                     comment: null,
                     courseRemain: null,
                     creditRemain: null,
