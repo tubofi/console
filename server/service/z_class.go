@@ -71,6 +71,22 @@ func DeleteClass(class model.Class) (err error) {
 }
 
 func UpdateClass(class model.Class) (err error) {
+	//组合课程内容字符串
+	class.CourseContent = formCourseContent(class.CourseType, class.Stage, class.Phase)
+	//组合上课时间字符串
+	class.TimeString = formTimeString(class.Weekday, class.Hour, class.Minute)
+
+	oldClass := model.Class{}
+	global.GVA_DB.Where(`id = ?`, class.ID).First(&oldClass)
+	if class.TimeString != oldClass.TimeString || class.Room != oldClass.Room {
+		var classes []model.Class
+		db := global.GVA_DB.Model(&model.Class{})
+		if rows := db.Where("`time_string` = ? AND `room` = ?",
+			class.TimeString, class.Room).Find(&classes).RowsAffected; rows > 0 {
+			return errors.New("该教室在相同时间已经安排班级")
+		}
+	}
+
 	var students []model.Student
 	err = global.GVA_DB.Where("class_id = ?", class.ID).Find(&students).Error
 	if err != nil {return err}
