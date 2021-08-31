@@ -30,5 +30,5 @@ go.sum
 *.iml
 
 *.yaml
-main
-gin-vue-admin
+/server/main
+/server/gin-vue-admin

@@ -412,8 +412,9 @@
                 }
             },
             openDialog() {
-                this.type = 'create'
-                this.dialogFormVisible = true
+                this.type = 'create';
+                this.dialogFormVisible = true;
+                this.formData.isEntry = 1;
                 this.allTeachers()
             },
             fmtBody(value) {
