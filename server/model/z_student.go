@@ -40,10 +40,10 @@ type Student struct {
 	Phone			string			`json:"phone" form:"phone"`
 	Referee	    	string			`json:"referee" form:"referee"`			//引荐人：转介绍？招生？
 
-	IsEntry 		int					`json:"isEntry" form:"isEntry"`				//1为正式，0为体验生
+	IsEntry 		int					`json:"isEntry" form:"isEntry"`									//1为正式，0为体验生
 	EntryTime 		time.Time 			`json:"entryTime" form:"entryTime" `							//报名时间
-	CourseType 		string				`json:"courseType" form:"courseType" `							//课程类型
-	CourseContent   string 				`json:"courseContent" form:"courseContent"`	//课程内容
+	CourseType 		string				`json:"courseType" form:"courseType"`							//课程类型
+	CourseContent   string 				`json:"courseContent" form:"courseContent"`						//课程内容
 	CourseRemain	int					`json:"courseRemain" form:"courseRemain" gorm:"default:0"`		//剩余课次
 	CreditRemain	int					`json:"creditRemain" form:"creditRemain" gorm:"default:0"`				//剩余积分
 	CourseRecords 	[]CourseRecord 		`json:"courseRecords" form:"courseRecords" gorm:"foreignKey:StudentName;references:Name"`   //课堂评分
