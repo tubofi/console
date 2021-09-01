@@ -1,4 +1,3 @@
-
 <template>
     <div>
         <div class="search-term">
@@ -60,7 +59,6 @@
                     </span>
                 </template>
             </el-table-column>
-
             <el-table-column label="按钮组" align="center" width="200">
                 <template slot-scope="scope">
                     <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourse(scope.row)">编辑</el-button>
