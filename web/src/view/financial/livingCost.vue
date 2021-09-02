@@ -188,7 +188,7 @@
                 }
             },
             formatDate(row) {
-                return formatTimeToStr(row.CreatedAt, 'yyyy-MM-dd');
+                return formatTimeToStr(row.time, 'yyyy-MM-dd');
             },
             // 条件搜索前端看此方法
             onSubmit() {
