@@ -39,6 +39,7 @@ func UpdateCourseRecord(CourseRecord model.CourseRecord) (err error) {
 // Author [piexlmax](https://github.com/piexlmax)
 func GetCourseRecord(id uint) (err error, CourseRecord model.CourseRecord) {
 	err = global.GVA_DB.Where("id = ?", id).First(&CourseRecord).Error
+	CourseRecord = RecordToRate(CourseRecord)
 	return
 }
 
@@ -129,7 +130,12 @@ func GetFeedbackCourseRecordInfoList(info request.CourseRecordSearch) (err error
 
 func FeedbackCourseRecord(CourseRecord model.CourseRecord) (err error) {
 	CourseRecord.NeedFeedback = 0
+	CourseRecord = RateToRecord(CourseRecord)
+	err = global.GVA_DB.Save(&CourseRecord).Error
+	return err
+}
 
+func RateToRecord(CourseRecord model.CourseRecord) (res model.CourseRecord){
 	CourseRecord.Punctuality = CourseRecord.Punctuality / 5 * 5
 	CourseRecord.Discipline  = CourseRecord.Discipline / 5 * 10
 	CourseRecord.Concentration = CourseRecord.Concentration / 5 * 15
@@ -139,14 +145,36 @@ func FeedbackCourseRecord(CourseRecord model.CourseRecord) (err error) {
 	CourseRecord.Complete = CourseRecord.Complete / 5 * 15
 
 	CourseRecord.Total =
-			CourseRecord.Punctuality +
+		CourseRecord.Punctuality +
 			CourseRecord.Discipline +
 			CourseRecord.Concentration +
 			CourseRecord.Innovation +
 			CourseRecord.Logic +
 			CourseRecord.Mathematics +
 			CourseRecord.Complete
-	err = global.GVA_DB.Save(&CourseRecord).Error
-	return err
+
+	res = CourseRecord
+	return res
+}
+
+func RecordToRate(CourseRecord model.CourseRecord) (res model.CourseRecord) {
+	CourseRecord.Punctuality = CourseRecord.Punctuality * 5 / 5
+	CourseRecord.Discipline  = CourseRecord.Discipline * 5 / 10
+	CourseRecord.Concentration = CourseRecord.Concentration * 5 / 15
+	CourseRecord.Innovation = CourseRecord.Innovation * 5 / 15
+	CourseRecord.Logic = CourseRecord.Logic * 5 / 20
+	CourseRecord.Mathematics = CourseRecord.Mathematics * 5 / 20
+	CourseRecord.Complete = CourseRecord.Complete * 5 / 15
+
+	CourseRecord.Total =
+		CourseRecord.Punctuality +
+			CourseRecord.Discipline +
+			CourseRecord.Concentration +
+			CourseRecord.Innovation +
+			CourseRecord.Logic +
+			CourseRecord.Mathematics +
+			CourseRecord.Complete
+	res = CourseRecord
+	return
 }
 

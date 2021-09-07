@@ -78,7 +78,7 @@ export const findCourseRecord = (params) => {
         method: 'get',
         params
     })
-}
+};
 
 // @Tags CourseRecord
 // @Summary 分页获取CourseRecord列表

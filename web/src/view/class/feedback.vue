@@ -300,8 +300,8 @@
             },
             // 条件搜索前端看此方法
             onSubmit() {
-                this.page = 1
-                this.pageSize = 10
+                this.page = 1;
+                this.pageSize = 10;
                 this.getTableData()
             },
             handleSelectionChange(val) {
@@ -317,36 +317,36 @@
                 })
             },
             async onDelete() {
-                const ids = []
+                const ids = [];
                 if (this.multipleSelection.length === 0) {
                     this.$message({
                         type: 'warning',
                         message: '请选择要删除的数据'
-                    })
+                    });
                     return
                 }
                 this.multipleSelection &&
                 this.multipleSelection.map(item => {
                     ids.push(item.ID)
-                })
+                });
                 const res = await deleteCourseRecordByIds({ ids })
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === ids.length && this.page > 1) {
                         this.page--
                     }
-                    this.deleteVisible = false
+                    this.deleteVisible = false;
                     this.getTableData()
                 }
             },
             async updateCourseRecord(row) {
                 const res = await findCourseRecord({ ID: row.ID })
-                this.type = 'update'
+                this.type = 'update';
                 if (res.code === 0) {
-                    this.formData = res.data.recourseRecord
+                    this.formData = res.data.recourseRecord;
                     this.dialogFormVisible = true
                 }
             },
@@ -376,12 +376,12 @@
                 }
             },
             async deleteCourseRecord(row) {
-                const res = await deleteCourseRecord({ ID: row.ID })
+                const res = await deleteCourseRecord({ ID: row.ID });
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
                         message: '删除成功'
-                    })
+                    });
                     if (this.tableData.length === 1 && this.page > 1 ) {
                         this.page--
                     }
@@ -389,14 +389,14 @@
                 }
             },
             async enterDialog() {
-                let res
+                let res;
                 switch (this.type) {
                     case "create":
                         res = await createCourseRecord(this.formData)
-                        break
+                        break;
                     case "update":
                         res = await feedbackCourseRecord(this.formData)
-                        break
+                        break;
                     default:
                         res = await createCourseRecord(this.formData)
                         break
@@ -405,8 +405,8 @@
                     this.$message({
                         type: 'success',
                         message: '创建/更改成功'
-                    })
-                    this.closeDialog()
+                    });
+                    this.closeDialog();
                     this.getTableData()
                 }
             },
