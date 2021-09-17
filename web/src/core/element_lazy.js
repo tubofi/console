@@ -123,4 +123,4 @@ Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
 Dialog.props.closeOnClickModal.default = false
 
-console.warn('[GIN-VUE-ADMIN]--按需加载elementUI成功,如出现element-ui组件无法使用问题，请至/src/core/element_lazy 下引入对应组件即可')
+//console.warn('[GIN-VUE-ADMIN]--按需加载elementUI成功,如出现element-ui组件无法使用问题，请至/src/core/element_lazy 下引入对应组件即可')

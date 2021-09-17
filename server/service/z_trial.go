@@ -39,6 +39,7 @@ func UpdateTrialCourseRecord(trialCourseRecord model.TrialCourseRecord) (err err
 // Author [piexlmax](https://github.com/piexlmax)
 func GetTrialCourseRecord(id uint) (err error, trialCourseRecord model.TrialCourseRecord) {
 	err = global.GVA_DB.Where("id = ?", id).First(&trialCourseRecord).Error
+	trialCourseRecord = TrialRecordToRate(trialCourseRecord)
 	return
 }
 
@@ -77,24 +78,52 @@ func GetAllTrialStudents() (err error, trialStudents []model.Student) {
 
 func FeedbackTrialCourseRecord(trialCourseRecord model.TrialCourseRecord) (err error) {
 	trialCourseRecord.NeedFeedback = 0
-	trialCourseRecord.Punctuality = trialCourseRecord.Punctuality / 5 * 5
-	trialCourseRecord.Discipline  = trialCourseRecord.Discipline / 5 * 10
-	trialCourseRecord.Concentration = trialCourseRecord.Concentration / 5 * 15
-	trialCourseRecord.Innovation = trialCourseRecord.Innovation / 5 * 15
-	trialCourseRecord.Logic = trialCourseRecord.Logic / 5 * 20
-	trialCourseRecord.Mathematics = trialCourseRecord.Mathematics / 5 * 20
-	trialCourseRecord.Complete = trialCourseRecord.Complete / 5 * 15
-
-	trialCourseRecord.Total =
-			trialCourseRecord.Punctuality +
-			trialCourseRecord.Discipline +
-			trialCourseRecord.Concentration +
-			trialCourseRecord.Innovation +
-			trialCourseRecord.Logic +
-			trialCourseRecord.Mathematics +
-			trialCourseRecord.Complete
+	trialCourseRecord = TrialRateToRecord(trialCourseRecord)
 	err = global.GVA_DB.Save(&trialCourseRecord).Error
 	return err
+}
+
+func TrialRateToRecord(CourseRecord model.TrialCourseRecord) (res model.TrialCourseRecord){
+	CourseRecord.Punctuality = CourseRecord.Punctuality / 5 * 5
+	CourseRecord.Discipline  = CourseRecord.Discipline / 5 * 10
+	CourseRecord.Concentration = CourseRecord.Concentration / 5 * 15
+	CourseRecord.Innovation = CourseRecord.Innovation / 5 * 15
+	CourseRecord.Logic = CourseRecord.Logic / 5 * 20
+	CourseRecord.Mathematics = CourseRecord.Mathematics / 5 * 20
+	CourseRecord.Complete = CourseRecord.Complete / 5 * 15
+
+	CourseRecord.Total =
+		CourseRecord.Punctuality +
+			CourseRecord.Discipline +
+			CourseRecord.Concentration +
+			CourseRecord.Innovation +
+			CourseRecord.Logic +
+			CourseRecord.Mathematics +
+			CourseRecord.Complete
+
+	res = CourseRecord
+	return res
+}
+
+func TrialRecordToRate(CourseRecord model.TrialCourseRecord) (res model.TrialCourseRecord) {
+	CourseRecord.Punctuality = CourseRecord.Punctuality * 5 / 5
+	CourseRecord.Discipline  = CourseRecord.Discipline * 5 / 10
+	CourseRecord.Concentration = CourseRecord.Concentration * 5 / 15
+	CourseRecord.Innovation = CourseRecord.Innovation * 5 / 15
+	CourseRecord.Logic = CourseRecord.Logic * 5 / 20
+	CourseRecord.Mathematics = CourseRecord.Mathematics * 5 / 20
+	CourseRecord.Complete = CourseRecord.Complete * 5 / 15
+
+	CourseRecord.Total =
+		CourseRecord.Punctuality +
+			CourseRecord.Discipline +
+			CourseRecord.Concentration +
+			CourseRecord.Innovation +
+			CourseRecord.Logic +
+			CourseRecord.Mathematics +
+			CourseRecord.Complete
+	res = CourseRecord
+	return
 }
 
 
