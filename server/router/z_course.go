@@ -16,5 +16,14 @@ func InitCourseRouter(Router *gin.RouterGroup) {
 		CourseRouter.GET("findCourse", v1.FindCourse)        // 根据ID获取Course
 		CourseRouter.GET("getCourseList", v1.GetCourseList)  // 获取Course列表
 		CourseRouter.GET("getClassListFromCourse", v1.GetClassListFromCourse)  // 获取所有班级列表
+
+		CourseRouter.POST("createCourseChange", v1.CreateCourseChange)   // 新建CourseChange
+		CourseRouter.DELETE("deleteCourseChange", v1.DeleteCourseChange) // 删除CourseChange
+		CourseRouter.DELETE("deleteCourseChangeByIds", v1.DeleteCourseChangeByIds) // 批量删除CourseChange
+		CourseRouter.PUT("updateCourseChange", v1.UpdateCourseChange)    // 更新CourseChange
+		CourseRouter.GET("findCourseChange", v1.FindCourseChange)        // 根据ID获取CourseChange
+		CourseRouter.GET("getCourseChangeList", v1.GetCourseChangeList)  // 获取CourseChange列表
 	}
 }
+
+
