@@ -9,16 +9,34 @@ import (
 )
 
 func CreateCourse(resCourse model.ResCourse) (err error) {
-	resCourse = createCourseRecords(resCourse)
+	resCourse = createCourseRecords(resCourse)			//创建本班级学员的课程记录列表，包括参课和请假学员
 	course := resCourseToCourse(resCourse)
 	err = global.GVA_DB.Create(&course).Error
 
-	//所有参课学员课程次数-1
+/*	//所有参课学员课程次数-1
 	var students []model.Student
 	global.GVA_DB.Where(`name IN ?`, resCourse.Students).Find(&students)
 	for i, _ := range students {
 		students[i].CourseRemain = students[i].CourseRemain - 1
 		global.GVA_DB.Save(&students[i])
+	}*/
+
+	//修改为通过CourseChange表来变更学员课程次数
+	for _, name :=  range resCourse.Students {
+		description := ""
+		//判断课程名称中是否存在书名号
+		if strings.Index(resCourse.Name, "《") != -1 && strings.Index(resCourse.Name, "》") != -1 {
+			description = resCourse.CourseType + ":" + resCourse.Name
+		} else {
+			description = resCourse.CourseType + ":《" + resCourse.Name + "》"
+		}
+		courseChange := model.CourseChange{
+			StudentName: 	name,
+			Amount:  		-1,			//次数减少1
+			Type:  			-1,			//类型为消课
+			Description:  	description,
+		}
+		err = CreateCourseChange(courseChange)
 	}
 
 	//判断upload是否存在，如果没有那么创建
@@ -198,3 +216,4 @@ func creatUpload(course model.Course) {
 	}
 	global.GVA_DB.Create(&upload)
 }
+

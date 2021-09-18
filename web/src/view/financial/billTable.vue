@@ -52,7 +52,7 @@
                             <div class="popover-box">
                                 <pre>{{ fmtBody(scope.row) }}</pre>
                             </div>
-                            <i slot="reference" class="el-icon-view" />
+                            <i slot="reference" class="el-icon-view"/>
                         </el-popover>
                         <span v-else>无</span>
                     </div>

@@ -3,7 +3,16 @@
         <div class="search-term">
             <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
                 <el-form-item label="姓名">
-                    <el-input v-model="searchInfo.name" placeholder="请输入学生姓名" />
+                    <el-input v-model="searchInfo.name" placeholder="请输入模糊关键字" />
+                </el-form-item>
+                <el-form-item label="类型">
+                    <el-select v-model="searchInfo.type" clearable placeholder="请选择变更类型">
+                        <el-option
+                                v-for="item in typeOptions"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value"/>
+                    </el-select>
                 </el-form-item>
                 <el-form-item>
                     <el-button size="mini" type="primary" icon="el-icon-search" @click="onSubmit">查询</el-button>
@@ -21,11 +30,22 @@
                 :data="tableData"
                 @selection-change="handleSelectionChange">
             <el-table-column label="日期" prop="entryTime" align="center" width="150" :formatter="formatDate"/>
-            <el-table-column label="姓名" prop="name" align="center"/>
+            <el-table-column label="姓名" prop="studentName" align="center"/>
+            <el-table-column label="类型" prop="type" align="center">
+                <template slot-scope="scope">
+                    <el-tag size="medium" v-if="scope.row.type === 1">报名</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === 2">续费</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === 3" type="warning">推荐</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === 4" type="warning">赠送</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === 5" type="warning">积分</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === -1" type="warning">上课</el-tag>
+                    <el-tag size="medium" v-else-if="scope.row.type === 11" type="danger">修正</el-tag>
+                    <el-tag v-else size="medium" type="danger">异常</el-tag>
+                </template>
+            </el-table-column>
             <el-table-column label="次数" prop="amount" align="center"/>
-            <el-table-column label="类型" prop="type" align="center"/>
-            <el-table-column label="说明" prop="comment" align="center"/>
-            <el-table-column label="comment字段" prop="comment" width="150" />
+            <el-table-column label="描述(家长可见)" prop="description" align="center"/>
+            <el-table-column label="备注(家长不可见)" prop="comment" align="center"/>
             <el-table-column label="按钮组" align="center" width="180">
                 <template slot-scope="scope">
                     <el-button plain size="mini" type="primary" icon="el-icon-edit" class="table-button" @click="updateCourseChange(scope.row)">编辑</el-button>
@@ -48,7 +68,6 @@
                     <el-select
                             v-model="formData.studentName"
                             value-key="ID"
-                            multiple
                             filterable
                             placeholder="输入关键字搜索">
                         <el-option
@@ -62,7 +81,7 @@
                 <el-form-item label="选择类型:" prop="type">
                     <el-select v-model="formData.type" clearable placeholder="选择类型">
                         <el-option
-                                v-for="item in typeOptions"
+                                v-for="item in selectOptions"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value"/>
@@ -70,6 +89,9 @@
                 </el-form-item>
                 <el-form-item label="输入课次:" prop="amount">
                     <el-input v-model.number="formData.amount" clearable placeholder="请输入次数"/>
+                </el-form-item>
+                <el-form-item label="备注:" prop="description">
+                    <el-input v-model="formData.description" clearable placeholder="请输入变更说明(家长可见)"/>
                 </el-form-item>
                 <el-form-item label="备注:" prop="comment">
                     <el-input type="textarea" :rows="3" v-model="formData.comment" clearable placeholder="备注信息"/>
@@ -92,14 +114,19 @@
         {label: '积分', value: 5},
         {label: '修正', value: 11},
     ];
+    const selectOptions = [
+        {label: '推荐', value: 3},
+        {label: '赠送', value: 4},
+        {label: '修正', value: 11},
+    ];
     import {
         createCourseChange,
         deleteCourseChange,
-        deleteCourseChangeByIds,
         updateCourseChange,
         findCourseChange,
         getCourseChangeList
     } from '@/api/z_course_change' //  此处请自行替换地址
+    import { getAllStudents } from '@/api/z_payment' //  此处请自行替换地址
     import { formatTimeToStr } from '@/utils/date'
     import infoList from '@/mixins/infoList'
     export default {
@@ -114,13 +141,14 @@
                 multipleSelection: [],
                 studentOptions: [],
                 typeOptions: typeOptions,
+                selectOptions: selectOptions,
 
                 formData: {
                     studentName: null,
                     amount: null,
                     type: null,
+                    description: null,
                     comment: null,
-
                 },
 
                 rules: {
@@ -149,9 +177,14 @@
         },
         async created() {
             await this.getTableData()
-
         },
         methods: {
+            async allStudents() {
+                const res = await getAllStudents();
+                if (res.code === 0) {
+                    this.studentOptions = res.data
+                }
+            },
             beforeEnterDialog(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
@@ -217,15 +250,15 @@
             closeDialog() {
                 this.dialogFormVisible = false;
                 this.formData = {
-                    studentName: '',
-                    amount: 0,
-                    type: 0,
-                    comment: '',
-
+                    studentName: null,
+                    amount: null,
+                    type: null,
+                    description: null,
+                    comment: null,
                 }
             },
             async deleteCourseChange(row) {
-                const res = await deleteCourseChange({ ID: row.ID })
+                const res = await deleteCourseChange({ ID: row.ID });
                 if (res.code === 0) {
                     this.$message({
                         type: 'success',
@@ -241,13 +274,13 @@
                 let res;
                 switch (this.type) {
                     case "create":
-                        res = await createCourseChange(this.formData)
+                        res = await createCourseChange(this.formData);
                         break;
                     case "update":
-                        res = await updateCourseChange(this.formData)
+                        res = await updateCourseChange(this.formData);
                         break;
                     default:
-                        res = await createCourseChange(this.formData)
+                        res = await createCourseChange(this.formData);
                         break
                 }
                 if (res.code === 0) {
@@ -261,7 +294,8 @@
             },
             openDialog() {
                 this.type = 'create';
-                this.dialogFormVisible = true
+                this.dialogFormVisible = true;
+                this.allStudents()
             }
         },
     }

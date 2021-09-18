@@ -1,4 +1,3 @@
-
 import service from '@/utils/request'
 
 // @Tags CourseChange
@@ -11,11 +10,11 @@ import service from '@/utils/request'
 // @Router /courseChange/createCourseChange [post]
 export const createCourseChange = (data) => {
     return service({
-        url: '/courseChange/createCourseChange',
+        url: '/course/createCourseChange',
         method: 'post',
         data
     })
-}
+};
 
 // @Tags CourseChange
 // @Summary 删除CourseChange
@@ -27,27 +26,11 @@ export const createCourseChange = (data) => {
 // @Router /courseChange/deleteCourseChange [delete]
 export const deleteCourseChange = (data) => {
     return service({
-        url: '/courseChange/deleteCourseChange',
+        url: '/course/deleteCourseChange',
         method: 'delete',
         data
     })
-}
-
-// @Tags CourseChange
-// @Summary 删除CourseChange
-// @Security ApiKeyAuth
-// @accept application/json
-// @Produce application/json
-// @Param data body request.IdsReq true "批量删除CourseChange"
-// @Success 200 {string} string "{"success":true,"data":{},"msg":"删除成功"}"
-// @Router /courseChange/deleteCourseChange [delete]
-export const deleteCourseChangeByIds = (data) => {
-    return service({
-        url: '/courseChange/deleteCourseChangeByIds',
-        method: 'delete',
-        data
-    })
-}
+};
 
 // @Tags CourseChange
 // @Summary 更新CourseChange
@@ -59,11 +42,11 @@ export const deleteCourseChangeByIds = (data) => {
 // @Router /courseChange/updateCourseChange [put]
 export const updateCourseChange = (data) => {
     return service({
-        url: '/courseChange/updateCourseChange',
+        url: '/course/updateCourseChange',
         method: 'put',
         data
     })
-}
+};
 
 // @Tags CourseChange
 // @Summary 用id查询CourseChange
@@ -75,11 +58,11 @@ export const updateCourseChange = (data) => {
 // @Router /courseChange/findCourseChange [get]
 export const findCourseChange = (params) => {
     return service({
-        url: '/courseChange/findCourseChange',
+        url: '/course/findCourseChange',
         method: 'get',
         params
     })
-}
+};
 
 // @Tags CourseChange
 // @Summary 分页获取CourseChange列表
@@ -91,8 +74,8 @@ export const findCourseChange = (params) => {
 // @Router /courseChange/getCourseChangeList [get]
 export const getCourseChangeList = (params) => {
     return service({
-        url: '/courseChange/getCourseChangeList',
+        url: '/course/getCourseChangeList',
         method: 'get',
         params
     })
-}
+};

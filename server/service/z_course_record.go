@@ -5,6 +5,7 @@ import (
 	"gin-vue-admin/global"
 	"gin-vue-admin/model"
 	"gin-vue-admin/model/request"
+	"strings"
 )
 
 // CreateCourseRecord 创建CourseRecord记录
@@ -91,11 +92,43 @@ func CramCourseRecord(CourseRecord model.CourseRecord) (err error) {
 	CourseRecord.NeedCram = 0
 	err = global.GVA_DB.Save(&CourseRecord).Error
 
-	//补课后减少学员课次
+/*	//补课后减少学员课次
 	student := model.Student{}
 	global.GVA_DB.Where(`name = ?`, CourseRecord.StudentName).First(&student)
 	student.CourseRemain = student.CourseRemain - 1
-	global.GVA_DB.Save(&student)
+	global.GVA_DB.Save(&student)*/
+
+	//创建课程次数变更记录
+	description, courseType := "", ""
+	//判断课程类型！垃圾方法
+	switch string(CourseRecord.CourseContent[0]) {
+	case "P":
+		courseType = "python"
+	case "S":
+		courseType = "scratch"
+	case "O":
+		courseType = "osmo"
+	case "J":
+		courseType = "scratchJR"
+	case "C":
+		courseType = "cpp"
+	default:
+		courseType = "course"
+	}
+	//判断课程名称中是否存在书名号
+	if strings.Index(CourseRecord.CourseName, "《") != -1 && strings.Index(CourseRecord.CourseName, "》") != -1 {
+		description = courseType + ":" + CourseRecord.CourseName
+	} else {
+		description = courseType + ":《" + CourseRecord.CourseName + "》"
+	}
+	courseChange := model.CourseChange{
+		StudentName: 	CourseRecord.StudentName,
+		Amount:  		-1,			//次数减少1
+		Type:  			-1,			//类型为消课
+		Description:  	description,
+	}
+	err = CreateCourseChange(courseChange)
+
 	return err
 }
 
