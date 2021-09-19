@@ -84,9 +84,9 @@ func GetCramCourseRecordInfoList(info request.CourseRecordSearch) (err error, li
 		db = db.Where("`course_name` LIKE ?","%"+ info.CourseName+"%")
 	}
 	//err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Order("need_cram desc").Order("attend_time desc").Where("`is_absentee` = ?",1).Find(&CourseRecords).Error
 	//正常是要获取表总长度，此处以is_absentee=1的数量代替
-	total = db.Where("`is_absentee` = ?",1).Find(&CourseRecords).RowsAffected
+	total = db.Where("`is_absentee` = ?",1).Find(&[]model.CourseRecord{}).RowsAffected
+	err = db.Limit(limit).Offset(offset).Order("need_cram desc").Order("attend_time desc").Where("`is_absentee` = ?",1).Find(&CourseRecords).Error
 	return err, CourseRecords, total
 }
 
@@ -159,9 +159,9 @@ func GetFeedbackCourseRecordInfoList(info request.CourseRecordSearch) (err error
 		db = db.Where("`course_name` LIKE ?","%"+ info.CourseName+"%")
 	}
 	//err = db.Count(&total).Error
-	err = db.Limit(limit).Offset(offset).Order("need_feedback desc").Order("attend_time desc").Where("`need_cram` = ?", 0).Find(&CourseRecords).Error
 	//已经被忽略，need_cram=0的不加入统计了
-	total = db.Where("`need_cram` = ?", 0).Find(&CourseRecords).RowsAffected
+	total = db.Where("`need_cram` = ?", 0).Find(&[]model.CourseRecord{}).RowsAffected
+	err = db.Limit(limit).Offset(offset).Order("need_feedback desc").Order("attend_time desc").Where("`need_cram` = ?", 0).Find(&CourseRecords).Error
 	return err, CourseRecords, total
 }
 
