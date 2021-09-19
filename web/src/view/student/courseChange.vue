@@ -3,7 +3,7 @@
         <div class="search-term">
             <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
                 <el-form-item label="姓名">
-                    <el-input v-model="searchInfo.name" placeholder="请输入模糊关键字" />
+                    <el-input v-model="searchInfo.studentName" placeholder="请输入模糊关键字" />
                 </el-form-item>
                 <el-form-item label="类型">
                     <el-select v-model="searchInfo.type" clearable placeholder="请选择变更类型">
