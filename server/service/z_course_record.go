@@ -83,8 +83,9 @@ func GetCramCourseRecordInfoList(info request.CourseRecordSearch) (err error, li
 	if info.CourseName != "" {
 		db = db.Where("`course_name` LIKE ?","%"+ info.CourseName+"%")
 	}
-	err = db.Count(&total).Error
+	//err = db.Count(&total).Error
 	err = db.Limit(limit).Offset(offset).Order("need_cram desc").Order("attend_time desc").Where("`is_absentee` = ?",1).Find(&CourseRecords).Error
+	total = int64(len(CourseRecords))		//正常是要获取表总长度，此处以is_absentee=1的数量代替
 	return err, CourseRecords, total
 }
 
@@ -156,8 +157,9 @@ func GetFeedbackCourseRecordInfoList(info request.CourseRecordSearch) (err error
 	if info.CourseName != "" {
 		db = db.Where("`course_name` LIKE ?","%"+ info.CourseName+"%")
 	}
-	err = db.Count(&total).Error
+	//err = db.Count(&total).Error
 	err = db.Limit(limit).Offset(offset).Order("need_feedback desc").Order("attend_time desc").Where("`need_cram` = ?", 0).Find(&CourseRecords).Error
+	total = int64(len(CourseRecords))		//已经被忽略，need_cram=0的不加入统计了
 	return err, CourseRecords, total
 }
 
