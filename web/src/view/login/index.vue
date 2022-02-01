@@ -64,6 +64,7 @@
       </div>
       <div class="login_panle_right" />
       <div class="login_panle_foot">
+        <!---
         <div class="links">
           <a href="http://doc.henrongyi.top/"><img src="@/assets/docs.png" class="link-icon"></a>
           <a href="https://www.yuque.com/flipped-aurora/"><img src="@/assets/yuque.png" class="link-icon"></a>
@@ -71,6 +72,14 @@
           <a href="https://space.bilibili.com/322210472"><img src="@/assets/video.png" class="link-icon"></a>
         </div>
         <div class="copyright">Copyright &copy; {{ curYear }} 💖 flipped-aurora</div>
+        !--->
+
+        <div class="links">
+          <a href="https://beian.miit.gov.cn/">
+            <div class="copyright">蜀ICP备20018194号-1 &copy {{ curYear }}</div>
+            <!---<p color="black">蜀ICP备20018194号-1</p>!--->
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -101,8 +110,8 @@ export default {
       curYear: 0,
       lock: 'lock',
       loginForm: {
-        username: 'admin',
-        password: '123456',
+        username: '',
+        password: '',
         captcha: '',
         captchaId: ''
       },

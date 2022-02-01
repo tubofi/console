@@ -28,7 +28,6 @@ go.sum
 /server/latest_log
 
 *.iml
-
 *.yaml
 /server/main
 /server/gin-vue-admin
