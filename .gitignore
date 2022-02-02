@@ -29,5 +29,6 @@ go.sum
 
 *.iml
 *.yaml
+*.exe
 /server/main
 /server/gin-vue-admin
