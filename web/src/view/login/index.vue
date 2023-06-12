@@ -76,7 +76,7 @@
 
         <div class="links">
           <a href="https://beian.miit.gov.cn/">
-            <div class="copyright">蜀ICP备20018194号-1 &copy {{ curYear }}</div>
+            <div class="copyright">蜀ICP备2022003658号-1 &copy {{ curYear }}</div>
             <!---<p color="black">蜀ICP备20018194号-1</p>!--->
           </a>
         </div>
